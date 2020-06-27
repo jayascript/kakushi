@@ -1,3 +1,3 @@
-# 隠された
+# 隠し
 
 Version control for my dotfiles.
