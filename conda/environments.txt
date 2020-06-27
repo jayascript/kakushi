@@ -1,0 +1,7 @@
+/home/jayascript/miniconda3
+/home/jayascript/miniconda3/envs/jayascript
+/home/jayascript/miniconda3/envs/realpython
+/home/jayascript/miniconda3/envs/datascience
+/home/jayascript/miniconda3/envs/cse6242
+/home/jayascript/miniconda3/envs/django
+/home/jayascript/miniconda3/envs/wagtail

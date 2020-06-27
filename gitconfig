@@ -1,0 +1,10 @@
+[core]
+	excludesfile = /home/jayascript/.gitignore_global
+[user]
+	name = Jayascript
+	email = 39142547+jayascript@users.noreply.github.com
+[alias]
+	begin = log --oneline -5
+	st = status
+	cm = commit -m
+	as = add . && status

@@ -1,0 +1,89 @@
+# Your snippets
+#
+# Atom snippets allow you to enter a simple prefix in the editor and hit tab to
+# expand the prefix into a larger code block with templated values.
+#
+# You can create a new snippet in this file by typing "snip" and then hitting
+# tab.
+#
+# An example CoffeeScript snippet to expand log to console.log:
+#
+# '.source.coffee':
+#   'Console log':
+#     'prefix': 'log'
+#     'body': 'console.log $1'
+#
+# Each scope (e.g. '.source.coffee' above) can only be declared once.
+#
+# This file uses CoffeeScript Object Notation (CSON).
+# If you are unfamiliar with CSON, you can read more about it in the
+# Atom Flight Manual:
+# http://flight-manual.atom.io/using-atom/sections/basic-customization/#_cson
+
+'.source.python':
+  'Python String Formatting':
+    'prefix': 'fmt'
+    'body': 'f"$1"$2'
+  'Python String Formatting Variable':
+    'prefix': 'svar'
+    'body': '{$1}$2'
+
+'.text.md, .source.gfm':
+  'Real Python Alert':
+    'prefix': 'alert'
+    'body': '{% alert %}\n**Note:** $1\n{% endalert %}'
+  'Captioned Image':
+    'prefix': 'img'
+    'body': '<p align="center">\n  <img src="$1" alt="$2" width="100%" height="" style="">\n  <p style="text-align:center;"><sup><em>$3</em></sup>\n  </p>\n</p>'
+  'Linked Header':
+    'prefix': 'header'
+    'body': '##$1 <a id="$2"></a>$3'
+  'Markdown':
+    'prefix': 'mdheader'
+    'body': 'Title: $1\nDate: $2\nModified: $3\nLang: en\nCategory: $4\nSlug: $5\nCover: images/$6\nTags: $7\nSummary: $8'
+
+'.text.html':
+  'Django Tag':
+    'prefix': 'tag'
+    'body': '{% $1 %}$2'
+  'Django Content':
+    'prefix': 'content'
+    'body': '{% block content %}\n\t$1\n{% endblock content %}'
+  'Django Extends':
+    'prefix': 'extends'
+    'body': "{% extends 'base.html' %}$1"
+  'Django Load':
+    'prefix': 'load'
+    'body': '{% load $1 %}$2'
+  'Django For':
+    'prefix': 'for'
+    'body': '{% for $1 %}\n\t\n{% endfor %}'
+  'Django Variable':
+    'prefix': 'var'
+    'body': '{{ $1 }}'
+  'Django If':
+    'prefix': 'if'
+    'body': '{% if $1 %}\n\t\n{% endif %}'
+  'Django With':
+    'prefix': 'with'
+    'body': '{% with $1 %}\n\t\n{% endwith %}'
+
+# These null out the snippets so the snippets are not available when in a tag or
+# in embedded contexts like <script> and <style>
+'.text.html .meta.tag, .text.html .embedded':
+  'Django Tag':
+    'prefix': 'tag'
+  'Django Content':
+    'prefix': 'content'
+  'Django Extends':
+    'prefix': 'extends'
+  'Django Load':
+    'prefix': 'load'
+  'Django For':
+    'prefix': 'for'
+  'Django Variable':
+    'prefix': 'var'
+  'Django If':
+    'prefix': 'if'
+  'Django With':
+    'prefix': 'with'

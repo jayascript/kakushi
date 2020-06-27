@@ -1,0 +1,49 @@
+{
+  "_from": "https://www.atom.io/api/packages/tab-through/versions/0.8.1/tarball",
+  "_id": "tab-through@0.8.1",
+  "_inBundle": false,
+  "_integrity": "sha512-ZfDXz5fQ9fAeLtnSn6OCckGzc5z5VhmLivS4Gk9eGp1b7/yX8S++T92XVcNnC0wTSThPI00gcyofiGhNiasO1g==",
+  "_location": "/tab-through",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "remote",
+    "raw": "https://www.atom.io/api/packages/tab-through/versions/0.8.1/tarball",
+    "rawSpec": "https://www.atom.io/api/packages/tab-through/versions/0.8.1/tarball",
+    "saveSpec": "https://www.atom.io/api/packages/tab-through/versions/0.8.1/tarball",
+    "fetchSpec": "https://www.atom.io/api/packages/tab-through/versions/0.8.1/tarball"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://www.atom.io/api/packages/tab-through/versions/0.8.1/tarball",
+  "_shasum": "f6df22df7b3870f9d35380467283c4454014afc7",
+  "_spec": "https://www.atom.io/api/packages/tab-through/versions/0.8.1/tarball",
+  "_where": "/tmp/apm-install-dir-2020525-257009-zn5ljg.pv3w",
+  "activationCommands": {
+    "atom-text-editor": [
+      "tab-through:moveRight",
+      "tab-through:moveLeft"
+    ]
+  },
+  "bugs": {
+    "url": "https://github.com/JACooper/tab-through/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {},
+  "deprecated": false,
+  "description": "A couple key-bindings to move the cursor by 1 position if preceded/succeeded by certain characters.",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "homepage": "https://github.com/JACooper/tab-through#readme",
+  "keywords": [],
+  "license": "MIT",
+  "main": "./lib/tab-through",
+  "name": "tab-through",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JACooper/tab-through.git"
+  },
+  "version": "0.8.1"
+}
