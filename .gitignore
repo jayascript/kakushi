@@ -1,0 +1,6 @@
+# don't track the changeable atom cache stuff
+atom/blob-store/
+atom/compile-cache/
+atom/recovery/
+atom/storage/
+
