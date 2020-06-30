@@ -1,6 +1,6 @@
 plugins: fromfilename chroma
 directory: ~/Music
-library: ~/mymusiclibrary.db
+library: ~/Music/musiclibrary.db
 art_filename: albumart
 #threaded: yes
 #original_date: no
@@ -12,13 +12,13 @@ per_disc_numbering: no
 #    opts: -ab 320k -ac 2 -ar 48000
 #    max_bitrate: 320
 #    threads: 1
-    
+
 paths:
-    default: $albumartist/$album%aunique{}/$track - $title
-    singleton: Non-Album/$artist - $title
-    comp: Compilations/$album%aunique{}/$track - $title
-    albumtype_soundtrack: Soundtracks/$album/$track $title
-    
+    default: $albumartist/$album%aunique{}/$title
+    singleton: $artist/$title
+    comp: Compilations/$album%aunique{}/$title
+    albumtype_soundtrack: Soundtracks/$album/$title
+
 import:
     write: yes
     copy: yes
