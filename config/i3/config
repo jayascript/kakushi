@@ -305,28 +305,41 @@ bindsym XF86AudioMicMute exec pactl set-source-mute 0 toggle
 # MONITORS #
 # -------- #
 
-# Set wallpaper
+# Set wallpaper.
 exec_always feh --bg-fill ~/.config/wallpaper.jpg
 
-# Configure monitor setup
-# TV screen (secondary, DP-2) is on the left
-# exec_always xrandr --output eDP-1 --primary --mode 1920x1080 --pos 1360x0 --rotate normal --output DP-1 --mode 1360x768 --pos 0x0 --rotate normal --output DP-2 --off --output HDMI-1 --off
+# Configure multiple monitor setup. Script works as long as it's called on
+# login. Does not work so well when un/plugging the second monitor while logged
+# in. To counteract this, create "setup" mode to move workspaces btw monitors.
+
+# Current setup runs with TV screen (secondary, DP-2) on the left.
+exec_always ~/.scripts/monitor_setup.sh
 
 # Set monitors
-set $monitor_sec DP-1
-set $monitor_prim eDP-1
+# set $monitor_sec DP-1
+# set $monitor_prim eDP-1
 
-# Set workspace output
-workspace $ws1 output $monitor_prim
-workspace $ws2 output $monitor_sec
-workspace $ws3 output $monitor_sec
-workspace $ws4 output $monitor_prim
-workspace $ws5 output $monitor_sec
-workspace $ws6 output $monitor_sec
-workspace $ws7 output $monitor_prim
-workspace $ws8 output $monitor_prim
-workspace $ws9 output $monitor_sec
-workspace $ws10 output $monitor_prim
+# Logout, reboot, shutdown.
+mode "setup" {
+        # These bindings trigger as soon as you enter setup mode. Currently,
+        # there is no functionality to refresh the monitor setup when an HDMI
+        # cord is unplugged. So, when going from two screens back to one, it is
+        # necessary to manually cycle through all open workspaces and move them
+        # to the primary output.
+
+        # Move workspace to primary output.
+        bindsym $mod+Right move workspace to output primary
+
+        # Move workspace to attached monitor. For now, this is DP-1.
+        bindsym $mod+Left move workspace to DP-1
+
+        # Exit system mode.
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+Shift+s mode "default"
+}
+
+bindsym $mod+Shift+s mode "setup"
 
 # ------------------ #
 # CUSTOM KEYBINDINGS #
