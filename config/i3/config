@@ -328,6 +328,10 @@ workspace $ws8 output $monitor_prim
 workspace $ws9 output $monitor_sec
 workspace $ws10 output $monitor_prim
 
+# ------------------ #
+# CUSTOM KEYBINDINGS #
+# ------------------ #
+
 # Create QR code for clipboard contents
 for_window [class="feh" instance="feh"] floating enable
 bindsym $mod+Insert exec qrencode -s 5 -o ~/qrcode.png $(xclip -o -selection clipboard) && exec feh ~/qrcode.png
