@@ -310,7 +310,7 @@ exec_always feh --bg-fill ~/.config/wallpaper.jpg
 
 # Configure monitor setup
 # TV screen (secondary, DP-2) is on the left
-exec_always xrandr --output eDP-1 --primary --mode 1920x1080 --pos 1360x0 --rotate normal --output DP-1 --mode 1360x768 --pos 0x0 --rotate normal --output DP-2 --off --output HDMI-1 --off
+# exec_always xrandr --output eDP-1 --primary --mode 1920x1080 --pos 1360x0 --rotate normal --output DP-1 --mode 1360x768 --pos 0x0 --rotate normal --output DP-2 --off --output HDMI-1 --off
 
 # Set monitors
 set $monitor_sec DP-1
