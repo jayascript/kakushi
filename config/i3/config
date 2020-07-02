@@ -23,25 +23,37 @@ bindsym $mod+Shift+c reload
 # upgrade i3.
 bindsym $mod+Shift+r restart
 
-# Exit i3. This logs you out of your X session.
-bindsym $mod+Shift+e exit
-
-# Reboot the system.
-bindsym $mod+Shift+b exec reboot
-
-# Shut down the system.
-bindsym $mod+Shift+s exec poweroff
-
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # Create keybinding to lock the screen.
-bindsym $mod+shift+x exec /home/jayascript/.scripts/lock.sh
+bindsym $mod+Shift+x exec /home/jayascript/.scripts/lock.sh
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
+
+# Logout, reboot, shutdown.
+mode "system" {
+        # These bindings trigger as soon as you enter system mode.
+
+        # Exit i3. This logs you out of your X session.
+        bindsym $mod+Shift+e exit
+
+        # Reboot the system.
+        bindsym $mod+Shift+b exec reboot
+
+        # Shut down the system.
+        bindsym $mod+Shift+s exec poweroff
+
+        # Exit system mode.
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+q mode "default"
+}
+
+bindsym $mod+q mode "system"
 
 # ------------------------ #
 # CREATING/KILLING WINDOWS #
@@ -133,6 +145,35 @@ floating_modifier $mod
 # Change focus between tiling / floating windows.
 bindsym $mod+space focus mode_toggle
 
+# ---------------- #
+# RESIZING WINDOWS #
+# ---------------- #
+
+# Resize windows.
+mode "resize" {
+        # These bindings trigger as soon as you enter resize mode.
+
+        # Pressing left or right will shrink or expand the window's width.
+        # Pressing up or down will shrink or expand the window's height.
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
+
+        # Same bindings, but using the arrow keys.
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # Exit resize mode.
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
 # ---------- #
 # WORKSPACES #
 # ---------- #
@@ -200,32 +241,7 @@ exec keepassxc
 
 
 
-# resize window (you can also use the mouse for that)
-mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
-
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
-
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
-}
-
-bindsym $mod+r mode "resize"
 
 # ---------------- #
 # FONTS AND COLORS #
