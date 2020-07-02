@@ -39,13 +39,13 @@ mode "system" {
         # These bindings trigger as soon as you enter system mode.
 
         # Exit i3. This logs you out of your X session.
-        bindsym $mod+Shift+e exit
+        bindsym $mod+e exit
 
         # Reboot the system.
-        bindsym $mod+Shift+b exec reboot
+        bindsym $mod+b exec reboot
 
         # Shut down the system.
-        bindsym $mod+Shift+s exec poweroff
+        bindsym $mod+s exec poweroff
 
         # Exit system mode.
         bindsym Return mode "default"
