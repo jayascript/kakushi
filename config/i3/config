@@ -28,7 +28,7 @@ bindsym $mod+Shift+r restart
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # Create keybinding to lock the screen.
-bindsym $mod+Shift+x exec /home/jayascript/.scripts/lock.sh
+bindsym $mod+Shift+x exec ~/.scripts/lock.sh
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -73,7 +73,7 @@ bindsym $mod+Shift+q kill
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # Replace dmenu with Rofi.
-bindsym $mod+d exec /home/jayascript/.scripts/rofi.sh
+bindsym $mod+d exec ~/.scripts/rofi.sh
 
 # Enable transparency and fade effects.
 exec_always compton -f
@@ -241,7 +241,6 @@ exec keepassxc
 # exec remmina
 # exec slack
 # exec wire-desktop
-# exec /home/jayascript/Nextcloud-2.6.4-x86_64.AppImage
 
 # ---------------- #
 # FONTS AND COLORS #
@@ -307,7 +306,7 @@ bindsym XF86AudioMicMute exec pactl set-source-mute 0 toggle
 # -------- #
 
 # Set wallpaper
-exec_always feh --bg-fill ~/Pictures/Wallpapers/matthew-smith-Rfflri94rs8-unsplash.jpg
+exec_always feh --bg-fill ~/.config/wallpaper.jpg
 
 # Configure monitor setup
 # TV screen (secondary, DP-2) is on the left
@@ -335,6 +334,3 @@ bindsym $mod+Insert exec qrencode -s 5 -o ~/qrcode.png $(xclip -o -selection cli
 
 # Open Tor Browser
 bindsym $mod+t exec /opt/tor-browser_en-US/Browser/start-tor-browser
-
-# Sync Nextcloud
-bindsym $mod+n exec /home/jayascript/Nextcloud-2.6.4-x86_64.AppImage

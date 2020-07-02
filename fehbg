@@ -1,2 +1,2 @@
 #!/bin/sh
-feh --no-fehbg --bg-fill '/home/jayascript/Pictures/Wallpapers/matthew-smith-Rfflri94rs8-unsplash.jpg' 
+feh --no-fehbg --bg-fill '/home/jayascript/.config/wallpaper.jpg' 
