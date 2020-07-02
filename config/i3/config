@@ -26,7 +26,11 @@ bindsym $mod+Shift+r restart
 # Exit i3. This logs you out of your X session.
 bindsym $mod+Shift+e exit
 
+# Reboot the system.
+bindsym $mod+Shift+b exec reboot
 
+# Shut down the system.
+bindsym $mod+Shift+s exec poweroff
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
