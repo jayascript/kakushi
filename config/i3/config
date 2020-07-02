@@ -215,6 +215,10 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
+# ------------ #
+# APPLICATIONS #
+# ------------ #
+
 # Assign apps to workspaces
 # assign [class="keepassxc"] $ws1
 # assign [class="org.remmina.Remmina"] $ws1
@@ -238,10 +242,6 @@ exec keepassxc
 # exec slack
 # exec wire-desktop
 # exec /home/jayascript/Nextcloud-2.6.4-x86_64.AppImage
-
-
-
-
 
 # ---------------- #
 # FONTS AND COLORS #
@@ -271,7 +271,7 @@ client.focused_inactive $inactive-bg-color  $inactive-bg-color  $inactive-text-c
 client.urgent           $urgent-bg-color    $urgent-bg-color    $text-color           #ff69b4
 
 # Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
+# finds out, if available).
 bar {
         status_command i3blocks -c ~/.config/i3/i3blocks.conf
         colors {
@@ -302,14 +302,9 @@ bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
 bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
 bindsym XF86AudioMicMute exec pactl set-source-mute 0 toggle
 
-# Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20 && xbacklight > /home/jayascript/.config/brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20 && xbacklight > /home/jayascript/.config/brightness
-
-# Touchpad controls
-# bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
-
-
+# -------- #
+# MONITORS #
+# -------- #
 
 # Set wallpaper
 exec_always feh --bg-fill ~/Pictures/Wallpapers/matthew-smith-Rfflri94rs8-unsplash.jpg
