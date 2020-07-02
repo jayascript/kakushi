@@ -9,108 +9,134 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
+# ------- #
+# GENERAL #
+# ------- #
+
+# Set the mod key.
 set $mod Mod4
 
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
-# font pango:monospace 8
-#font pango:Raleway 11
+# Reload the configuration file.
+bindsym $mod+Shift+c reload
 
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:DejaVu Sans Mono 11
+# Restart i3 inplace. This preserves your layout/session and can be used to
+# upgrade i3.
+bindsym $mod+Shift+r restart
 
-# The combination of xss-lock, nm-applet and pactl is a popular choice, so
-# they are included here as an example. Modify as you see fit.
+# Exit i3. This logs you out of your X session.
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
+# Create keybinding to lock the screen.
+bindsym $mod+shift+x exec /home/jayascript/.scripts/lock.sh
+
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
-# Use pactl to adjust volume in PulseAudio.
-# Manually update @DEFAULT_SINK@ to 0
-set $refresh_i3status killall -SIGUSR1 i3status -c ~/.config/i3/i3status.conf
+# ------------------------ #
+# CREATING/KILLING WINDOWS #
+# ------------------------ #
 
-
-# Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
-
-# start a terminal
+# Start a terminal.
 bindsym $mod+Return exec i3-sensible-terminal
 
-# kill focused window
+# Kill focused window.
 bindsym $mod+Shift+q kill
 
-# start dmenu (a program launcher)
+# Start dmenu (a program launcher).
 # bindsym $mod+d exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
-# Replace dmenu with Rofi
+# Replace dmenu with Rofi.
 bindsym $mod+d exec /home/jayascript/.scripts/rofi.sh
-# enable transparency and fade effects
+
+# Enable transparency and fade effects.
 exec_always compton -f
 
-# change focus
+# ------------- #
+# WINDOW LAYOUT #
+# ------------- #
+
+# Tile next window horizontally or vetically.
+bindsym $mod+h split h
+bindsym $mod+v split v
+
+# Change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# Enter fullscreen mode for the focused container.
+bindsym $mod+f fullscreen toggle
+
+# ---------------- #
+# FOCUSING WINDOWS #
+# ---------------- #
+
+# Change focus using home keys.
 bindsym $mod+j focus left
 bindsym $mod+k focus down
 bindsym $mod+l focus up
 bindsym $mod+semicolon focus right
 
-# alternatively, you can use the cursor keys:
+# Change focus using arrow keys.
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-# move focused window
+# Focus the parent container.
+bindsym $mod+a focus parent
+
+# Focus the child container.
+bindsym $mod+Shift+a focus child
+
+# -------------- #
+# MOVING WINDOWS #
+# -------------- #
+
+# Move focused window using home keys.
 bindsym $mod+Shift+j move left
 bindsym $mod+Shift+k move down
 bindsym $mod+Shift+l move up
 bindsym $mod+Shift+semicolon move right
 
-# alternatively, you can use the cursor keys:
+# Move focused window using arrow keys.
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# split in horizontal orientation
-bindsym $mod+h split h
+# ---------------- #
+# FLOATING WINDOWS #
+# ---------------- #
 
-# split in vertical orientation
-bindsym $mod+v split v
-
-# enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
-
-# change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
-
-# toggle tiling / floating
+# Toggle tiling / floating for focused window.
 bindsym $mod+Shift+space floating toggle
 
-# change focus between tiling / floating windows
+# Use Mouse+$mod to drag floating windows to their wanted position.
+floating_modifier $mod
+
+# Change focus between tiling / floating windows.
 bindsym $mod+space focus mode_toggle
 
-# focus the parent container
-bindsym $mod+a focus parent
+# ---------- #
+# WORKSPACES #
+# ---------- #
 
-# focus the child container
-#bindsym $mod+d focus child
-
-# Define names for default workspaces for which we configure key bindings later on.
-# We use variables to avoid repeating the names in multiple places.
+# Define names for default workspaces. Use variables to avoid repeating the
+# names in multiple places.
 set $ws1 "1: 🏠 Main"
-set $ws2 "2: 💻 Terminals"
+set $ws2 "2: 💻 System"
 set $ws3 "3: 👩‍💻 Coding"
 set $ws4 "4: 🕶️ Tor"
 set $ws5 "5: 🌐 Browsers"
@@ -120,7 +146,7 @@ set $ws8 "8: 🗃️ Misc"
 set $ws9 "9: 💬 Social"
 set $ws10 "10: 🎵 Media"
 
-# switch to workspace
+# Switch to workspace.
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
 bindsym $mod+3 workspace $ws3
@@ -132,7 +158,7 @@ bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
 
-# move focused container to workspace
+# Move focused container to workspace.
 bindsym $mod+Shift+1 move container to workspace $ws1
 bindsym $mod+Shift+2 move container to workspace $ws2
 bindsym $mod+Shift+3 move container to workspace $ws3
@@ -168,12 +194,7 @@ exec keepassxc
 # exec wire-desktop
 # exec /home/jayascript/Nextcloud-2.6.4-x86_64.AppImage
 
-# reload the configuration file
-bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -201,6 +222,19 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
+
+# ---------------- #
+# FONTS AND COLORS #
+# ---------------- #
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+# font pango:monospace 8
+# font pango:Raleway 11
+
+# This font is widely installed, provides lots of unicode glyphs, right-to-left
+# text rendering and scalability on retina/hidpi displays (thanks to pango).
+font pango:DejaVu Sans Mono 11
 
 # Colors
 set $bg-color #2f343f
@@ -230,18 +264,13 @@ bar {
         }
 }
 
-# -----CUSTOM CONFIG-----
+# ----- #
+# AUDIO #
+# ----- #
 
-# Create keybinding for lock command
-
-bindsym $mod+shift+x exec /home/jayascript/.scripts/lock.sh
-
-# Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20 && xbacklight > /home/jayascript/.config/brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20 && xbacklight > /home/jayascript/.config/brightness
-
-# Touchpad controls
-# bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
+# Use pactl to adjust volume in PulseAudio.
+# Manually update @DEFAULT_SINK@ to 0
+set $refresh_i3status killall -SIGUSR1 i3status -c ~/.config/i3/i3status.conf
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play-pause
@@ -252,6 +281,15 @@ bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
 bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
 bindsym XF86AudioMicMute exec pactl set-source-mute 0 toggle
+
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20 && xbacklight > /home/jayascript/.config/brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20 && xbacklight > /home/jayascript/.config/brightness
+
+# Touchpad controls
+# bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
+
+
 
 # Set wallpaper
 exec_always feh --bg-fill ~/Pictures/Wallpapers/matthew-smith-Rfflri94rs8-unsplash.jpg
