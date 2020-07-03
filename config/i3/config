@@ -180,16 +180,16 @@ bindsym $mod+r mode "resize"
 
 # Define names for default workspaces. Use variables to avoid repeating the
 # names in multiple places.
-set $ws1 "1: 🏠 Main"
-set $ws2 "2: 💻 System"
-set $ws3 "3: 👩‍💻 Coding"
-set $ws4 "4: 🕶️ Tor"
-set $ws5 "5: 🌐 Browsers"
-set $ws6 "6: 📑 Misc"
-set $ws7 "7: 📁 Files"
-set $ws8 "8: 🗃️ Misc"
-set $ws9 "9: 💬 Social"
-set $ws10 "10: 🎵 Media"
+set $ws1 "1:🏠 Main"
+set $ws2 "2:💻 System"
+set $ws3 "3:👩‍💻 Coding"
+set $ws4 "4:🕶️ Tor"
+set $ws5 "5:🌐 Browsers"
+set $ws6 "6:📑 Misc"
+set $ws7 "7:📁 Files"
+set $ws8 "8:🗃️ Misc"
+set $ws9 "9:💬 Social"
+set $ws10 "10:🎵 Media"
 
 # Switch to workspace.
 bindsym $mod+1 workspace $ws1
@@ -291,8 +291,8 @@ exec_always feh --bg-fill ~/.config/wallpaper.jpg
 font pango:DejaVu Sans Mono 11
 
 # Colors (unused: #16484B)
-set $focused-bg #16364B
-set $focused-text #1BAAB1
+set $focused-bg #1BAAB1
+set $focused-text #ffffff
 set $unfocused-bg #16364B
 set $unfocused-text #949DAD
 set $urgent-bg #FB83A5
@@ -314,10 +314,10 @@ bar {
           background $unfocused-bg
           separator  $focused-text
           #                   border        background    text
-          focused_workspace   $focused-text $focused-bg   $focused-text
+          focused_workspace   $focused-bg   $focused-bg   $focused-text
           active_workspace    $unfocused-bg $unfocused-bg $unfocused-text
           inactive_workspace  $unfocused-bg $unfocused-bg $unfocused-text
-          urgent_workspace    $urgent-bg    $urgent-bg    #ffffff
+          urgent_workspace    $urgent-bg    $urgent-bg    $focused-text
         }
 }
 
