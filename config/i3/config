@@ -82,7 +82,7 @@ exec_always compton -f
 # WINDOW LAYOUT #
 # ------------- #
 
-# Tile next window horizontally or vetically.
+# Tile next window horizontally or vertically.
 bindsym $mod+h split h
 bindsym $mod+v split v
 
