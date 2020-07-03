@@ -50,10 +50,10 @@ mode "system" {
         # Exit system mode.
         bindsym Return mode "default"
         bindsym Escape mode "default"
-        bindsym $mod+Shift+q mode "default"
+        bindsym $mod+q mode "default"
 }
 
-bindsym $mod+Shift+q mode "system"
+bindsym $mod+q mode "system"
 
 # ------------------------ #
 # CREATING/KILLING WINDOWS #
@@ -63,7 +63,7 @@ bindsym $mod+Shift+q mode "system"
 bindsym $mod+Return exec i3-sensible-terminal
 
 # Kill focused window.
-bindsym $mod+q kill
+bindsym $mod+Shift+q kill
 
 # Start dmenu (a program launcher).
 # bindsym $mod+d exec dmenu_run
@@ -267,12 +267,8 @@ assign [class="Wire"] $ws9
 assign [class="vlc"] $ws10
 
 # Auto-load apps on startup
-# exec gnome-terminal
 exec keepassxc
-# exec palemoon
-# exec remmina
-# exec slack
-# exec wire-desktop
+exec palemoon
 
 # ----- #
 # THEME #
