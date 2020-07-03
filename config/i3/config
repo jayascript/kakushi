@@ -215,98 +215,9 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
-# ------------ #
-# APPLICATIONS #
-# ------------ #
-
-# Assign apps to workspaces
-# assign [class="keepassxc"] $ws1
-# assign [class="org.remmina.Remmina"] $ws1
-# assign [class="Gnome-terminal"] $ws2
-# assign [class="Atom"] $ws3
-# assign [class="Tor Browser"] $ws4
-# assign [class="Firefox"] $ws5
-# assign [class="Brave-browser"] $ws5
-# assign [class="Pale moon"] $ws5
-# assign [class="Nextcloud"] $ws7
-# assign [class="Org.gnome.Nautilus"] $ws7
-# assign [class="Slack"] $ws9
-# assign [class="Wire"] $ws9
-# assign [class="vlc"] $ws10
-
-# Auto-load apps on startup
-# exec gnome-terminal
-exec keepassxc
-# exec palemoon
-# exec remmina
-# exec slack
-# exec wire-desktop
-
-# ---------------- #
-# FONTS AND COLORS #
-# ---------------- #
-
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
-# font pango:monospace 8
-# font pango:Raleway 11
-
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:DejaVu Sans Mono 11
-
-# Colors
-set $bg-color #2f343f
-set $inactive-bg-color #2f343f
-set $text-color #ffffff
-set $inactive-text-color #808080
-set $urgent-bg-color #E53935
-
-# Window Colors
-#                       border              background          text                  indicator
-client.focused          #ffc0cb             #ffc0cb             #800080               #ff69b4
-client.unfocused        $inactive-bg-color  $inactive-bg-color  $inactive-text-color  #ff69b4
-client.focused_inactive $inactive-bg-color  $inactive-bg-color  $inactive-text-color  #ff69b4
-client.urgent           $urgent-bg-color    $urgent-bg-color    $text-color           #ff69b4
-
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available).
-bar {
-        status_command i3blocks -c ~/.config/i3/i3blocks.conf
-        colors {
-          background $bg-color
-          separator #757575
-          #                   border              background          text
-          focused_workspace   #ffc0cb             #ffc0cb             #800080
-          inactive_workspace  $inactive-bg-color  $inactive-bg-color  $inactive-text-color
-          urgent_workspace    $urgent-bg-color    $urgent-bg-color    $text-color
-        }
-}
-
-# ----- #
-# AUDIO #
-# ----- #
-
-# Use pactl to adjust volume in PulseAudio.
-# Manually update @DEFAULT_SINK@ to 0
-set $refresh_i3status killall -SIGUSR1 i3status -c ~/.config/i3/i3status.conf
-
-# Media player controls
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioPause exec playerctl pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
-bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
-bindsym XF86AudioMicMute exec pactl set-source-mute 0 toggle
-
 # -------- #
 # MONITORS #
 # -------- #
-
-# Set wallpaper.
-exec_always feh --bg-fill ~/.config/wallpaper.jpg
 
 # Configure multiple monitor setup. Script works as long as it's called on
 # login. Does not work so well when un/plugging the second monitor while logged
@@ -314,10 +225,6 @@ exec_always feh --bg-fill ~/.config/wallpaper.jpg
 
 # Current setup runs with TV screen (secondary, DP-2) on the left.
 exec_always ~/.scripts/monitor_setup.sh
-
-# Set monitors
-# set $monitor_sec DP-1
-# set $monitor_prim eDP-1
 
 # Logout, reboot, shutdown.
 mode "setup" {
@@ -340,6 +247,97 @@ mode "setup" {
 }
 
 bindsym $mod+Shift+s mode "setup"
+
+# ------------ #
+# APPLICATIONS #
+# ------------ #
+
+# Assign apps to workspaces
+assign [class="keepassxc"] $ws1
+assign [class="org.remmina.Remmina"] $ws1
+assign [class="Atom"] $ws3
+assign [class="Tor Browser"] $ws4
+assign [class="Firefox"] $ws5
+assign [class="Brave-browser"] $ws5
+assign [class="Pale moon"] $ws5
+assign [class="Nextcloud"] $ws7
+assign [class="Org.gnome.Nautilus"] $ws7
+assign [class="Slack"] $ws9
+assign [class="Wire"] $ws9
+assign [class="vlc"] $ws10
+
+# Auto-load apps on startup
+# exec gnome-terminal
+exec keepassxc
+# exec palemoon
+# exec remmina
+# exec slack
+# exec wire-desktop
+
+# ----- #
+# THEME #
+# ----- #
+
+# Set wallpaper.
+exec_always feh --bg-fill ~/.config/wallpaper.jpg
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+# font pango:monospace 8
+# font pango:Raleway 11
+
+# This font is widely installed, provides lots of unicode glyphs, right-to-left
+# text rendering and scalability on retina/hidpi displays (thanks to pango).
+font pango:DejaVu Sans Mono 11
+
+# Colors (unused: #16484B)
+set $focused-bg #16364B
+set $focused-text #1BAAB1
+set $unfocused-bg #16364B
+set $unfocused-text #949DAD
+set $urgent-bg #FB83A5
+set $indicator #FB83A5
+
+# Window Colors
+#                       border        background    text            tiling
+client.focused          $focused-bg   $focused-bg   $focused-text   $indicator
+client.unfocused        $unfocused-bg $unfocused-bg $unfocused-text $indicator
+client.focused_inactive $unfocused-bg $unfocused-bg $unfocused-text $indicator
+client.urgent           $urgent-bg    $urgent-bg    $focused-text   #ffffff
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available).
+bar {
+        status_command i3blocks -c ~/.config/i3/i3blocks.conf
+        strip_workspace_numbers yes
+        colors {
+          background $unfocused-bg
+          separator  $focused-text
+          #                   border        background    text
+          focused_workspace   $focused-text $focused-bg   $focused-text
+          active_workspace    $unfocused-bg $unfocused-bg $unfocused-text
+          inactive_workspace  $unfocused-bg $unfocused-bg $unfocused-text
+          urgent_workspace    $urgent-bg    $urgent-bg    #ffffff
+        }
+}
+
+# ----- #
+# AUDIO #
+# ----- #
+
+# Use pactl to adjust volume in PulseAudio.
+# Manually update @DEFAULT_SINK@ to 0
+set $refresh_i3status killall -SIGUSR1 i3status -c ~/.config/i3/i3status.conf
+
+# Media player controls
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
+bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
+bindsym XF86AudioMicMute exec pactl set-source-mute 0 toggle
 
 # ------------------ #
 # CUSTOM KEYBINDINGS #
