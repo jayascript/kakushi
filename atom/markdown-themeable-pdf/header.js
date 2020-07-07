@@ -10,6 +10,6 @@
 module.exports = function (info) {
     return {
         height: '2cm',
-        contents: '<div style="text-align: right;"><strong>' + info.fileInfo.base + '</strong> to <strong>' + info.destFileBase + '</strong> by <span style="color: #EC4634; font-size: 120%; text-transform: uppercase;">markdown-themeable-pdf</span></div>'
+        contents: '<div style="text-align: right;"> </div>'
     };
 };

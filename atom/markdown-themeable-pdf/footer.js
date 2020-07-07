@@ -10,7 +10,7 @@
 module.exports = function (info) {
     var dateFormat = function () {
         return (new Date()).toLocaleDateString('en-US', {
-            weekday: 'long',
+            weekday: 'short',
             year: 'numeric',
             month: 'short',
             day: 'numeric',
@@ -20,6 +20,6 @@ module.exports = function (info) {
     };
     return {
         height: '1cm',
-        contents: '<div style="float:left;">Page {{page}}/{{pages}}</div><div style="float:right;">&copy; Copyright ' + dateFormat() + ' by COMPANYNAME</div>'
+        contents: '<div style="float:left;">{{page}}/{{pages}}</div><div style="float:right;">' + dateFormat() + ' by Jaya Z. Powell</div>'
     };
 };
