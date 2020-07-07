@@ -309,7 +309,7 @@ bar {
         strip_workspace_numbers yes
         colors {
           background $unfocused-bg
-          statusline #712875
+          statusline #8A288F
           separator  $focused-text
           #                   border        background    text
           focused_workspace   $focused-bg   $focused-bg   $focused-text
