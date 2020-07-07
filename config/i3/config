@@ -287,19 +287,20 @@ exec_always feh --bg-fill ~/.config/wallpaper.jpg
 font pango:DejaVu Sans Mono 11
 
 # Colors (unused: #16484B)
-set $focused-bg #1BAAB1
+set $focused-bg #E25CA2
 set $focused-text #ffffff
-set $unfocused-bg #16364B
-set $unfocused-text #949DAD
-set $urgent-bg #FB83A5
-set $indicator #FB83A5
+set $unfocused-bg #F2C3DB
+set $unfocused-text #9B719D
+set $urgent-bg #E5B722
+set $indicator #E5B722
+set $urgent-txt #712875
 
 # Window Colors
 #                       border        background    text            tiling
 client.focused          $focused-bg   $focused-bg   $focused-text   $indicator
 client.unfocused        $unfocused-bg $unfocused-bg $unfocused-text $indicator
 client.focused_inactive $unfocused-bg $unfocused-bg $unfocused-text $indicator
-client.urgent           $urgent-bg    $urgent-bg    $focused-text   #ffffff
+client.urgent           $urgent-bg    $urgent-bg    $focused-text   $urgent-txt
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available).
@@ -308,12 +309,13 @@ bar {
         strip_workspace_numbers yes
         colors {
           background $unfocused-bg
+          statusline #712875
           separator  $focused-text
           #                   border        background    text
           focused_workspace   $focused-bg   $focused-bg   $focused-text
           active_workspace    $unfocused-bg $unfocused-bg $unfocused-text
           inactive_workspace  $unfocused-bg $unfocused-bg $unfocused-text
-          urgent_workspace    $urgent-bg    $urgent-bg    $focused-text
+          urgent_workspace    $urgent-bg    $urgent-bg    $urgent-txt
         }
 }
 
