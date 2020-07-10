@@ -87,8 +87,8 @@ bindsym $mod+h split h
 bindsym $mod+v split v
 
 # Change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
+bindsym $mod+w layout stacking
+bindsym $mod+t layout tabbed
 bindsym $mod+e layout toggle split
 
 # Enter fullscreen mode for the focused container.
@@ -243,10 +243,10 @@ mode "setup" {
         # Exit system mode.
         bindsym Return mode "default"
         bindsym Escape mode "default"
-        bindsym $mod+Shift+s mode "default"
+        bindsym $mod+s mode "default"
 }
 
-bindsym $mod+Shift+s mode "setup"
+bindsym $mod+s mode "setup"
 
 # ------------ #
 # APPLICATIONS #
@@ -254,6 +254,7 @@ bindsym $mod+Shift+s mode "setup"
 
 # Assign apps to workspaces
 assign [class="keepassxc"] $ws1
+assign [class="Gnome-pomodoro"] $ws1
 assign [class="org.remmina.Remmina"] $ws1
 assign [class="Atom"] $ws3
 assign [class="Tor Browser"] $ws4
@@ -267,7 +268,9 @@ assign [class="Wire"] $ws9
 assign [class="vlc"] $ws10
 
 # Auto-load apps on startup
+exec gnome-pomodoro
 exec keepassxc
+exec nextcloud
 exec palemoon
 
 # ----- #
@@ -346,4 +349,4 @@ for_window [class="feh" instance="feh"] floating enable
 bindsym $mod+Insert exec qrencode -s 5 -o ~/qrcode.png $(xclip -o -selection clipboard) && exec feh ~/qrcode.png
 
 # Open Tor Browser
-bindsym $mod+t exec /opt/tor-browser_en-US/Browser/start-tor-browser
+bindsym $mod+Shift+t exec /opt/tor-browser_en-US/Browser/start-tor-browser
