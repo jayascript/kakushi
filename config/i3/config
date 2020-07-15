@@ -356,7 +356,10 @@ bindsym $mod+Shift+t exec /opt/tor-browser_en-US/Browser/start-tor-browser
 # GAPS #
 # ---- #
 
-for_window [class=".*"] border pixel 0
+for_window [class=".*"] border pixel 3
+
+gaps outer 5
+gaps inner 20
 
 set $mode_gaps Gaps: (o)uter, (i)nner, (h)orizontal, (v)ertical, (t)op, (r)ight, (b)ottom, (l)eft
 set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
