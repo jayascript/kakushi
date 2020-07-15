@@ -14,7 +14,7 @@
 # ------- #
 
 # Set the mod key.
-set $mod Mod4
+set $mod Mod3
 
 # Reload the configuration file.
 bindsym $mod+Shift+c reload
