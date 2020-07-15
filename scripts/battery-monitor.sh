@@ -14,15 +14,15 @@ echo "$battery_level" > /tmp/.battery
 echo "$battery_state" >> /tmp/.battery
 
 checkBatteryLevel() {
-    if [ $battery_state != "Discharging" ] || [ "${battery_level}" == "${previous_battery_level}" ]; then
+    if [ "$battery_state" != "Discharging" ] || [ "${battery_level}" == "${previous_battery_level}" ]; then
         exit
     fi
 
-    if [ $battery_level -le 3 ]; then
+    if [ "$battery_level" -le 3 ]; then
         sudo systemctl suspend
-    elif [ $battery_level -le 5 ]; then
+    elif [ "$battery_level" -le 5 ]; then
         notify-send "Low Battery" "Your computer will suspend soon unless plugged into a power outlet." -u critical
-    elif [ $battery_level -le 10 ]; then
+    elif [ "$battery_level" -le 10 ]; then
         notify-send "Low Battery" "${battery_level}% of battery remaining." -u normal
     fi
 }
