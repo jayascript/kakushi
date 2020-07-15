@@ -1,0 +1,24 @@
+# Format from moparx (http://moparx.com/configs)
+
+auto-reload yes
+browser palemoon
+download-path "/home/jayascript/Downloads/Podcasts"
+feed-sort-order name
+notify-always yes
+notify-format "newsboat: %n unread articles from %f unread feeds"
+notify-program notify-send
+notify-xterm yes
+notify-screen yes
+player vlc
+refresh-on-startup yes
+
+# ----- #
+# THEME #
+# ----- #
+
+color background white default
+color listnormal white default 
+color listfocus white blue  standout
+color info blue default standout
+color listfocus_unread white blue    standout
+color listnormal_unread white default
