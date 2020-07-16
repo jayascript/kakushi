@@ -2,45 +2,62 @@
 # Christianity #
 # ------------ #
 
-https://invidio.us/feed/channel/UCGe_v1bnmWI0QBoK1ArnLmg christianity "~Spencer Smith's Channel"
-https://invidio.us/feed/channel/UCTrpnUbQU_Pbie5Qy4PNuUA christianity "~GodRules 2 - Sons of Thunder Channel"
-https://invidio.us/feed/channel/UCdlxWNzGGPKzQLMXkkyZkUQ christianity "~Wretched"
+https://invidio.us/feed/channel/UCGe_v1bnmWI0QBoK1ArnLmg christianity videos "~Spencer Smith (Invidious)"
+https://invidio.us/feed/channel/UCTrpnUbQU_Pbie5Qy4PNuUA christianity videos "~GodRules 2 - Sons of Thunder (Invidious)"
+https://invidio.us/feed/channel/UCdlxWNzGGPKzQLMXkkyZkUQ christianity videos "~Wretched (Invidious)"
+
+# ------------ #
+# Homesteading #
+# ------------ #
+
+https://invidio.us/feed/channel/UCFfhvjvRMWDeJhX88dv-EmQ homesteading homemaking videos "~Farmhouse on Boone (Invidious)"
 
 # -------- #
 # Internet #
 # -------- #
 
-https://cheapskatesguide.org/cheapskates-guide-rss-feed.xml internet tech "retro computing" "~Cheapskates Guide to the Internet"
-https://drewdevault.com/feed.xml internet tech
+https://cheapskatesguide.org/cheapskates-guide-rss-feed.xml internet tech blogs "retro computing" "~Cheapskates Guide to the Internet"
+https://drewdevault.com/feed.xml internet tech blogs
 
 # ----- #
 # Linux #
 # ----- #
 
-https://lukesmith.xyz/rss.xml linux tech "~Luke Smith's Blog"
-https://videos.lukesmith.xyz/feeds/videos.xml linux tech "~Luke Smith's Channel"
+https://lukesmith.xyz/rss.xml linux tech blogs "~Luke Smith (Website)"
+https://videos.lukesmith.xyz/feeds/videos.xml linux tech videos "~Luke Smith (PeerTube)"
 https://itsfoss.com/feed/ linux tech foss 
 https://feeds.feedburner.com/d0od linux ubuntu tech "~omg!ubuntu"
-https://invidio.us/feed/channel/UCVls1GmFKf6WlTraIb_IaJg linux tech "~DistroTube"
+https://invidio.us/feed/channel/UCVls1GmFKf6WlTraIb_IaJg linux tech videos "~DistroTube (Invidious)"
+https://sudosatirical.com/articles/index.xml linux tech humor "~Sudo Satirical"
 
 # -------- #
 # Politics #
 # -------- #
 
-https://www.louderwithcrowder.com/feeds/feed.rss politics news "~LwC Blog"
-https://invidio.us/feed/channel/UCFfD9fWqkT4PNy7v6r8ilmg politics news "~Conservative Twins Channel"
-https://invidio.us/feed/channel/UC0ovr76ue_IsMZMfqkNeTrA politics news "~GodRules"
+https://www.louderwithcrowder.com/feeds/feed.rss politics news "~Louder with Crowder (Website)"
+https://invidio.us/feed/channel/UCFfD9fWqkT4PNy7v6r8ilmg politics news videos "~Conservative Twins (Invidious)"
+https://invidio.us/feed/channel/UC0ovr76ue_IsMZMfqkNeTrA politics news videos "~GodRules (Invidious)"
 
 # -------- #
 # Podcasts #
 # -------- #
 
-https://notrelated.libsyn.com/rss linux tech podcast "~Luke Smith's Podcast Not Related"
-https://feeds.megaphone.fm/BMDC5089297303 politics news podcast "~Louder with Crowder"
-https://wretched.org/category/radio/feed/ christianity podcast "~Wretched Radio"
+https://notrelated.libsyn.com/rss linux tech podcasts "~Luke Smith: Not Related (Podcast)"
+https://feeds.megaphone.fm/BMDC5089297303 politics news podcasts "~Louder with Crowder (Podcast)"
+https://wretched.org/category/radio/feed/ christianity podcasts "~Wretched Radio"
 
 # ------- #
 # Privacy #
 # ------- #
 
-https://invidio.us/feed/channel/UCYVU6rModlGxvJbszCclGGw tech privacy internet "~Rob Braxman Tech"
+https://invidio.us/feed/channel/UCYVU6rModlGxvJbszCclGGw tech privacy internet videos "~Rob Braxman Tech"
+
+# --------- #
+# YouTubers #
+# --------- #
+
+https://invidio.us/feed/channel/UCdJdEguB1F1CiYe7OEi3SBg videos youtube humor gaming "~JonTron (YouTube)"
+https://invidio.us/feed/channel/UCVJK2AT3ea5RTXNRjX_kz8A videos youtube humor "~Tobuscus (YouTube)"
+https://invidio.us/feed/channel/UCLCmJiSbIoa_ZFiBOBDf6ZA videos youtube humor gaming "~TobyGames (YouTube)"
+https://invidio.us/feed/channel/UCfRU6TVIzRaa_4gA8-_H7PA videos youtube vlogs "~TobyTurner (YouTube)"
+https://invidio.us/feed/channel/UC-lHJZR3Gqxm24_Vd_AJ5Yw videos youtube humor vlogs "~PewDiePie (YouTube)"
