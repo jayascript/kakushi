@@ -6,3 +6,4 @@ atom/storage/
 cache.db
 keepassxc.ini
 config/gtk-3.0/bookmarks
+newsboat/queue
