@@ -255,6 +255,7 @@ bindsym $mod+s mode "setup"
 # Assign apps to workspaces
 assign [class="keepassxc"] $ws1
 assign [class="Gnome-pomodoro"] $ws1
+assign [class="ProtonMail Bridge"] $ws1
 assign [class="org.remmina.Remmina"] $ws1
 assign [class="Atom"] $ws3
 assign [class="Tor Browser"] $ws4
@@ -268,6 +269,7 @@ assign [class="Wire"] $ws9
 assign [class="vlc"] $ws10
 
 # Auto-load apps on startup
+exec protonmail-bridge
 exec gnome-terminal
 exec gnome-pomodoro
 exec keepassxc
