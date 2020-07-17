@@ -274,6 +274,7 @@ exec gnome-terminal
 exec gnome-pomodoro
 exec keepassxc
 exec nextcloud
+exec flameshot
 exec palemoon
 
 # ----- #
