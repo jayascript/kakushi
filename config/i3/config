@@ -185,7 +185,7 @@ set $ws2 "2:💻 System"
 set $ws3 "3:👩‍💻 Coding"
 set $ws4 "4:🕶️ Tor"
 set $ws5 "5:🌐 Browsers"
-set $ws6 "6:📑 Misc"
+set $ws6 "6:📫 Mail"
 set $ws7 "7:📁 Files"
 set $ws8 "8:🗃️ Misc"
 set $ws9 "9:💬 Social"
@@ -255,13 +255,14 @@ bindsym $mod+s mode "setup"
 # Assign apps to workspaces
 assign [class="keepassxc"] $ws1
 assign [class="Gnome-pomodoro"] $ws1
-assign [class="ProtonMail Bridge"] $ws1
 assign [class="org.remmina.Remmina"] $ws1
 assign [class="Atom"] $ws3
 assign [class="Tor Browser"] $ws4
 assign [class="Firefox"] $ws5
 assign [class="Brave-browser"] $ws5
 assign [class="Pale moon"] $ws5
+assign [class="Mail"] $ws6
+assign [class="ProtonMail Bridge"] $ws6
 assign [class="Nextcloud"] $ws7
 assign [class="Org.gnome.Nautilus"] $ws7
 assign [class="Slack"] $ws9
@@ -272,9 +273,11 @@ assign [class="vlc"] $ws10
 exec protonmail-bridge
 exec gnome-terminal
 exec gnome-pomodoro
+exec thunderbird
 exec keepassxc
 exec nextcloud
 exec flameshot
+exec nautilus
 exec palemoon
 
 # ----- #
