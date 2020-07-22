@@ -3,7 +3,9 @@
 auto-reload yes
 browser palemoon
 download-path "~/Podcasts"
-feed-sort-order name
+cleanup-on-quit yes
+feed-sort-order firsttag
+feedlist-format "%4n %4U new %T from %t"
 notify-always yes
 notify-format "newsboat: %n unread articles from %f unread feeds"
 notify-program notify-send

@@ -2,71 +2,75 @@
 # Christianity #
 # ------------ #
 
-https://invidio.us/feed/channel/UCGe_v1bnmWI0QBoK1ArnLmg christianity videos "~Spencer Smith (Invidious)"
-https://invidio.us/feed/channel/UCTrpnUbQU_Pbie5Qy4PNuUA christianity videos "~GodRules 2 - Sons of Thunder (Invidious)"
-https://invidio.us/feed/channel/UCdlxWNzGGPKzQLMXkkyZkUQ christianity videos "~Wretched (Invidious)"
-https://wretched.org/category/radio/feed/ christianity podcasts "~Wretched Radio"
+https://invidio.us/feed/channel/UCGe_v1bnmWI0QBoK1ArnLmg "videos" christianity videos "~Spencer Smith"
+https://invidio.us/feed/channel/UCTrpnUbQU_Pbie5Qy4PNuUA "videos" christianity videos "~GodRules 2 - Sons of Thunder"
+https://invidio.us/feed/channel/UCdlxWNzGGPKzQLMXkkyZkUQ "videos" christianity videos "~Wretched"
+https://wretched.org/category/radio/feed/ "episodes" christianity podcasts "~Wretched Radio"
+https://reformationcharlotte.org/feed "articles" christianity news "~Reformation Charlotte"
 
 # ------------ #
 # Homesteading #
 # ------------ #
 
-https://invidio.us/feed/channel/UCFfhvjvRMWDeJhX88dv-EmQ homesteading homemaking videos "~Farmhouse on Boone (Invidious)"
+https://invidio.us/feed/channel/UCFfhvjvRMWDeJhX88dv-EmQ "videos" homesteading homemaking motherhood videos "~Farmhouse on Boone"
+https://www.farmhouseonboone.com/feed "posts" homesteading homemaking motherhood blogs "~Farmhouse on Boone"
+https://anchor.fm/s/c4c569c/podcast/rss "episodes" homesteading homemaking motherhood podcasts "~the Simple Farmhouse Life Podcast"
 
 # -------- #
 # Internet #
 # -------- #
 
-https://cheapskatesguide.org/cheapskates-guide-rss-feed.xml internet tech blogs "retro computing" "~Cheapskates Guide to the Internet"
-https://drewdevault.com/feed.xml internet tech blogs
+https://cheapskatesguide.org/cheapskates-guide-rss-feed.xml "posts" internet tech blogs "retro computing" "~the Cheapskates Guide to the Internet"
+https://drewdevault.com/feed.xml "posts" internet tech blogs
 
 # ----- #
 # Linux #
 # ----- #
 
-https://lukesmith.xyz/rss.xml linux tech blogs "~Luke Smith (Website)"
-https://videos.lukesmith.xyz/feeds/videos.xml linux tech videos "~Luke Smith (PeerTube)"
-https://itsfoss.com/feed/ linux tech foss 
-https://feeds.feedburner.com/d0od linux ubuntu tech "~omg!ubuntu"
-https://invidio.us/feed/channel/UCVls1GmFKf6WlTraIb_IaJg linux tech videos "~DistroTube (Invidious)"
-https://sudosatirical.com/articles/index.xml linux tech humor "~Sudo Satirical"
+https://lukesmith.xyz/rss.xml "posts" linux tech blogs "~Luke Smith"
+https://videos.lukesmith.xyz/feeds/videos.xml "videos" linux tech videos "~Luke Smith's PeerTube"
+https://itsfoss.com/feed/ "articles" linux tech foss news
+https://feeds.feedburner.com/d0od "articles" linux ubuntu tech "~omg!ubuntu"
+https://invidio.us/feed/channel/UCVls1GmFKf6WlTraIb_IaJg "videos" linux tech videos "~DistroTube"
+https://sudosatirical.com/articles/index.xml "posts" linux tech humor "~Sudo Satirical"
+https://invidio.us/feed/channel/UC7YOGHUfC1Tb6E4pudI9STA "videos" linux tech security "~Mental Outlaw"
 
 # -------- #
 # Politics #
 # -------- #
 
-https://www.louderwithcrowder.com/feeds/feed.rss politics news "~Louder with Crowder (Website)"
-https://feeds.megaphone.fm/BMDC5089297303 politics news podcasts "~Louder with Crowder (Podcast)"
-https://invidio.us/feed/channel/UCFfD9fWqkT4PNy7v6r8ilmg politics news videos "~Conservative Twins (Invidious)"
-https://invidio.us/feed/channel/UC0ovr76ue_IsMZMfqkNeTrA politics news videos "~GodRules (Invidious)"
+https://www.louderwithcrowder.com/feeds/feed.rss "articles" politics news "~Louder with Crowder"
+https://feeds.megaphone.fm/BMDC5089297303 "episodes" politics news podcasts "~Louder with Crowder"
+https://invidio.us/feed/channel/UCFfD9fWqkT4PNy7v6r8ilmg "videos" politics news videos "~Conservative Twins"
+https://invidio.us/feed/channel/UC0ovr76ue_IsMZMfqkNeTrA "videos" politics news videos "~GodRules"
 
 # -------- #
 # Podcasts #
 # -------- #
 
-https://notrelated.libsyn.com/rss linux tech podcasts "~Luke Smith: Not Related (Podcast)"
-https://feeds.megaphone.fm/darknetdiaries tech cybersecurity privacy darknet "~Darknet Diaries"
+https://notrelated.libsyn.com/rss "episodes" linux tech podcasts "~Luke Smith: Not Related"
+https://feeds.megaphone.fm/darknetdiaries "episodes" tech cybersecurity privacy darknet "~Darknet Diaries"
 
 # ------- #
 # Privacy #
 # ------- #
 
-https://invidio.us/feed/channel/UCYVU6rModlGxvJbszCclGGw tech privacy internet videos "~Rob Braxman Tech (YouTube)"
-https://feeds.soundcloud.com/users/soundcloud:users:261098918/sounds.rss tech privacy osint internet cybersecurity podcasts "~The Privacy, Security, & OSINT Show (Podcast)"
+https://invidio.us/feed/channel/UCYVU6rModlGxvJbszCclGGw "videos" tech privacy internet videos "~Rob Braxman Tech"
+https://feeds.soundcloud.com/users/soundcloud:users:261098918/sounds.rss "episodes" privacy tech osint internet cybersecurity podcasts "~The Privacy, Security, & OSINT Show"
 
 # ---- #
-# TECH #
+# Tech #
 # ---- #
 
-https://news.ycombinator.com/rss news tech "~HackerNews"
-https://hackernoon.com/feed news tech "~Hacker Noon"
+https://news.ycombinator.com/rss "articles" news tech "~HackerNews"
+https://hackernoon.com/feed "articles" news tech "~Hacker Noon"
+https://invidio.us/feed/channel/UC9x0AN7BWHpCDHSm9NiJFJQ "videos" linux tech privacy it security "~NetworkChuck"
 
 # --------- #
 # YouTubers #
 # --------- #
 
-https://invidio.us/feed/channel/UCdJdEguB1F1CiYe7OEi3SBg videos youtube humor gaming "~JonTron (YouTube)"
-https://invidio.us/feed/channel/UCVJK2AT3ea5RTXNRjX_kz8A videos youtube humor "~Tobuscus (YouTube)"
-https://invidio.us/feed/channel/UCLCmJiSbIoa_ZFiBOBDf6ZA videos youtube humor gaming "~TobyGames (YouTube)"
-https://invidio.us/feed/channel/UCfRU6TVIzRaa_4gA8-_H7PA videos youtube vlogs "~TobyTurner (YouTube)"
-https://invidio.us/feed/channel/UC-lHJZR3Gqxm24_Vd_AJ5Yw videos youtube humor vlogs "~PewDiePie (YouTube)"
+https://invidio.us/feed/channel/UCdJdEguB1F1CiYe7OEi3SBg "videos" youtube humor gaming "~JonTron"
+https://invidio.us/feed/channel/UCVJK2AT3ea5RTXNRjX_kz8A "videos" youtube humor "~Tobuscus"
+https://invidio.us/feed/channel/UCLCmJiSbIoa_ZFiBOBDf6ZA "videos" youtube humor gaming "~TobyGames"
+https://invidio.us/feed/channel/UCfRU6TVIzRaa_4gA8-_H7PA "videos" youtube vlogs "~TobyTurner"
