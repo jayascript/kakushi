@@ -261,7 +261,7 @@ assign [class="Tor Browser"] $ws4
 assign [class="Firefox"] $ws5
 assign [class="Brave-browser"] $ws5
 assign [class="Pale moon"] $ws5
-assign [class="Mail"] $ws6
+assign [class="Thunderbird"] $ws6
 assign [class="ProtonMail Bridge"] $ws6
 assign [class="Nextcloud"] $ws7
 assign [class="Org.gnome.Nautilus"] $ws7
@@ -336,6 +336,7 @@ bar {
 # Use pactl to adjust volume in PulseAudio.
 # Manually update @DEFAULT_SINK@ to 0
 set $refresh_i3status killall -SIGUSR1 i3status -c ~/.config/i3/i3status.conf
+# set $sink exec pactl list sinks | head -1 | grep -oh [0-9]*
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play-pause
@@ -346,6 +347,28 @@ bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
 bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
 bindsym XF86AudioMicMute exec pactl set-source-mute 0 toggle
+
+mode "media" {
+        # These bindings trigger as soon as you enter media mode. Currently,
+        # functionality using XF86Audio keys is erratic at best. This mode is
+        # meant to circumvent whatever issues exist there.
+
+        bindsym XF86AudioPlay exec playerctl play-pause
+        bindsym XF86AudioPause exec playerctl pause
+        bindsym XF86AudioNext exec playerctl next
+        bindsym XF86AudioPrev exec playerctl previous
+        bindsym Right exec pactl set-sink-volume 0 +5%
+        bindsym Left exec pactl set-sink-volume 0 -5%
+        bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
+        bindsym XF86AudioMicMute exec pactl set-source-mute 0 toggle
+
+        # Exit media mode.
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+z mode "default"
+}
+
+bindsym $mod+z mode "media"
 
 # ------------------ #
 # CUSTOM KEYBINDINGS #
