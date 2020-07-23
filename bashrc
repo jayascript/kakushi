@@ -183,3 +183,6 @@ if [ -f `which powerline-daemon` ]; then
   POWERLINE_BASH_SELECT=1
   . /usr/share/powerline/bindings/bash/powerline.sh
 fi
+
+# Set Unicode formatting
+export LC_CTYPE="en_US.UTF-8"
