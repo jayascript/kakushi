@@ -172,3 +172,6 @@ export VIRTUALENVWRAPPER_VIRTUALENV=$(which virtualenv)
 
 # Set the location of the script installed with this package
 source $(which virtualenvwrapper.sh)
+
+# Enable vim
+set -o vi
