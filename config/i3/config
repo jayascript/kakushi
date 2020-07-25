@@ -82,14 +82,26 @@ exec_always compton -f
 # WINDOW LAYOUT #
 # ------------- #
 
-# Tile next window horizontally or vertically.
-bindsym $mod+h split h
-bindsym $mod+v split v
+mode "change_layout" {
+        # These bindings trigger as soon as you enter layout mode.
 
-# Change container layout (stacked, tabbed, toggle split)
-bindsym $mod+w layout stacking
-bindsym $mod+t layout tabbed
-bindsym $mod+e layout toggle split
+	# Tile next window horizontally or vertically.
+	bindsym $mod+h split h
+	bindsym $mod+v split v
+
+	# Change container layout (stacked, tabbed, toggle split)
+	bindsym $mod+w layout stacking
+	bindsym $mod+t layout tabbed
+	bindsym $mod+e layout toggle split
+
+        # Exit layout mode.
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+c mode "default"
+}
+
+bindsym $mod+c mode "change_layout"
+
 
 # Enter fullscreen mode for the focused container.
 bindsym $mod+f fullscreen toggle
@@ -99,16 +111,16 @@ bindsym $mod+f fullscreen toggle
 # ---------------- #
 
 # Change focus using home keys.
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # Change focus using arrow keys.
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+# bindsym $mod+Left focus left
+# bindsym $mod+Down focus down
+# bindsym $mod+Up focus up
+# bindsym $mod+Right focus right
 
 # Focus the parent container.
 bindsym $mod+a focus parent
@@ -121,16 +133,16 @@ bindsym $mod+Shift+a focus child
 # -------------- #
 
 # Move focused window using home keys.
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # Move focused window using arrow keys.
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+# bindsym $mod+Shift+Left move left
+# bindsym $mod+Shift+Down move down
+# bindsym $mod+Shift+Up move up
+# bindsym $mod+Shift+Right move right
 
 # ---------------- #
 # FLOATING WINDOWS #
@@ -155,16 +167,16 @@ mode "resize" {
 
         # Pressing left or right will shrink or expand the window's width.
         # Pressing up or down will shrink or expand the window's height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
         # Same bindings, but using the arrow keys.
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        # bindsym Left resize shrink width 10 px or 10 ppt
+        # bindsym Down resize grow height 10 px or 10 ppt
+        # bindsym Up resize shrink height 10 px or 10 ppt
+        # bindsym Right resize grow width 10 px or 10 ppt
 
         # Exit resize mode.
         bindsym Return mode "default"
@@ -235,10 +247,10 @@ mode "setup" {
         # to the primary output.
 
         # Move workspace to primary output.
-        bindsym $mod+Right move workspace to output primary
+        bindsym $mod+l move workspace to output primary
 
         # Move workspace to attached monitor. For now, this is DP-1.
-        bindsym $mod+Left move workspace to DP-1
+        bindsym $mod+h move workspace to DP-1
 
         # Exit system mode.
         bindsym Return mode "default"
