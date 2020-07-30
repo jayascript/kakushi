@@ -3,6 +3,7 @@ atom/blob-store/
 atom/compile-cache/
 atom/recovery/
 atom/storage/
+atom/config.cson
 cache.db
 keepassxc.ini
 config/gtk-3.0/bookmarks
