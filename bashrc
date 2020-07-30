@@ -157,6 +157,14 @@ atouch ()
 
 export atouch
 
+vtouch ()
+{
+    touch -- "$1" &&
+    vim "$1"
+}
+
+export vtouch
+
 # virtualenvwrapper Config
 # Set the location where the virtual environments should live
 export WORKON_HOME="$HOME/.virtualenvs"
@@ -175,6 +183,7 @@ source $(which virtualenvwrapper.sh)
 
 # Enable vim
 set -o vi
+export EDITOR=vim
 
 # Enable powerline
 if [ -f `which powerline-daemon` ]; then
