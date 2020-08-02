@@ -18,6 +18,35 @@
 
 set number relativenumber " Show scrolling line nums
 
+"""""""""""
+" Plugins "
+"         "
+"""""""""""
+
+" Plugins will be downloaded under the specified directory.
+call plug#begin('~/.vim/plugged')
+
+" Declare the list of plugins.
+Plug 'preservim/nerdtree'
+Plug 'vim-python/python-syntax'
+Plug 'joshdick/onedark.vim'
+Plug 'arcticicestudio/nord-vim'
+Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase'}
+Plug 'terryma/vim-multiple-cursors'
+Plug 'valloric/youcompleteme'
+
+" List ends here. Plugins become visible to Vim after this call.
+call plug#end()
+
+let g:python_highlight_all = 1
+
+let g:onedark_termcolors = 256
+syntax on
+colorscheme onedark
+
+:set termguicolors
+let g:Hexokinase_highlighters = ['foregroundfull']
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Powerline config. Credit to Paul W. Frields (Fedora Magazine): "
 " https://fedoramagazine.org/add-power-terminal-powerline/       "
