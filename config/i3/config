@@ -309,13 +309,13 @@ exec_always feh --bg-fill ~/.config/wallpaper.jpg
 font pango:DejaVu Sans Mono 11
 
 # Colors (unused: #16484B)
-set $focused-bg #E25CA2
-set $focused-text #ffffff
-set $unfocused-bg #F2C3DB
-set $unfocused-text #9B719D
-set $urgent-bg #E5B722
-set $indicator #E5B722
-set $urgent-txt #712875
+set $focused-bg #88C0D0
+set $focused-text #2E3440
+set $unfocused-bg #4c566a
+set $unfocused-text #d8dee9
+set $urgent-bg #bf616a
+set $indicator #a3be8c
+set $urgent-txt #ffffff
 
 # Window Colors
 #                       border        background    text            tiling
@@ -331,7 +331,7 @@ bar {
         strip_workspace_numbers yes
         colors {
           background $unfocused-bg
-          statusline #8A288F
+          statusline #d8dee9
           separator  $focused-text
           #                   border        background    text
           focused_workspace   $focused-bg   $focused-bg   $focused-text
