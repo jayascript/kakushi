@@ -37,6 +37,7 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase'}
 Plug 'terryma/vim-multiple-cursors'
 Plug 'hynek/vim-python-pep8-indent'
+Plug 'majutsushi/tagbar'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -48,6 +49,9 @@ colorscheme onedark
 
 :set termguicolors
 let g:Hexokinase_highlighters = ['foregroundfull']
+
+map <C-x> :NERDTreeToggle<CR>
+nmap <F8> :TagbarToggle<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Powerline config. Credit to Paul W. Frields (Fedora Magazine): "
