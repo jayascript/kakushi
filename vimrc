@@ -20,6 +20,7 @@ set number relativenumber " Show scrolling line nums
 :imap ;; <Esc>
 syntax on
 set encoding=utf-8
+filetype plugin indent on
 
 """""""""""
 " Plugins "
@@ -38,6 +39,7 @@ Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase'}
 Plug 'terryma/vim-multiple-cursors'
 Plug 'hynek/vim-python-pep8-indent'
 Plug 'majutsushi/tagbar'
+Plug 'xuhdev/vim-latex-live-preview', { 'for' : 'tex' }
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
