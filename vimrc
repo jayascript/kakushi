@@ -11,21 +11,24 @@
 "                                                              "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-""""""""""""""""
-" Basic Config "
-"              "
-""""""""""""""""
-
-set number relativenumber " Show scrolling line nums
+" basic
 :imap ;; <Esc>
-syntax on
+set tabstop=4
+set expandtab
+set shiftwidth=4
+set softtabstop=4
 set encoding=utf-8
-filetype plugin indent on
+set fileencoding=utf-8
+set number relativenumber " Show scrolling line nums
 
-"""""""""""
-" Plugins "
-"         "
-"""""""""""
+" plugins
+let need_to_install_plugins = 0
+if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    "autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    let need_to_install_plugins = 1
+endif
 
 " Plugins will be downloaded under the specified directory.
 call plug#begin('~/.vim/plugged')
@@ -44,23 +47,32 @@ Plug 'xuhdev/vim-latex-live-preview', { 'for' : 'tex' }
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
-let g:python_highlight_all = 1
+if need_to_install_plugins == 1
+    echo "Installing plugins..."
+    silent! PlugInstall
+    echo "Done!"
+    q
+endif
 
-let g:onedark_termcolors = 256
+" theme
+syntax on
+set encoding=utf-8
 colorscheme onedark
+filetype plugin indent on
+let g:onedark_termcolors = 256
 
+" syntax highlighting
 :set termguicolors
+let g:python_highlight_all = 1
 let g:Hexokinase_highlighters = ['foregroundfull']
 
-map <C-x> :NERDTreeToggle<CR>
-nmap <F8> :TagbarToggle<CR>
+" toggle panes
+map <Leader>n :NERDTreeToggle<CR>
+nmap <Leader>t :TagbarToggle<CR>
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Powerline config. Credit to Paul W. Frields (Fedora Magazine): "
-" https://fedoramagazine.org/add-power-terminal-powerline/       "
-"                                                                "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
+" powerline config
+" Credit to Paul W. Frields (Fedora Magazine):
+" https://fedoramagazine.org/add-power-terminal-powerline/
 python3 from powerline.vim import setup as powerline_setup
 python3 powerline_setup()
 python3 del powerline_setup
@@ -69,12 +81,8 @@ set showtabline=2 " Always display the tabline, even if there is only one tab
 set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
 set t_Co=256
 
-""""""""""""""""""""""""""
-" Luke Smith's configs.  "
-" https://lukesmith.xyz/ "
-"                        "
-""""""""""""""""""""""""""
-
+" Luke Smith's configs
+" https://lukesmith.xyz/
 set wildmode=longest,list,full
 set splitbelow splitright
 
@@ -93,3 +101,42 @@ map <C-p> "+P
 
 " Automatically delete all trailing whitespace on save.
 autocmd BufWritePre * %s/\s\+$//e
+
+" Miguel Grinberg's configs
+" https://gist.github.com/miguelgrinberg/527bb5a400791f89b3c4da4bd61222e4
+" indent/unindent with tab/shift-tab
+nmap <Tab> >>
+imap <S-Tab> <Esc><<i
+nmap <S-tab> <<
+
+" wrap toggle
+setlocal nowrap
+noremap <silent> <Leader>w :call ToggleWrap()<CR>
+function ToggleWrap()
+    if &wrap
+        echo "Wrap OFF"
+        setlocal nowrap
+        set virtualedit=all
+        silent! nunmap <buffer> <Up>
+        silent! nunmap <buffer> <Down>
+        silent! nunmap <buffer> <Home>
+        silent! nunmap <buffer> <End>
+        silent! iunmap <buffer> <Up>
+        silent! iunmap <buffer> <Down>
+        silent! iunmap <buffer> <Home>
+        silent! iunmap <buffer> <End>
+    else
+        echo "Wrap ON"
+        setlocal wrap linebreak nolist
+        set virtualedit=
+        setlocal display+=lastline
+        noremap  <buffer> <silent> <Up>   gk
+        noremap  <buffer> <silent> <Down> gj
+        noremap  <buffer> <silent> <Home> g<Home>
+        noremap  <buffer> <silent> <End>  g<End>
+        inoremap <buffer> <silent> <Up>   <C-o>gk
+        inoremap <buffer> <silent> <Down> <C-o>gj
+        inoremap <buffer> <silent> <Home> <C-o>g<Home>
+        inoremap <buffer> <silent> <End>  <C-o>g<End>
+    endif
+endfunction
