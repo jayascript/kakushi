@@ -33,7 +33,7 @@ Plug 'joshdick/onedark.vim'
 Plug 'arcticicestudio/nord-vim'
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase'}
 Plug 'terryma/vim-multiple-cursors'
-Plug 'valloric/youcompleteme'
+Plug 'hynek/vim-python-pep8-indent'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
