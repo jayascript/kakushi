@@ -15,6 +15,7 @@
 
 # Set the mod key.
 set $mod Mod3
+exec_always ~/.scripts/rate.sh
 
 # Reload the configuration file.
 bindsym $mod+Shift+c reload
