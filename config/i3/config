@@ -290,8 +290,6 @@ exec thunderbird
 exec keepassxc
 exec nextcloud
 exec flameshot
-exec nautilus
-exec palemoon
 
 # ----- #
 # THEME #
