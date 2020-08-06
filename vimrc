@@ -67,6 +67,10 @@ let g:onedark_termcolors = 256
 let g:python_highlight_all = 1
 let g:Hexokinase_highlighters = ['foregroundfull']
 
+" vim-latex-live-preview config
+let g:livepreview_previewer = 'evince'
+map <Leader>p :LLPStartPreview<CR>
+
 " toggle panes
 map <Leader>n :NERDTreeToggle<CR>
 nmap <Leader>t :TagbarToggle<CR>
