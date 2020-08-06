@@ -78,6 +78,12 @@
 			}
 		],
 		"right": [
+            {
+                "function": "powerline.segments.common.env.virtualenv",
+                "draw_soft_divider": true,
+                "highlight_group": ["environment"],
+                "before": "ⓔ  "
+            },
 			{
 				"function": "file_format",
 				"draw_soft_divider": false,

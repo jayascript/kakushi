@@ -12,7 +12,7 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " basic
-:imap ;; <Esc>
+:imap ii <Esc>
 set tabstop=4
 set expandtab
 set shiftwidth=4
@@ -43,6 +43,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'hynek/vim-python-pep8-indent'
 Plug 'majutsushi/tagbar'
 Plug 'xuhdev/vim-latex-live-preview', { 'for' : 'tex' }
+Plug 'jmcantrell/vim-virtualenv'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
