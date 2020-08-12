@@ -391,7 +391,7 @@ bindsym $mod+Insert exec qrencode -s 5 -o ~/qrcode.png $(xclip -o -selection cli
 
 # Open Tor Browser
 bindsym $mod+Shift+t exec /opt/tor-browser_en-US/Browser/start-tor-browser
-
+bindsym $mod+Shift+w exec /opt/waterfox/waterfox
 # ---- #
 # GAPS #
 # ---- #
