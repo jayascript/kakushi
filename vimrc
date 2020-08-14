@@ -20,6 +20,7 @@ set softtabstop=4
 set encoding=utf-8
 set fileencoding=utf-8
 set number relativenumber " Show scrolling line nums
+set spell spelllang=en_us
 
 " plugins
 let need_to_install_plugins = 0
