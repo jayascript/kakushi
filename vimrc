@@ -100,10 +100,6 @@ map <C-l> <C-w>l
 " Calcurse markdown setting
 autocmd BufRead,BufNewFile /tmp/calcurse*,~/.calcurse/notes/* set filetype=markdown
 
-" Copy selected text to system clipboard (requires gvim installed).
-vnoremap <C-c> '*Y: let @+=@*<CR>
-map <C-p> "+P
-
 " Automatically delete all trailing whitespace on save.
 autocmd BufWritePre * %s/\s\+$//e
 
