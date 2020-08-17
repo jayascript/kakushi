@@ -70,6 +70,7 @@ let g:Hexokinase_highlighters = ['foregroundfull']
 
 " vim-latex-live-preview config
 let g:livepreview_previewer = 'evince'
+let g:livepreview_engine = 'xelatex'
 map <Leader>p :LLPStartPreview<CR>
 
 " toggle panes
