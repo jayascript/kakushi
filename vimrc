@@ -45,6 +45,7 @@ Plug 'hynek/vim-python-pep8-indent'
 Plug 'majutsushi/tagbar'
 Plug 'xuhdev/vim-latex-live-preview', { 'for' : 'tex' }
 Plug 'jmcantrell/vim-virtualenv'
+Plug 'tpope/vim-fugitive'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
