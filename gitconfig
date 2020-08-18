@@ -8,3 +8,5 @@
 	st = status
 	cm = commit -m
 	as = add . && status
+[credential]
+	helper = cache --timeout=3600
