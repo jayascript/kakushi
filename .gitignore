@@ -13,3 +13,4 @@ vim/plugged
 .swp
 nvim/plugged
 .calcurse.pid
+__pycache__
