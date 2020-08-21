@@ -31,6 +31,8 @@ from libqtile.config import Click, Drag, Group, Key, Screen
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 
+from screeninfo import get_monitors
+
 mod = "mod3"
 terminal = guess_terminal()
 
@@ -73,6 +75,9 @@ keys = [
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown qtile"),
     Key([mod], "r", lazy.spawncmd(),
         desc="Spawn a command using a prompt widget"),
+
+    Key([mod, "shift"], "l", lazy.to_screen(0)),
+    Key([mod, "shift"], "h", lazy.to_screen(1)),
 ]
 
 # groups = [Group(i) for i in "asdfuiop"]
@@ -125,52 +130,81 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
-screens = [
-    Screen(
-        bottom=bar.Bar(
-            [
-                widget.CurrentLayout(),
-                widget.GroupBox(),
-                widget.Prompt(),
-                widget.WindowName(),
-                widget.Chord(
-                    chords_colors={
-                        'launch': ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
-                ),
-                widget.TextBox("default config", name="default"),
-                widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
-                widget.Systray(),
-                widget.Clock(format='%Y-%m-%d %a %H:%M:%S'),
-                widget.QuickExit(),
-            ],
-            24,
+# Multiple monitors
+num_screens = len(get_monitors())
+
+if num_screens == 2:
+    screens = [
+        Screen(
+            bottom=bar.Bar(
+                [
+                    widget.CurrentLayout(),
+                    widget.GroupBox(),
+                    widget.Prompt(),
+                    widget.WindowName(),
+                    widget.Chord(
+                        chords_colors={
+                            'launch': ("#ff0000", "#ffffff"),
+                        },
+                        name_transform=lambda name: name.upper(),
+                    ),
+                    widget.TextBox("default config", name="default"),
+                    widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
+                    widget.Systray(),
+                    widget.Clock(format='%Y-%m-%d %a %H:%M:%S'),
+                    widget.QuickExit(),
+                ],
+                24,
+            ),
         ),
-    ),
-    Screen(
-        bottom=bar.Bar(
-            [
-                widget.CurrentLayout(),
-                widget.GroupBox(),
-                widget.Prompt(),
-                widget.WindowName(),
-                widget.Chord(
-                    chords_colors={
-                        'launch': ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
-                ),
-                widget.TextBox("default config", name="default"),
-                widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
-                widget.Systray(),
-                widget.Clock(format='%Y-%m-%d %a %H:%M:%S'),
-                widget.QuickExit(),
-            ],
-            24,
+        Screen(
+            bottom=bar.Bar(
+                [
+                    widget.CurrentLayout(),
+                    widget.GroupBox(),
+                    widget.Prompt(),
+                    widget.WindowName(),
+                    widget.Chord(
+                        chords_colors={
+                            'launch': ("#ff0000", "#ffffff"),
+                        },
+                        name_transform=lambda name: name.upper(),
+                    ),
+                    widget.TextBox("default config", name="default"),
+                    widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
+                    widget.Systray(),
+                    widget.Clock(format='%Y-%m-%d %a %H:%M:%S'),
+                    widget.QuickExit(),
+                ],
+                24,
+            ),
         ),
-    ),
-]
+    ]
+else:
+    screens = [
+        Screen(
+            bottom=bar.Bar(
+                [
+                    widget.CurrentLayout(),
+                    widget.GroupBox(),
+                    widget.Prompt(),
+                    widget.WindowName(),
+                    widget.Chord(
+                        chords_colors={
+                            'launch': ("#ff0000", "#ffffff"),
+                        },
+                        name_transform=lambda name: name.upper(),
+                    ),
+                    widget.TextBox("default config", name="default"),
+                    widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
+                    widget.Systray(),
+                    widget.Clock(format='%Y-%m-%d %a %H:%M:%S'),
+                    widget.QuickExit(),
+                ],
+                24,
+            ),
+        )
+    ]
 
 # Drag floating layouts.
 mouse = [
