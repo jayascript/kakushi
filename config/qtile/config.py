@@ -61,6 +61,8 @@ keys = [
     # multiple stack panes
     Key([mod, "shift"], "Return", lazy.layout.toggle_split(),
         desc="Toggle between split and unsplit sides of stack"),
+
+    # Spawn terminal
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
 
     # Toggle between different layouts as defined below
@@ -73,21 +75,33 @@ keys = [
         desc="Spawn a command using a prompt widget"),
 ]
 
-groups = [Group(i) for i in "asdfuiop"]
-for i in groups:
-    keys.extend([
-        # mod + letter of group = switch to group
-        Key([mod], i.name, lazy.group[i.name].toscreen(),
-            desc="Switch to group {}".format(i.name)),
+# groups = [Group(i) for i in "asdfuiop"]
+# New group definition from Derek Taylor (DistroTube)
+def init_group_names():
+    return [
+        ("MAIN", {'layout': 'stack'}),
+        ("SYS", {'layout': 'matrix'}),
+        ("DEV", {'layout': 'stack'}),
+        ("PROD", {'layout': 'stack'}),
+        ("WWW", {'layout': 'stack'}),
+        ("MAIL", {'layout': 'stack'}),
+        ("DOC", {'layout': 'stack'}),
+        ("ENT", {'layout': 'stack'}),
+        ("CHAT", {'layout': 'stack'}),
+    ]
 
-        # mod + shift + letter of group = switch to & move focused window to group
-        Key([mod, "shift"], i.name, lazy.window.togroup(i.name, switch_group=True),
-            desc="Switch to & move focused window to group {}".format(i.name)),
-        # Or, use below if you prefer not to switch to that group.
-        # # mod + shift + letter of group = move focused window to group
-        # Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
-        #     desc="move focused window to group {}".format(i.name)),
-    ])
+def init_groups():
+    return [Group(name, **kwargs) for name, kwargs in group_names]
+
+if __name__ in ["config", "__main__"]:
+    group_names = init_group_names()
+    groups = init_groups()
+
+for i, (name, kwargs) in enumerate(group_names, 1):
+    # Switch to another group
+    keys.append(Key([mod], str(i), lazy.group[name].toscreen()))
+    # Send current window to another group
+    keys.append(Key([mod, "shift"], str(i), lazy.window.togroup(name)))
 
 layouts = [
     layout.Max(),
@@ -128,7 +142,7 @@ screens = [
                 widget.TextBox("default config", name="default"),
                 widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
                 widget.Systray(),
-                widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
+                widget.Clock(format='%Y-%m-%d %a %H:%M:%S'),
                 widget.QuickExit(),
             ],
             24,
