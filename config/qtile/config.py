@@ -161,30 +161,36 @@ colors = [["#292d3e", "#292d3e"], # panel background
           ["#e1acff", "#e1acff"]] # window name
 
 fairyfloss = [
-    ["#42395D", "#42395D"],
-    ["#A8757B", "#A8757B"],
-    ["#FF857F", "#FF857F"],
-    ["#E6C000", "#E6C000"],
-    ["#AE81FF", "#AE81FF"],
-    ["#716799", "#716799"],
-    ["#C2FFDF", "#C2FFDF"],
-    ["#F8F8F2", "#F8F8F2"],
-    ["#75507B", "#75507B"],
-    ["#FFB8D1", "#FFB8D1"],
-    ["#F1568E", "#F1568E"],
-    ["#D5A425", "#D5A425"],
-    ["#C5A3FF", "#C5A3FF"],
-    ["#8077A8", "#8077A8"],
-    ["#C2FFFF", "#C2FFFF"],
-    ["#F8F8F0", "#F8F8F0"],
+    ["#42395D", "#42395D"], # 0
+    ["#A8757B", "#A8757B"], # 1
+    ["#FF857F", "#FF857F"], # 2
+    ["#E6C000", "#E6C000"], # 3
+    ["#AE81FF", "#AE81FF"], # 4
+    ["#716799", "#716799"], # 5
+    ["#C2FFDF", "#C2FFDF"], # 6
+    ["#F8F8F2", "#F8F8F2"], # 7
+    ["#75507B", "#75507B"], # 8
+    ["#FFB8D1", "#FFB8D1"], # 9
+    ["#F1568E", "#F1568E"], # 10
+    ["#D5A425", "#D5A425"], # 11
+    ["#C5A3FF", "#C5A3FF"], # 12
+    ["#8077A8", "#8077A8"], # 13
+    ["#C2FFFF", "#C2FFFF"], # 14
+    ["#F8F8F0", "#F8F8F0"], # 15
 ]
 def set_widgets():
     widgets = [
         widget.CurrentLayout(),
         widget.GroupBox(
+            active = fairyfloss[6], # Active window font color
+            background = fairyfloss[9],
             font="Raleway",
-            active = colors[2],
-            inactive = colors[2]
+            highlight_method = "block",
+            inactive = fairyfloss[1], # Inactive window font color
+            other_current_screen_border = fairyfloss[0],
+            other_screen_border = fairyfloss[0],
+            this_current_screen_border = fairyfloss[4],
+            this_screen_border = fairyfloss[5],
         ),
         widget.Prompt(),
         widget.WindowName(),
