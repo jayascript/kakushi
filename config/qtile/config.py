@@ -152,11 +152,40 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
+colors = [["#292d3e", "#292d3e"], # panel background
+          ["#434758", "#434758"], # background for current screen tab
+          ["#ffffff", "#ffffff"], # font color for group names
+          ["#ff5555", "#ff5555"], # border line color for current tab
+          ["#8d62a9", "#8d62a9"], # border line color for other tab and odd widgets
+          ["#668bd7", "#668bd7"], # color for the even widgets
+          ["#e1acff", "#e1acff"]] # window name
 
+fairyfloss = [
+    ["#42395D", "#42395D"],
+    ["#A8757B", "#A8757B"],
+    ["#FF857F", "#FF857F"],
+    ["#E6C000", "#E6C000"],
+    ["#AE81FF", "#AE81FF"],
+    ["#716799", "#716799"],
+    ["#C2FFDF", "#C2FFDF"],
+    ["#F8F8F2", "#F8F8F2"],
+    ["#75507B", "#75507B"],
+    ["#FFB8D1", "#FFB8D1"],
+    ["#F1568E", "#F1568E"],
+    ["#D5A425", "#D5A425"],
+    ["#C5A3FF", "#C5A3FF"],
+    ["#8077A8", "#8077A8"],
+    ["#C2FFFF", "#C2FFFF"],
+    ["#F8F8F0", "#F8F8F0"],
+]
 def set_widgets():
     widgets = [
         widget.CurrentLayout(),
-        widget.GroupBox(),
+        widget.GroupBox(
+            font="Raleway",
+            active = colors[2],
+            inactive = colors[2]
+        ),
         widget.Prompt(),
         widget.WindowName(),
         widget.Chord(
