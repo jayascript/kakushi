@@ -200,20 +200,13 @@ def set_widgets():
             this_current_screen_border = fairyfloss[4],
             this_screen_border = fairyfloss[5],
         ),
-        # widget.Prompt(),
-        widget.WindowName(),
-        widget.Chord(
-            chords_colors={
-                'launch': ("#ff0000", "#ffffff"),
-            },
-            name_transform=lambda name: name.upper(),
-        ),
-        widget.TextBox("default config", name="default"),
-        widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
-        widget.Systray(),
         widget.Net(interface="wlp2s0"),
         widget.Clock(format='%Y-%m-%d %a %H:%M:%S'),
-        widget.QuickExit(),
+        widget.Systray(),
+        widget.QuickExit(
+            countdown_start = 10,
+            default_text = "[ Logout ]",
+        ),
     ]
     return widgets
 
