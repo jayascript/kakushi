@@ -20,7 +20,6 @@ set softtabstop=4
 set encoding=utf-8
 set fileencoding=utf-8
 set number relativenumber " Show scrolling line nums
-set spell spelllang=en_us
 
 " plugins
 let need_to_install_plugins = 0
@@ -60,9 +59,8 @@ endif
 " theme
 syntax on
 set encoding=utf-8
-colorscheme onedark
+colorscheme fairyfloss
 filetype plugin indent on
-let g:onedark_termcolors = 256
 
 " syntax highlighting
 :set termguicolors
@@ -100,11 +98,11 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
-" Calcurse markdown setting
+" File type settings
 autocmd BufRead,BufNewFile /tmp/calcurse*,~/.calcurse/notes/* set filetype=markdown
-
-" Automatically delete all trailing whitespace on save.
-autocmd BufWritePre * %s/\s\+$//e
+autocmd BufWritePre * %s/\s\+$//e " Automatically delete all trailing whitespace on save.
+autocmd BufRead,BufNewFile *.md set spell spelllang=en_us
+autocmd BufRead,BufNewFile *.tex set spell spelllang=en_us
 
 " Miguel Grinberg's configs
 " https://gist.github.com/miguelgrinberg/527bb5a400791f89b3c4da4bd61222e4
