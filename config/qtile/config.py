@@ -131,7 +131,7 @@ layouts = [
     layout.MonadTall(**layout_theme),
     layout.Max(**layout_theme),
     layout.Tile(shift_windows=True, **layout_theme),
-    layout.Stack(num_stacks=2),
+    #layout.Stack(num_stacks=2),
     layout.TreeTab(
          font = "Ubuntu",
          fontsize = 10,
@@ -146,7 +146,7 @@ layouts = [
          section_top = 10,
          panel_width = 320
          ),
-    layout.Floating(**layout_theme)
+    #layout.Floating(**layout_theme)
 ]
 
 colors = [["#292d3e", "#292d3e"], # panel background
@@ -186,8 +186,11 @@ extension_defaults = widget_defaults.copy()
 
 def set_widgets():
     widgets = [
+        widget.CurrentLayoutIcon(
+            foreground = fairyfloss[0],
+        ),
         widget.CurrentLayout(
-            fmt = "{}:",
+            fmt = "《{}》",
             foreground = fairyfloss[0],
         ),
         widget.GroupBox(
