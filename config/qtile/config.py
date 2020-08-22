@@ -177,7 +177,6 @@ fairyfloss = [
 ]
 
 widget_defaults = dict(
-    background = fairyfloss[9],
     font = 'raleway',
     fontsize = 15,
     foreground = fairyfloss[0],
@@ -215,12 +214,12 @@ num_screens = len(get_monitors())
 
 if num_screens == 2:
     screens = [
-        Screen(bottom=bar.Bar(set_widgets(), 24)),
-        Screen(bottom=bar.Bar(set_widgets(), 24)),
+        Screen(bottom=bar.Bar(set_widgets(), 30, background=fairyfloss[9])),
+        Screen(bottom=bar.Bar(set_widgets(), 30, background=fairyfloss[9])),
     ]
 else:
     screens = [
-        Screen(bottom=bar.Bar(set_widgets(), 24))
+        Screen(bottom=bar.Bar(set_widgets(), 30, background=fairyfloss[9]))
     ]
 
 # Drag floating layouts.
