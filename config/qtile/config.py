@@ -191,7 +191,7 @@ extension_defaults = widget_defaults.copy()
 def set_widgets():
     sep = widget.Sep(
         linewidth = 2,
-        padding = 5,
+        padding = 50,
     )
     widgets = [
         widget.CurrentLayoutIcon(
@@ -214,6 +214,12 @@ def set_widgets():
         sep,
         widget.Clock(format='%Y-%m-%d %a %H:%M:%S'),
         widget.Systray(),
+        widget.BatteryIcon(),
+        widget.Battery(
+            format = "{percent:2.0%}",
+            low_percentage = 0.1,
+            notify_below = 0.1,
+        ),
         widget.QuickExit(
             countdown_start = 10,
             default_text = "[ Logout ]",
