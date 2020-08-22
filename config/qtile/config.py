@@ -180,7 +180,11 @@ fairyfloss = [
 ]
 def set_widgets():
     widgets = [
-        widget.CurrentLayout(),
+        widget.CurrentLayout(
+            background = fairyfloss[9],
+            fmt = "{}:",
+            foreground = fairyfloss[0],
+        ),
         widget.GroupBox(
             active = fairyfloss[6], # Active window font color
             background = fairyfloss[9],
