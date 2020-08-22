@@ -1,3 +1,22 @@
+##########################################################
+#     ,-----.  ,---------. .-./`)   .---.       .-''-.   #
+#   .'  .-,  '.\          \\ .-.')  | ,_|     .'_ _   \  #
+#  / ,-.|  \ _ \`--.  ,---'/ `-' \,-./  )    / ( ` )   ' #
+# ;  \  '_ /  | :  |   \    `-'`"`\  '_ '`) . (_ o _)  | #
+# |  _`,/ \ _/  |  :_ _:    .---.  > (_)  ) |  (_,_)___| #
+# : (  '\_/ \   ;  (_I_)    |   | (  .  .-' '  \   .---. #
+#  \ `"/  \  )  \ (_(=)_)   |   |  `-'`-'|___\  `-'    / #
+#   '. \_/``"/)  ) (_I_)    |   |   |        \\       /  #
+#     '-----' `-'  '---'    '---'   `--------` `'-..-'   #
+#                                                        #
+##########################################################
+
+# A customized config.py file for Qtile (https://www.qtile.org)
+# Modified by jayascript (https://jayascript.xyz)
+
+# The following comments are the copyright and licensing information from the
+# default config:
+
 # Copyright (c) 2010 Aldo Cortesi
 # Copyright (c) 2010, 2014 dequis
 # Copyright (c) 2012 Randall Ma
@@ -35,12 +54,15 @@ from libqtile.utils import guess_terminal
 
 from screeninfo import get_monitors
 
+# Set global vars
 mod = "mod4"
 term = guess_terminal()
 home = os.path.expanduser('~')
 
+# Run scripts on login
 lazy.spawn(home + "/.scripts/rate.sh")
 
+# Map keybindings
 keys = [
     # Logout and restart
     Key([mod, "control"], "r",  lazy.restart(),     desc="Restart qtile"),
@@ -77,7 +99,7 @@ keys = [
 
 # groups = [Group(i) for i in "asdfuiop"]
 # New group definition from Derek Taylor (@DistroTube)
-def init_group_names():
+def name_groups():
     return [
         ("MAIN", {'layout': 'stack'}),
         ("SYS", {'layout': 'matrix'}),
@@ -94,7 +116,7 @@ def init_groups():
     return [Group(name, **kwargs) for name, kwargs in group_names]
 
 if __name__ in ["config", "__main__"]:
-    group_names = init_group_names()
+    group_names = name_groups()
     groups = init_groups()
 
 for i, (name, kwargs) in enumerate(group_names, 1):
