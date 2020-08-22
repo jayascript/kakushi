@@ -149,13 +149,6 @@ layouts = [
     layout.Floating(**layout_theme)
 ]
 
-widget_defaults = dict(
-    font='raleway',
-    fontsize=15,
-    padding=3,
-)
-extension_defaults = widget_defaults.copy()
-
 colors = [["#292d3e", "#292d3e"], # panel background
           ["#434758", "#434758"], # background for current screen tab
           ["#ffffff", "#ffffff"], # font color for group names
@@ -183,17 +176,23 @@ fairyfloss = [
     ["#F8F8F0", "#F8F8F0"], # 15
 ]
 
+widget_defaults = dict(
+    background = fairyfloss[9],
+    font = 'raleway',
+    fontsize = 15,
+    foreground = fairyfloss[0],
+    padding = 3,
+)
+extension_defaults = widget_defaults.copy()
+
 def set_widgets():
     widgets = [
         widget.CurrentLayout(
-            background = fairyfloss[9],
             fmt = "{}:",
             foreground = fairyfloss[0],
         ),
         widget.GroupBox(
             active = fairyfloss[6], # Active window font color
-            background = fairyfloss[9],
-            font="Raleway",
             highlight_method = "block",
             inactive = fairyfloss[1], # Inactive window font color
             other_current_screen_border = fairyfloss[0],
