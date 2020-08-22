@@ -185,6 +185,10 @@ widget_defaults = dict(
 extension_defaults = widget_defaults.copy()
 
 def set_widgets():
+    sep = widget.Sep(
+        linewidth = 2,
+        padding = 5,
+    )
     widgets = [
         widget.CurrentLayoutIcon(
             foreground = fairyfloss[0],
@@ -193,6 +197,7 @@ def set_widgets():
             fmt = "《{}》",
             foreground = fairyfloss[0],
         ),
+        sep,
         widget.GroupBox(
             active = fairyfloss[6], # Active window font color
             highlight_method = "block",
@@ -202,7 +207,7 @@ def set_widgets():
             this_current_screen_border = fairyfloss[4],
             this_screen_border = fairyfloss[5],
         ),
-        widget.Net(interface="wlp2s0"),
+        sep,
         widget.Clock(format='%Y-%m-%d %a %H:%M:%S'),
         widget.Systray(),
         widget.QuickExit(
