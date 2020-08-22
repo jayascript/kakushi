@@ -190,7 +190,7 @@ extension_defaults = widget_defaults.copy()
 
 def set_widgets():
     sep = widget.Sep(
-        linewidth = 2,
+        linewidth = 0,
         padding = 50,
     )
     widgets = [
@@ -212,6 +212,7 @@ def set_widgets():
             this_screen_border = fairyfloss[5],
         ),
         sep,
+        widget.Spacer(length=bar.STRETCH),
         widget.Clock(format='%Y-%m-%d %a %H:%M:%S'),
         widget.Systray(),
         widget.BatteryIcon(),
