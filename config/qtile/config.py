@@ -214,6 +214,11 @@ def set_widgets():
             countdown_start = 10,
             default_text = "[ Logout ]",
         ),
+        widget.Wallpaper(
+            directory = home + '/Pictures/Wallpapers/kawaii',
+            random_selection = True,
+            fmt = "",
+        )
     ]
     return widgets
 
