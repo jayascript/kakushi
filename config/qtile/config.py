@@ -152,80 +152,39 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
+
+def set_widgets():
+    widgets = [
+        widget.CurrentLayout(),
+        widget.GroupBox(),
+        widget.Prompt(),
+        widget.WindowName(),
+        widget.Chord(
+            chords_colors={
+                'launch': ("#ff0000", "#ffffff"),
+            },
+            name_transform=lambda name: name.upper(),
+        ),
+        widget.TextBox("default config", name="default"),
+        widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
+        widget.Systray(),
+        widget.Net(interface="wlp2s0"),
+        widget.Clock(format='%Y-%m-%d %a %H:%M:%S'),
+        widget.QuickExit(),
+    ]
+    return widgets
+
 # Multiple monitors
 num_screens = len(get_monitors())
 
 if num_screens == 2:
     screens = [
-        Screen(
-            bottom=bar.Bar(
-                [
-                    widget.CurrentLayout(),
-                    widget.GroupBox(),
-                    widget.Prompt(),
-                    widget.WindowName(),
-                    widget.Chord(
-                        chords_colors={
-                            'launch': ("#ff0000", "#ffffff"),
-                        },
-                        name_transform=lambda name: name.upper(),
-                    ),
-                    widget.TextBox("default config", name="default"),
-                    widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
-                    widget.Systray(),
-                    widget.Clock(format='%Y-%m-%d %a %H:%M:%S'),
-                    widget.QuickExit(),
-                ],
-                24,
-            ),
-        ),
-        Screen(
-            bottom=bar.Bar(
-                [
-                    widget.CurrentLayout(),
-                    widget.GroupBox(),
-                    widget.Prompt(),
-                    widget.WindowName(),
-                    widget.Chord(
-                        chords_colors={
-                            'launch': ("#ff0000", "#ffffff"),
-                        },
-                        name_transform=lambda name: name.upper(),
-                    ),
-                    widget.TextBox("default config", name="default"),
-                    widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
-                    widget.Systray(),
-                    widget.Clock(format='%Y-%m-%d %a %H:%M:%S'),
-                    widget.QuickExit(),
-                ],
-                24,
-            ),
-        ),
+        Screen(bottom=bar.Bar(set_widgets(), 24)),
+        Screen(bottom=bar.Bar(set_widgets(), 24)),
     ]
 else:
     screens = [
-        Screen(
-            bottom=bar.Bar(
-                [
-                    widget.CurrentLayout(),
-                    widget.GroupBox(),
-                    widget.Prompt(),
-                    widget.WindowName(),
-                    widget.Chord(
-                        chords_colors={
-                            'launch': ("#ff0000", "#ffffff"),
-                        },
-                        name_transform=lambda name: name.upper(),
-                    ),
-                    widget.TextBox("default config", name="default"),
-                    widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
-                    widget.Systray(),
-                    widget.Clock(format='%Y-%m-%d %a %H:%M:%S'),
-                    widget.QuickExit(),
-                ],
-                24,
-            ),
-        )
+        Screen(bottom=bar.Bar(set_widgets(), 24))
     ]
 
 # Drag floating layouts.
