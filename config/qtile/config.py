@@ -24,6 +24,8 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+import os
+
 from typing import List  # noqa: F401
 
 from libqtile import bar, layout, widget
@@ -35,6 +37,7 @@ from screeninfo import get_monitors
 
 mod = "mod3"
 terminal = guess_terminal()
+home = os.path.expanduser('~')
 
 keys = [
     # Switch between windows in current stack pane
@@ -73,6 +76,7 @@ keys = [
 
     Key([mod, "control"], "r", lazy.restart(), desc="Restart qtile"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown qtile"),
+    Key([mod], "d", lazy.spawn(home + "/.scripts/rofi.sh"), desc="Run a program using rofi"),
     Key([mod], "r", lazy.spawncmd(),
         desc="Spawn a command using a prompt widget"),
 
@@ -178,6 +182,7 @@ fairyfloss = [
     ["#C2FFFF", "#C2FFFF"], # 14
     ["#F8F8F0", "#F8F8F0"], # 15
 ]
+
 def set_widgets():
     widgets = [
         widget.CurrentLayout(
