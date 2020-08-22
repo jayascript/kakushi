@@ -84,6 +84,8 @@ keys = [
 
     Key([mod, "shift"], "l", lazy.to_screen(0)),
     Key([mod, "shift"], "h", lazy.to_screen(1)),
+
+    Key([mod, "shift"], "x", lazy.spawn(home + "/.scripts/lock.sh")),
 ]
 
 # groups = [Group(i) for i in "asdfuiop"]
