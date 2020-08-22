@@ -14,7 +14,7 @@
 # ------- #
 
 # Set the mod key.
-set $mod Mod3
+set $mod Mod4
 exec_always ~/.scripts/rate.sh
 
 # Reload the configuration file.

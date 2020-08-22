@@ -35,7 +35,7 @@ from libqtile.utils import guess_terminal
 
 from screeninfo import get_monitors
 
-mod = "mod3"
+mod = "mod4"
 term = guess_terminal()
 home = os.path.expanduser('~')
 
