@@ -42,6 +42,12 @@ home = os.path.expanduser('~')
 lazy.spawn(home + "/.scripts/rate.sh")
 
 keys = [
+    # From tych0: Note that this doesn't use mod: that's intentional in case
+    # mod gets hosed (which happens if you unplug and replug your usb keyboard
+    # sometimes, or on ubuntu upgrades). This way you can still log back out
+    # and in gracefully.
+    Key(["shift", "mod1"], "q", lazy.shutdown()),
+
     # Switch between windows in current stack pane
     Key([mod], "k", lazy.layout.down(),
         desc="Move focus down in stack pane"),
