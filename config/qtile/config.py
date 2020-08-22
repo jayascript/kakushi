@@ -201,7 +201,7 @@ def set_widgets():
             this_current_screen_border = fairyfloss[4],
             this_screen_border = fairyfloss[5],
         ),
-        widget.Prompt(),
+        # widget.Prompt(),
         widget.WindowName(),
         widget.Chord(
             chords_colors={
