@@ -36,61 +36,42 @@ from libqtile.utils import guess_terminal
 from screeninfo import get_monitors
 
 mod = "mod3"
-terminal = guess_terminal()
+term = guess_terminal()
 home = os.path.expanduser('~')
 
 lazy.spawn(home + "/.scripts/rate.sh")
 
 keys = [
+    # Logout and restart
+    Key([mod, "control"], "r",  lazy.restart(),     desc="Restart qtile"),
+    Key([mod, "control"], "q",  lazy.shutdown(),    desc="Log out of session"),
+
     # From tych0: Note that this doesn't use mod: that's intentional in case
     # mod gets hosed (which happens if you unplug and replug your usb keyboard
     # sometimes, or on ubuntu upgrades). This way you can still log back out
     # and in gracefully.
     Key(["shift", "mod1"], "q", lazy.shutdown()),
 
-    # Switch between windows in current stack pane
-    Key([mod], "k", lazy.layout.down(),
-        desc="Move focus down in stack pane"),
-    Key([mod], "j", lazy.layout.up(),
-        desc="Move focus up in stack pane"),
+    # Spawn terminal
+    Key([mod], "Return",        lazy.spawn(term),   desc="Launch terminal"),
+
+    # Switch between windows in current stack
+    Key([mod], "l",             lazy.layout.down()),
+    Key([mod], "h",             lazy.layout.up()),
 
     # Move windows up or down in current stack
-    Key([mod, "control"], "k", lazy.layout.shuffle_down(),
-        desc="Move window down in current stack "),
-    Key([mod, "control"], "j", lazy.layout.shuffle_up(),
-        desc="Move window up in current stack "),
-
-    # Switch window focus to other pane(s) of stack
-    Key([mod], "space", lazy.layout.next(),
-        desc="Switch window focus to other pane(s) of stack"),
-
-    # Swap panes of split stack
-    Key([mod, "shift"], "space", lazy.layout.rotate(),
-        desc="Swap panes of split stack"),
-
-    # Toggle between split and unsplit sides of stack.
-    # Split = all windows displayed
-    # Unsplit = 1 window displayed, like Max layout, but still with
-    # multiple stack panes
-    Key([mod, "shift"], "Return", lazy.layout.toggle_split(),
-        desc="Toggle between split and unsplit sides of stack"),
-
-    # Spawn terminal
-    Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
+    Key([mod, "shift"], "l",    lazy.layout.shuffle_down()),
+    Key([mod, "shift"], "h",    lazy.layout.shuffle_up()),
 
     # Toggle between different layouts as defined below
-    Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
-    Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
+    Key([mod], "Tab",           lazy.next_layout(), desc="Toggle layouts"),
+    Key([mod], "q",             lazy.window.kill(), desc="Kill focused window"),
 
-    Key([mod, "control"], "r", lazy.restart(), desc="Restart qtile"),
-    Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown qtile"),
+    Key([mod, "control"], "l", lazy.to_screen(0)),
+    Key([mod, "control"], "h", lazy.to_screen(1)),
+
+    # Run scripts
     Key([mod], "d", lazy.spawn(home + "/.scripts/rofi.sh"), desc="Run a program using rofi"),
-    Key([mod], "r", lazy.spawncmd(),
-        desc="Spawn a command using a prompt widget"),
-
-    Key([mod, "shift"], "l", lazy.to_screen(0)),
-    Key([mod, "shift"], "h", lazy.to_screen(1)),
-
     Key([mod, "shift"], "x", lazy.spawn(home + "/.scripts/lock.sh")),
 ]
 
