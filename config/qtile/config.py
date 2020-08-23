@@ -59,6 +59,25 @@ mod = "mod4"
 term = guess_terminal()
 home = os.path.expanduser('~')
 
+fairyfloss = [
+    ["#42395D", "#42395D"], # 0
+    ["#A8757B", "#A8757B"], # 1
+    ["#FF857F", "#FF857F"], # 2
+    ["#E6C000", "#E6C000"], # 3
+    ["#AE81FF", "#AE81FF"], # 4
+    ["#716799", "#716799"], # 5
+    ["#C2FFDF", "#C2FFDF"], # 6
+    ["#F8F8F2", "#F8F8F2"], # 7
+    ["#75507B", "#75507B"], # 8
+    ["#FFB8D1", "#FFB8D1"], # 9
+    ["#F1568E", "#F1568E"], # 10
+    ["#D5A425", "#D5A425"], # 11
+    ["#C5A3FF", "#C5A3FF"], # 12
+    ["#8077A8", "#8077A8"], # 13
+    ["#C2FFFF", "#C2FFFF"], # 14
+    ["#F8F8F0", "#F8F8F0"], # 15
+]
+
 # Run scripts on login
 lazy.spawn(home + "/.scripts/rate.sh")
 
@@ -228,15 +247,15 @@ keys = [
 # New group definition from Derek Taylor (@DistroTube)
 def name_groups():
     return [
-        ("MAIN", {'layout': 'stack'}),
+        ("MAIN", {'layout': 'monadtall'}),
         ("SYS", {'layout': 'matrix'}),
-        ("DEV", {'layout': 'stack'}),
-        ("PROD", {'layout': 'stack'}),
-        ("WWW", {'layout': 'stack'}),
-        ("MAIL", {'layout': 'stack'}),
-        ("DOC", {'layout': 'stack'}),
-        ("ENT", {'layout': 'stack'}),
-        ("CHAT", {'layout': 'stack'}),
+        ("DEV", {'layout': 'monadtall'}),
+        ("PROD", {'layout': 'monadtall'}),
+        ("WWW", {'layout': 'monadtall'}),
+        ("MAIL", {'layout': 'monadtall'}),
+        ("DOC", {'layout': 'monadtall'}),
+        ("ENT", {'layout': 'monadtall'}),
+        ("CHAT", {'layout': 'monadtall'}),
     ]
 
 def init_groups():
@@ -253,10 +272,10 @@ for i, (name, kwargs) in enumerate(group_names, 1):
     keys.append(Key([mod, "shift"], str(i), lazy.window.togroup(name)))
 
 # Layout definition from Derek Taylor (@DistroTube)
-layout_theme = {"border_width": 2,
-                "margin": 6,
-                "border_focus": "e1acff",
-                "border_normal": "1D2330"
+layout_theme = {"border_width": 3,
+                "margin": 10,
+                "border_focus": "FFB8D1",
+                "border_normal": "42395D"
                 }
 
 layouts = [
@@ -289,24 +308,6 @@ layouts = [
     #layout.Floating(**layout_theme)
 ]
 
-fairyfloss = [
-    ["#42395D", "#42395D"], # 0
-    ["#A8757B", "#A8757B"], # 1
-    ["#FF857F", "#FF857F"], # 2
-    ["#E6C000", "#E6C000"], # 3
-    ["#AE81FF", "#AE81FF"], # 4
-    ["#716799", "#716799"], # 5
-    ["#C2FFDF", "#C2FFDF"], # 6
-    ["#F8F8F2", "#F8F8F2"], # 7
-    ["#75507B", "#75507B"], # 8
-    ["#FFB8D1", "#FFB8D1"], # 9
-    ["#F1568E", "#F1568E"], # 10
-    ["#D5A425", "#D5A425"], # 11
-    ["#C5A3FF", "#C5A3FF"], # 12
-    ["#8077A8", "#8077A8"], # 13
-    ["#C2FFFF", "#C2FFFF"], # 14
-    ["#F8F8F0", "#F8F8F0"], # 15
-]
 
 widget_defaults = dict(
     font = 'raleway',
