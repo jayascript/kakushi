@@ -141,16 +141,56 @@ mouse = [
 
 # Set global group vars
 group_names = [
-        ("🧁 main", {'layout': 'monadtall'}),
-        ("🏠 home", {'layout': 'monadtall'}),
-        ("💻 sys", {'layout': 'matrix'}),
-        ("👩‍💻 dev", {'layout': 'monadtall'}),
-        ("📋 prod", {'layout': 'monadtall'}),
-        ("🌐 www", {'layout': 'monadtall'}),
-        ("📫 mail", {'layout': 'monadtall'}),
-        ("📁 docs", {'layout': 'monadtall'}),
-        ("💬 chat", {'layout': 'monadtall'}),
-        ("🎵 media", {'layout': 'monadtall'}),
+    ("main", {
+        'label': "🧁 main",
+        'layout': 'monadtall',
+        }
+     ),
+    ("household", {
+        'label': "🏠 moore",
+        'layout': 'monadtall',
+        }
+    ),
+    ("system", {
+        'label': "💻 sys",
+        'layout': 'matrix',
+        }
+    ),
+    ("development", {
+        'label': "👩‍💻 dev",
+        'layout': 'monadtall',
+        }
+    ),
+    ("productivity", {
+        'label': "📋 prod",
+        'layout': 'monadtall',
+        }
+    ),
+    ("internet", {
+        'label': "🌐 www",
+        'layout': 'monadtall'
+        }
+    ),
+    ("email", {
+        'label': "📫 mail",
+        'layout': 'monadtall'
+        }
+    ),
+    ("filesystem", {
+        'label': "📁 file",
+        'layout': 'monadtall'
+        }
+    ),
+    ("social", {
+        'label': "💬 chat",
+        'layout': 'monadtall'
+        }
+    ),
+    ("media", {
+        'label': "🎵 media",
+        'layout': 'monadtall'
+        }
+    ),
 ]
 
 # Map keybindings
