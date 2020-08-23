@@ -81,6 +81,7 @@ fairyfloss = [
     ["#8077A8", "#8077A8"], # 13
     ["#C2FFFF", "#C2FFFF"], # 14
     ["#F8F8F0", "#F8F8F0"], # 15
+    ["#5A5475", "#5A5475"], # Background: 5A5475
 ]
 
 # Set global widget vars
@@ -113,15 +114,15 @@ layouts = [
     layout.Tile(shift_windows=True, **layout_theme),
     #layout.Stack(num_stacks=2),
     layout.TreeTab(
-         font = "Ubuntu",
-         fontsize = 10,
-         sections = ["FIRST", "SECOND"],
-         section_fontsize = 11,
-         bg_color = "141414",
-         active_bg = "90C435",
-         active_fg = "000000",
-         inactive_bg = "384323",
-         inactive_fg = "a0a0a0",
+         font = "Raleway",
+         fontsize = 12,
+         sections = ["1", "2", "3", "4", "5"],
+         section_fontsize = 14,
+         bg_color = "42395D",
+         active_bg = "FFB8D1",
+         active_fg = "42395D",
+         inactive_bg = "8077A8",
+         inactive_fg = "C2FFDF",
          padding_y = 5,
          section_top = 10,
          panel_width = 320
