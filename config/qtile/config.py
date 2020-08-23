@@ -341,13 +341,13 @@ def set_widgets():
         ),
         sep,
         widget.GroupBox(
-            active = fairyfloss[6], # Active window font color
+            active = fairyfloss[10], # Active window font color
             highlight_method = "block",
             inactive = fairyfloss[0], # Inactive window font color
-            other_current_screen_border = fairyfloss[0],
-            other_screen_border = fairyfloss[0],
-            this_current_screen_border = fairyfloss[4],
-            this_screen_border = fairyfloss[5],
+            other_current_screen_border = fairyfloss[9],
+            other_screen_border = fairyfloss[9],
+            this_current_screen_border = fairyfloss[15], # Active and focused
+            this_screen_border = fairyfloss[9],
         ),
         sep,
         widget.Spacer(length=bar.STRETCH),
