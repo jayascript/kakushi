@@ -58,7 +58,12 @@ from screeninfo import get_monitors
 mod = "mod4"
 term = guess_terminal()
 home = os.path.expanduser('~')
+num_screens = len(get_monitors())
 
+# Run scripts on login
+lazy.spawn(home + "/.scripts/rate.sh")
+
+# Set global colorscheme
 fairyfloss = [
     ["#42395D", "#42395D"], # 0
     ["#A8757B", "#A8757B"], # 1
@@ -78,8 +83,73 @@ fairyfloss = [
     ["#F8F8F0", "#F8F8F0"], # 15
 ]
 
-# Run scripts on login
-lazy.spawn(home + "/.scripts/rate.sh")
+# Set global widget vars
+widget_defaults = dict(
+    font = 'raleway',
+    fontsize = 15,
+    foreground = fairyfloss[0],
+    padding = 3,
+)
+extension_defaults = widget_defaults.copy()
+
+# Set global layout vars
+layout_theme = {"border_width": 3,
+                "margin": 10,
+                "border_focus": "FFB8D1",
+                "border_normal": "42395D"
+                }
+
+layouts = [
+    #layout.MonadWide(**layout_theme),
+    #layout.Bsp(**layout_theme),
+    #layout.Stack(stacks=2, **layout_theme),
+    #layout.Columns(**layout_theme),
+    #layout.RatioTile(**layout_theme),
+    #layout.VerticalTile(**layout_theme),
+    #layout.Zoomy(**layout_theme),
+    layout.Matrix(**layout_theme),
+    layout.MonadTall(**layout_theme),
+    layout.Max(**layout_theme),
+    layout.Tile(shift_windows=True, **layout_theme),
+    #layout.Stack(num_stacks=2),
+    layout.TreeTab(
+         font = "Ubuntu",
+         fontsize = 10,
+         sections = ["FIRST", "SECOND"],
+         section_fontsize = 11,
+         bg_color = "141414",
+         active_bg = "90C435",
+         active_fg = "000000",
+         inactive_bg = "384323",
+         inactive_fg = "a0a0a0",
+         padding_y = 5,
+         section_top = 10,
+         panel_width = 320
+         ),
+    #layout.Floating(**layout_theme)
+]
+
+# Drag floating layouts
+mouse = [
+    Drag([mod], "Button1", lazy.window.set_position_floating(),
+         start=lazy.window.get_position()),
+    Drag([mod], "Button3", lazy.window.set_size_floating(),
+         start=lazy.window.get_size()),
+    Click([mod], "Button2", lazy.window.bring_to_front())
+]
+
+# Set global group vars
+group_names = [
+        ("MAIN", {'layout': 'monadtall'}),
+        ("SYS", {'layout': 'matrix'}),
+        ("DEV", {'layout': 'monadtall'}),
+        ("PROD", {'layout': 'monadtall'}),
+        ("WWW", {'layout': 'monadtall'}),
+        ("MAIL", {'layout': 'monadtall'}),
+        ("DOC", {'layout': 'monadtall'}),
+        ("ENT", {'layout': 'monadtall'}),
+        ("CHAT", {'layout': 'monadtall'}),
+]
 
 # Map keybindings
 keys = [
@@ -243,79 +313,16 @@ keys = [
     ),
 ]
 
-# groups = [Group(i) for i in "asdfuiop"]
-# New group definition from Derek Taylor (@DistroTube)
-def name_groups():
-    return [
-        ("MAIN", {'layout': 'monadtall'}),
-        ("SYS", {'layout': 'matrix'}),
-        ("DEV", {'layout': 'monadtall'}),
-        ("PROD", {'layout': 'monadtall'}),
-        ("WWW", {'layout': 'monadtall'}),
-        ("MAIL", {'layout': 'monadtall'}),
-        ("DOC", {'layout': 'monadtall'}),
-        ("ENT", {'layout': 'monadtall'}),
-        ("CHAT", {'layout': 'monadtall'}),
-    ]
-
-def init_groups():
-    return [Group(name, **kwargs) for name, kwargs in group_names]
-
-if __name__ in ["config", "__main__"]:
-    group_names = name_groups()
-    groups = init_groups()
-
 for i, (name, kwargs) in enumerate(group_names, 1):
     # Switch to another group
     keys.append(Key([mod], str(i), lazy.group[name].toscreen()))
     # Send current window to another group
     keys.append(Key([mod, "shift"], str(i), lazy.window.togroup(name)))
 
-# Layout definition from Derek Taylor (@DistroTube)
-layout_theme = {"border_width": 3,
-                "margin": 10,
-                "border_focus": "FFB8D1",
-                "border_normal": "42395D"
-                }
 
-layouts = [
-    #layout.MonadWide(**layout_theme),
-    #layout.Bsp(**layout_theme),
-    #layout.Stack(stacks=2, **layout_theme),
-    #layout.Columns(**layout_theme),
-    #layout.RatioTile(**layout_theme),
-    #layout.VerticalTile(**layout_theme),
-    #layout.Zoomy(**layout_theme),
-    layout.Matrix(**layout_theme),
-    layout.MonadTall(**layout_theme),
-    layout.Max(**layout_theme),
-    layout.Tile(shift_windows=True, **layout_theme),
-    #layout.Stack(num_stacks=2),
-    layout.TreeTab(
-         font = "Ubuntu",
-         fontsize = 10,
-         sections = ["FIRST", "SECOND"],
-         section_fontsize = 11,
-         bg_color = "141414",
-         active_bg = "90C435",
-         active_fg = "000000",
-         inactive_bg = "384323",
-         inactive_fg = "a0a0a0",
-         padding_y = 5,
-         section_top = 10,
-         panel_width = 320
-         ),
-    #layout.Floating(**layout_theme)
-]
+def init_groups():
+    return [Group(name, **kwargs) for name, kwargs in group_names]
 
-
-widget_defaults = dict(
-    font = 'raleway',
-    fontsize = 15,
-    foreground = fairyfloss[0],
-    padding = 3,
-)
-extension_defaults = widget_defaults.copy()
 
 def set_widgets():
     sep = widget.Sep(
@@ -362,27 +369,20 @@ def set_widgets():
     ]
     return widgets
 
-# Multiple monitors
-num_screens = len(get_monitors())
 
-if num_screens == 2:
-    screens = [
-        Screen(bottom=bar.Bar(set_widgets(), 30, background=fairyfloss[9])),
-        Screen(bottom=bar.Bar(set_widgets(), 30, background=fairyfloss[9])),
-    ]
-else:
-    screens = [
-        Screen(bottom=bar.Bar(set_widgets(), 30, background=fairyfloss[9]))
-    ]
+if __name__ in ["config", "__main__"]:
+    groups = init_groups()
 
-# Drag floating layouts.
-mouse = [
-    Drag([mod], "Button1", lazy.window.set_position_floating(),
-         start=lazy.window.get_position()),
-    Drag([mod], "Button3", lazy.window.set_size_floating(),
-         start=lazy.window.get_size()),
-    Click([mod], "Button2", lazy.window.bring_to_front())
-]
+    if num_screens == 2:
+        screens = [
+            Screen(bottom=bar.Bar(set_widgets(), 30, background=fairyfloss[9])),
+            Screen(bottom=bar.Bar(set_widgets(), 30, background=fairyfloss[9])),
+        ]
+    else:
+        screens = [
+            Screen(bottom=bar.Bar(set_widgets(), 30, background=fairyfloss[9]))
+        ]
+
 
 dgroups_key_binder = None
 dgroups_app_rules = []  # type: List
