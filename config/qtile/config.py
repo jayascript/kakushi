@@ -140,15 +140,15 @@ mouse = [
 
 # Set global group vars
 group_names = [
-        ("MAIN", {'layout': 'monadtall'}),
-        ("SYS", {'layout': 'matrix'}),
-        ("DEV", {'layout': 'monadtall'}),
-        ("PROD", {'layout': 'monadtall'}),
-        ("WWW", {'layout': 'monadtall'}),
-        ("MAIL", {'layout': 'monadtall'}),
-        ("DOC", {'layout': 'monadtall'}),
-        ("ENT", {'layout': 'monadtall'}),
-        ("CHAT", {'layout': 'monadtall'}),
+        ("🏠 main", {'layout': 'monadtall'}),
+        ("💻 sys", {'layout': 'matrix'}),
+        ("👩‍💻 dev", {'layout': 'monadtall'}),
+        ("📋 prod", {'layout': 'monadtall'}),
+        ("🌐 www", {'layout': 'monadtall'}),
+        ("📫 mail", {'layout': 'monadtall'}),
+        ("📁 docs", {'layout': 'monadtall'}),
+        ("💬 chat", {'layout': 'monadtall'}),
+        ("🎵 media", {'layout': 'monadtall'}),
 ]
 
 # Map keybindings
