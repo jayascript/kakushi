@@ -141,7 +141,8 @@ mouse = [
 
 # Set global group vars
 group_names = [
-        ("🏠 main", {'layout': 'monadtall'}),
+        ("🧁 main", {'layout': 'monadtall'}),
+        ("🏠 home", {'layout': 'monadtall'}),
         ("💻 sys", {'layout': 'matrix'}),
         ("👩‍💻 dev", {'layout': 'monadtall'}),
         ("📋 prod", {'layout': 'monadtall'}),
@@ -314,7 +315,7 @@ keys = [
     ),
 ]
 
-for i, (name, kwargs) in enumerate(group_names, 1):
+for i, (name, kwargs) in enumerate(group_names, 0):
     # Switch to another group
     keys.append(Key([mod], str(i), lazy.group[name].toscreen()))
     # Send current window to another group
@@ -342,7 +343,7 @@ def set_widgets():
         widget.GroupBox(
             active = fairyfloss[6], # Active window font color
             highlight_method = "block",
-            inactive = fairyfloss[1], # Inactive window font color
+            inactive = fairyfloss[0], # Inactive window font color
             other_current_screen_border = fairyfloss[0],
             other_screen_border = fairyfloss[0],
             this_current_screen_border = fairyfloss[4],
