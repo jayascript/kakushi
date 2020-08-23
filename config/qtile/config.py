@@ -65,36 +65,163 @@ lazy.spawn(home + "/.scripts/rate.sh")
 # Map keybindings
 keys = [
     # Logout and restart
-    Key([mod, "control"], "r",  lazy.restart(),     desc="Restart qtile"),
-    Key([mod, "control"], "q",  lazy.shutdown(),    desc="Log out of session"),
+    Key(
+        [mod, "control"], "r",
+        lazy.restart(),
+        desc="Refresh Qtile"
+    ),
+    Key(
+        [mod, "shift"], "q",
+        lazy.shutdown(),
+        desc="Log out of session"
+    ),
+    Key(
+        ["shift", "mod1"], "q",
+        lazy.shutdown(),
+        desc="From tych0: logout keybinding in case mod4 gets hosed"
+    ),
 
-    # From tych0: Note that this doesn't use mod: that's intentional in case
-    # mod gets hosed (which happens if you unplug and replug your usb keyboard
-    # sometimes, or on ubuntu upgrades). This way you can still log back out
-    # and in gracefully.
-    Key(["shift", "mod1"], "q", lazy.shutdown()),
+    # Spawn and kill
+    Key(
+        [mod], "Return",
+        lazy.spawn(term),
+        desc="Launch terminal"
+    ),
+    Key(
+        [mod], "d",
+        lazy.spawn(home + "/.scripts/rofi.sh"),
+        desc="Run a program using rofi"
+    ),
+    Key(
+        [mod, "shift"], "x",
+        lazy.spawn(home + "/.scripts/lock.sh"),
+        desc="Lock the screen"
+    ),
+    Key(
+        [mod], "q",
+        lazy.window.kill(),
+        desc="Kill focused window"
+    ),
 
-    # Spawn terminal
-    Key([mod], "Return",        lazy.spawn(term),   desc="Launch terminal"),
+    # Change layout
+    Key(
+        [mod], "Tab",
+        lazy.next_layout(),
+        desc="Toggle layouts"
+    ),
+    Key(
+        [mod, "shift"], "space",
+        lazy.layout.rotate(),
+        lazy.layout.flip(),
+        desc="Switch which side main pane occupies monadtall"
+    ),
 
-    # Switch between windows in current stack
-    Key([mod], "l",             lazy.layout.down()),
-    Key([mod], "h",             lazy.layout.up()),
+    # Focus monitors
+    Key(
+        [mod], "p",
+        lazy.to_screen(0),
+        desc="Switch focus to output primary (monitor 1)"
+    ),
+    Key(
+        [mod], "s",
+        lazy.to_screen(1),
+        desc="Switch focus to output secondary (monitor 2)"
+    ),
 
-    # Move windows up or down in current stack
-    Key([mod, "shift"], "l",    lazy.layout.shuffle_down()),
-    Key([mod, "shift"], "h",    lazy.layout.shuffle_up()),
+    # Focus windows
+    Key(
+        [mod], "k",
+        lazy.layout.down(),
+        desc="Move focus down in current stack pane"
+    ),
+    Key(
+        [mod], "j",
+        lazy.layout.up(),
+        desc="Move focus up in current stack pane"
+    ),
+    Key(
+        [mod], "space",
+        lazy.layout.next(),
+        desc="Switch window focus to other pane(s) of stack"
+    ),
 
-    # Toggle between different layouts as defined below
-    Key([mod], "Tab",           lazy.next_layout(), desc="Toggle layouts"),
-    Key([mod], "q",             lazy.window.kill(), desc="Kill focused window"),
+    # Move windows
+    Key(
+        [mod, "shift"], "k",
+        lazy.layout.shuffle_down(),
+        lazy.layout.section_down(), # treetab
+        desc="""Move window down in current stack;
+                move window down a section in treetab"""
+    ),
+    Key(
+        [mod, "shift"], "j",
+        lazy.layout.shuffle_up(),
+        lazy.layout.section_up(), # treetab
+        desc="""Move window up in current stack;
+                move window up a section in treetab"""
+    ),
 
-    Key([mod, "control"], "l", lazy.to_screen(0)),
-    Key([mod, "control"], "h", lazy.to_screen(1)),
+    # Resize windows
+    Key(
+        [mod], "f",
+        lazy.window.toggle_fullscreen(),
+        desc="Toggle fullscreen"
+    ),
+    Key(
+        [mod], "l",
+        lazy.layout.grow(),
+        lazy.layout.increase_nmaster(),
+        desc="""Expand window (monadtall);
+                increase number in master pane (tile)"""
+    ),
+    Key(
+        [mod], "h",
+        lazy.layout.shrink(),
+        lazy.layout.decrease_nmaster(),
+        desc="""Shrink window (monadtall);
+                decrease number in master pane (tile)"""
+    ),
+    Key(
+        [mod], "m",
+        lazy.layout.maximize()
+    ),
+    Key(
+        [mod], "n",
+        lazy.layout.normalize(),
+        desc="Reset window size ratios"
+    ),
 
-    # Run scripts
-    Key([mod], "d", lazy.spawn(home + "/.scripts/rofi.sh"), desc="Run a program using rofi"),
-    Key([mod, "shift"], "x", lazy.spawn(home + "/.scripts/lock.sh")),
+    # Launch terminal apps (SUPER + ALT + KEY)
+    Key(
+        [mod, "mod1"], "b",
+        lazy.spawn(term + " -e bpytop"),
+        desc="Launch bpytop"
+    ),
+    Key(
+        [mod, "mod1"], "c",
+        lazy.spawn(term + " -e calcurse"),
+        desc="Launch calcurse"
+    ),
+    Key(
+        [mod, "mod1"], "l",
+        lazy.spawn(term + " -e lynx"),
+        desc="Launch lynx terminal browser"
+    ),
+    Key(
+        [mod, "mod1"], "n",
+        lazy.spawn(term + " -e newsboat"),
+        desc="Launch newsboat"
+    ),
+    Key(
+        [mod, "mod1"], "t",
+        lazy.spawn("/opt/tor-browser_en-US/Browser/start-tor-browser"),
+        desc="Launch Tor browser"
+    ),
+    Key(
+        [mod, "mod1"], "v",
+        lazy.spawn(term + " -e vifm"),
+        desc="Launch Vi[m] File Manager"
+    ),
 ]
 
 # groups = [Group(i) for i in "asdfuiop"]
