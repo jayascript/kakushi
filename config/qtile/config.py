@@ -48,7 +48,7 @@ import os
 from typing import List  # noqa: F401
 
 from libqtile import bar, layout, widget
-from libqtile.config import Click, Drag, Group, Key, Screen
+from libqtile.config import Click, Drag, Group, Key, Screen, Match
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 
@@ -60,7 +60,7 @@ term = guess_terminal()
 home = os.path.expanduser('~')
 num_screens = len(get_monitors())
 
-# Run scripts on login
+# Run on login
 lazy.spawn(home + "/.scripts/rate.sh")
 
 # Set global colorscheme
@@ -144,6 +144,9 @@ group_names = [
     ("main", {
         'label': "🧁 main",
         'layout': 'monadtall',
+        'matches': [
+            Match(wm_class=['keepassxc'])
+        ]
         }
      ),
     ("household", {
@@ -164,31 +167,50 @@ group_names = [
     ("productivity", {
         'label': "📋 prod",
         'layout': 'monadtall',
+        'matches': [
+            Match(wm_class=['Gnome-pomodoro'])
+        ]
         }
     ),
     ("internet", {
         'label': "🌐 www",
-        'layout': 'monadtall'
+        'layout': 'monadtall',
+        'matches': [
+            Match(wm_class=['Firefox', 'Brave-browser',
+                            'Tor Browser', 'Pale moon'])
+        ]
         }
     ),
     ("email", {
         'label': "📫 mail",
-        'layout': 'monadtall'
+        'layout': 'monadtall',
+        'matches': [
+            Match(wm_class=['Thunderbird', 'ProtonMail Bridge'])
+        ]
         }
     ),
     ("filesystem", {
         'label': "📁 file",
-        'layout': 'monadtall'
+        'layout': 'monadtall',
+        'matches': [
+            Match(wm_class=['Org.gnome.Nautilus', 'Nextcloud'])
+        ]
         }
     ),
     ("social", {
         'label': "💬 chat",
-        'layout': 'monadtall'
+        'layout': 'monadtall',
+        'matches': [
+            Match(wm_class=['Wire', 'Slack', 'discord'])
+        ]
         }
     ),
     ("media", {
         'label': "🎵 media",
-        'layout': 'monadtall'
+        'layout': 'monadtall',
+        'matches': [
+            Match(wm_class=['vlc'])
+        ]
         }
     ),
 ]
