@@ -76,6 +76,8 @@ map <C-l> <C-w>l
 " File type settings
 autocmd BufRead,BufNewFile /tmp/calcurse*,~/.calcurse/notes/* set filetype=markdown
 autocmd BufWritePre * %s/\s\+$//e " Automatically delete all trailing whitespace on save.
+autocmd BufRead,BufNewFile *.md set spell spelllang=en_us
+autocmd BufRead,BufNewFile *.tex set spell spelllang=en_us
 
 " Miguel Grinberg's configs
 " https://gist.github.com/miguelgrinberg/527bb5a400791f89b3c4da4bd61222e4
