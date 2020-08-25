@@ -25,6 +25,7 @@ set number relativenumber " Show scrolling line nums
 call plug#begin('~/.config/nvim/plugged')
 
 " Declare the list of plugins.
+Plug 'lervag/vimtex'
 Plug 'majutsushi/tagbar'
 Plug 'preservim/nerdtree'
 Plug 'tpope/vim-fugitive'
@@ -34,7 +35,6 @@ Plug 'norcalli/nvim-colorizer.lua'
 Plug 'hynek/vim-python-pep8-indent'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
-Plug 'xuhdev/vim-latex-live-preview', {'for': 'tex'}
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
@@ -53,11 +53,6 @@ lua require'colorizer'.setup()
 let g:python_highlight_all = 1
 let g:Hexokinase_highlighters = ['foregroundfull']
 
-" vim-latex-live-preview config
-let g:livepreview_previewer = 'evince'
-let g:livepreview_engine = 'xelatex'
-map <Leader>p :LLPStartPreview<CR>
-
 " toggle panes
 map <Leader>n :NERDTreeToggle<CR>
 nmap <Leader>t :TagbarToggle<CR>
@@ -74,6 +69,7 @@ map <C-k> <C-w>k
 map <C-l> <C-w>l
 
 " File type settings
+let g:tex_flavor='latex'
 autocmd BufRead,BufNewFile /tmp/calcurse*,~/.calcurse/notes/* set filetype=markdown
 autocmd BufWritePre * %s/\s\+$//e " Automatically delete all trailing whitespace on save.
 autocmd BufRead,BufNewFile *.md set spell spelllang=en_us
