@@ -62,6 +62,7 @@ num_screens = len(get_monitors())
 
 # Run on login
 lazy.spawn(home + "/.scripts/rate.sh")
+lazy.spawn(home + "/.scripts/monitor_setup.sh")
 
 # Set global colorscheme
 fairyfloss = [
