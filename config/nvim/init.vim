@@ -75,6 +75,18 @@ autocmd BufWritePre * %s/\s\+$//e " Automatically delete all trailing whitespace
 autocmd BufRead,BufNewFile *.md set spell spelllang=en_us
 autocmd BufRead,BufNewFile *.tex set spell spelllang=en_us
 
+" LaTeX and vimtex settings
+let g:vimtex_compiler_latexmk = {
+    \ 'options' : [
+    \   '-pdf',
+    \   '-shell-escape',
+    \   '-verbose',
+    \   '-file-line-error',
+    \   '-synctex=1',
+    \   '-interaction=nonstopmode',
+    \ ],
+    \}
+
 " Miguel Grinberg's configs
 " https://gist.github.com/miguelgrinberg/527bb5a400791f89b3c4da4bd61222e4
 " indent/unindent with tab/shift-tab
