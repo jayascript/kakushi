@@ -2,7 +2,7 @@
 	excludesfile = /home/jayascript/.gitignore_global
 [user]
 	name = Jayascript
-	email = 39142547+jayascript@users.noreply.github.com
+	email = 6750308-jayascript@users.noreply.gitlab.com
 [alias]
 	begin = log --oneline -5
 	st = status
