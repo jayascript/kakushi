@@ -5,3 +5,4 @@
 /home/jayascript/miniconda3/envs/cse6242
 /home/jayascript/miniconda3/envs/django
 /home/jayascript/miniconda3/envs/wagtail
+/home/jayascript/miniconda3/envs/stopthesteal
