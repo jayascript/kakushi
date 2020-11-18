@@ -376,6 +376,11 @@ keys = [
         lazy.spawn(term + " -e vifm"),
         desc="Launch Vi[m] File Manager"
     ),
+    Key(
+        [mod, "mod1"], "w",
+        lazy.spawn(home + "/apps/waterfox/waterfox"),
+        desc="Launch Waterfox browser"
+    ),
 ]
 
 for i, (name, kwargs) in enumerate(group_names, 0):
@@ -427,7 +432,7 @@ def set_widgets():
             default_text = "[ Logout ]",
         ),
         widget.Wallpaper(
-            directory = home + '/Pictures/Wallpapers/kawaii',
+            directory = home + '/Media/Pictures/Wallpapers/kawaii',
             random_selection = True,
             fmt = "",
         )
