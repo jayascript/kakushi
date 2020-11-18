@@ -34,6 +34,7 @@ Plug 'jmcantrell/vim-virtualenv'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'hynek/vim-python-pep8-indent'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 
 " List ends here. Plugins become visible to Vim after this call.
@@ -93,3 +94,6 @@ let g:vimtex_compiler_latexmk = {
 nmap <Tab> >>
 imap <S-Tab> <Esc><<i
 nmap <S-Tab> <<
+
+" coc.nvim settings
+let g:coc_node_path = '/usr/bin/node'
