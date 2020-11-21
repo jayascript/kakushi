@@ -256,6 +256,11 @@ keys = [
         lazy.window.kill(),
         desc="Kill focused window"
     ),
+    Key(
+        [mod, "shift"], "p",
+        lazy.spawn(home + "/.scripts/passmenu.sh"),
+        desc="Launch passmenu"
+    ),
 
     # Change layout
     Key(
