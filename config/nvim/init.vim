@@ -26,6 +26,7 @@ call plug#begin('~/.config/nvim/plugged')
 
 " Declare the list of plugins.
 Plug 'lervag/vimtex'
+Plug 'chrisbra/csv.vim'
 Plug 'majutsushi/tagbar'
 Plug 'preservim/nerdtree'
 Plug 'tpope/vim-fugitive'
