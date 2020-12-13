@@ -10,7 +10,7 @@ config/gtk-3.0/bookmarks
 newsboat/queue
 vim/.netrwhist
 vim/plugged
-vifminfo
+vifm/vifminfo
 config/nvim/plugged
 .swp
 nvim/plugged
