@@ -50,13 +50,12 @@ from typing import List  # noqa: F401
 from libqtile import bar, layout, widget
 from libqtile.config import Click, Drag, Group, Key, Screen, Match
 from libqtile.lazy import lazy
-from libqtile.utils import guess_terminal
 
 from screeninfo import get_monitors
 
 # Set global vars
 mod = "mod4"
-term = guess_terminal()
+term = "alacritty"
 home = os.path.expanduser('~')
 num_screens = len(get_monitors())
 
