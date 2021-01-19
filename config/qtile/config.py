@@ -48,7 +48,7 @@ import os
 from typing import List  # noqa: F401
 
 from libqtile import bar, layout, widget
-from libqtile.config import Click, Drag, Group, Key, Screen, Match
+from libqtile.config import Click, Drag, Group, Key, KeyChord, Screen, Match
 from libqtile.lazy import lazy
 
 from screeninfo import get_monitors
@@ -176,8 +176,15 @@ group_names = [
         'label': "🌐 www",
         'layout': 'monadtall',
         'matches': [
-            Match(wm_class=['Firefox', 'Brave-browser',
-                            'Tor Browser', 'Pale moon'])
+            Match(wm_class=['Brave-browser',
+                            'Chromium',
+                            'Firefox',
+                            'LibreWolf',
+                            'Pale moon',
+                            'qutebrowser',
+                            'Tor Browser',
+                            ]
+                  )
         ]
         }
     ),
@@ -209,7 +216,7 @@ group_names = [
         'label': "🎵 media",
         'layout': 'monadtall',
         'matches': [
-            Match(wm_class=['vlc'])
+            Match(wm_class=['vlc', 'FreeTube'])
         ]
         }
     ),
@@ -361,35 +368,27 @@ keys = [
         desc="Launch calcurse"
     ),
     Key(
-        [mod, "mod1"], "l",
-        lazy.spawn(term + " -e lynx"),
-        desc="Launch lynx terminal browser"
-    ),
-    Key(
         [mod, "mod1"], "n",
         lazy.spawn(term + " -e newsboat"),
         desc="Launch newsboat"
-    ),
-    Key(
-        [mod, "mod1"], "t",
-        lazy.spawn("/opt/tor-browser_en-US/Browser/start-tor-browser"),
-        desc="Launch Tor browser"
     ),
     Key(
         [mod, "mod1"], "v",
         lazy.spawn(term + " -e vifm"),
         desc="Launch Vi[m] File Manager"
     ),
-    Key(
-        [mod, "mod1"], "w",
-        lazy.spawn(home + "/apps/waterfox/waterfox"),
-        desc="Launch Waterfox browser"
-    ),
-    Key(
-        [mod, "mod1"], "i",
-        lazy.spawn(home + "/apps/LibreWolf-84.0.2-1.x86_64.AppImage"),
-        desc="Launche LibreWolf browser"
-    ),
+    # Launch browser mode
+    KeyChord([mod], "b", [
+        Key([], "b", lazy.spawn("brave-browser")),
+        Key([], "c", lazy.spawn("chromium")),
+        Key([], "f", lazy.spawn("firefox")),
+        Key([], "i", lazy.spawn(home + "/apps/LibreWolf-84.0.2-1.x86_64.AppImage")),
+        Key([], "l", lazy.spawn(term + " -e lynx")),
+        Key([], "p", lazy.spawn("palemoon")),
+        Key([], "q", lazy.spawn("qutebrowser")),
+        Key([], "t", lazy.spawn("/opt/tor-browser_en-US/Browser/start-tor-browser")),
+    ], mode="Browsers: (b) brave; (c) chromium; (f) firefox; (i) librewolf; " \
+            "(l) lynx; (p) palemoon; (q) qutebrowser; (t) tor;")
 ]
 
 for i, (name, kwargs) in enumerate(group_names, 0):
@@ -411,12 +410,18 @@ def set_widgets():
     widgets = [
         widget.CurrentLayoutIcon(
             foreground = fairyfloss[0],
+            padding=5,
         ),
         widget.CurrentLayout(
-            fmt = "《{}》",
+            fmt = "{}",
             foreground = fairyfloss[0],
+            padding=5,
         ),
-        sep,
+        widget.Chord(
+            fmt = "{}",
+            foreground = fairyfloss[0],
+            padding=5,
+        ),
         widget.GroupBox(
             active = fairyfloss[10], # Active window font color
             highlight_method = "block",
