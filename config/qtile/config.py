@@ -385,6 +385,11 @@ keys = [
         lazy.spawn(home + "/apps/waterfox/waterfox"),
         desc="Launch Waterfox browser"
     ),
+    Key(
+        [mod, "mod1"], "i",
+        lazy.spawn(home + "/apps/LibreWolf-84.0.2-1.x86_64.AppImage"),
+        desc="Launche LibreWolf browser"
+    ),
 ]
 
 for i, (name, kwargs) in enumerate(group_names, 0):
