@@ -12,7 +12,7 @@
 ##########################################################
 
 # A customized config.py file for Qtile (https://www.qtile.org)
-# Modified by jayascript (https://jayascript.xyz)
+# Modified by Jaya Z. Moore (https://jayascript.xyz)
 
 # The following comments are the copyright and licensing information from the
 # default config:
@@ -43,7 +43,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-import os
+import os, subprocess
 
 from typing import List  # noqa: F401
 
@@ -58,6 +58,9 @@ mod = "mod4"
 term = "alacritty"
 home = os.path.expanduser('~')
 num_screens = len(get_monitors())
+sink = int(subprocess.check_output(
+            "pactl list sinks | head -1 | grep -oh [0-9]*",
+            shell = True).decode().strip())
 
 # Run on login
 lazy.spawn(home + "/.scripts/rate.sh")
@@ -232,6 +235,22 @@ def playnext(qtile):
 def playprev(qtile):
     qtile.cmd_spawn("playerctl previous")
 
+def stopplay(qtile):
+    qtile.cmd_spawn("playerctl stop")
+
+# pactl media control functions
+def volumeup(qtile, sink=sink):
+    qtile.cmd_spawn(f"pactl set-sink-volume {sink} +5%")
+
+def volumedown(qtile, sink=sink):
+    qtile.cmd_spawn(f"pactl set-sink-volume {sink} -5%")
+
+def mutevolume(qtile, sink=sink):
+    qtile.cmd_spawn(f"pactl set-sink-mute {sink} toggle")
+
+def mutemic(qtile, sink=sink):
+    qtile.cmd_spawn(f"pactl set-source-mute {sink} toggle")
+
 # Map keybindings
 keys = [
     # Logout and restart
@@ -401,7 +420,7 @@ keys = [
     ], mode="Browsers: (b) brave; (c) chromium; (f) firefox; (i) librewolf; " \
             "(l) lynx; (p) palemoon; (q) qutebrowser; (t) tor;"),
 
-    # Media player
+    # playerctl controls
     Key(
         [], "XF86AudioPlay",
         lazy.function(playpause),
@@ -414,7 +433,28 @@ keys = [
         [], "XF86AudioPrev",
         lazy.function(playprev),
     ),
+    Key(
+        [], "XF86AudioStop",
+        lazy.function(stopplay),
+    ),
 
+    # pactl controls
+    Key(
+        [], "XF86AudioRaiseVolume",
+        lazy.function(volumeup),
+    ),
+    Key(
+        [], "XF86AudioLowerVolume",
+        lazy.function(volumedown),
+    ),
+    Key(
+        [], "XF86AudioMute",
+        lazy.function(mutevolume),
+    ),
+    Key(
+        [], "XF86AudioMicMute",
+        lazy.function(mutemic),
+    ),
 ]
 
 for i, (name, kwargs) in enumerate(group_names, 0):
