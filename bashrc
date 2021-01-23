@@ -196,3 +196,5 @@ fi
 # Set Unicode formatting
 export LC_CTYPE="en_US.UTF-8"
 
+# keychain
+eval `keychain --eval --agents ssh,gpg id_rsa`
