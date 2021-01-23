@@ -222,8 +222,15 @@ group_names = [
     ),
 ]
 
+# playerctl media control functions
 def playpause(qtile):
-    qtile.cmd_spawn("playerctl -a play-pause")
+    qtile.cmd_spawn("playerctl play-pause")
+
+def playnext(qtile):
+    qtile.cmd_spawn("playerctl next")
+
+def playprev(qtile):
+    qtile.cmd_spawn("playerctl previous")
 
 # Map keybindings
 keys = [
@@ -399,6 +406,15 @@ keys = [
         [], "XF86AudioPlay",
         lazy.function(playpause),
     ),
+    Key(
+        [], "XF86AudioNext",
+        lazy.function(playnext),
+    ),
+    Key(
+        [], "XF86AudioPrev",
+        lazy.function(playprev),
+    ),
+
 ]
 
 for i, (name, kwargs) in enumerate(group_names, 0):
