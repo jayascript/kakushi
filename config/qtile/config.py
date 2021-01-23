@@ -222,6 +222,9 @@ group_names = [
     ),
 ]
 
+def playpause(qtile):
+    qtile.cmd_spawn("playerctl -a play-pause")
+
 # Map keybindings
 keys = [
     # Logout and restart
@@ -377,6 +380,7 @@ keys = [
         lazy.spawn(term + " -e vifm"),
         desc="Launch Vi[m] File Manager"
     ),
+
     # Launch browser mode
     KeyChord([mod], "b", [
         Key([], "b", lazy.spawn("brave-browser")),
@@ -388,7 +392,13 @@ keys = [
         Key([], "q", lazy.spawn("qutebrowser")),
         Key([], "t", lazy.spawn("/opt/tor-browser_en-US/Browser/start-tor-browser")),
     ], mode="Browsers: (b) brave; (c) chromium; (f) firefox; (i) librewolf; " \
-            "(l) lynx; (p) palemoon; (q) qutebrowser; (t) tor;")
+            "(l) lynx; (p) palemoon; (q) qutebrowser; (t) tor;"),
+
+    # Media player
+    Key(
+        [], "XF86AudioPlay",
+        lazy.function(playpause),
+    ),
 ]
 
 for i, (name, kwargs) in enumerate(group_names, 0):
