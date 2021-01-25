@@ -145,38 +145,51 @@ mouse = [
 # Set global group vars
 group_names = [
     ("main", {
-        'label': "🧁 main",
+        'label': "🧁 TOP",
         'layout': 'monadtall',
         'matches': [
             Match(wm_class=['keepassxc'])
+        ],
+        'spawn': [
+            'pavucontrol'
         ]
         }
      ),
     ("household", {
-        'label': "🏠 moore",
+        'label': "🏠 FAM",
         'layout': 'monadtall',
+        'spawn': [
+            'mmex',
+        ]
         }
     ),
     ("system", {
-        'label': "💻 sys",
+        'label': "💻 SYS",
         'layout': 'matrix',
+        'spawn': [
+            'alacritty',
+        ]
         }
     ),
     ("development", {
-        'label': "👩‍💻 dev",
+        'label': "👩‍💻 DEV",
         'layout': 'monadtall',
         }
     ),
     ("productivity", {
-        'label': "📋 prod",
+        'label': "⏲️ CAL",
         'layout': 'monadtall',
         'matches': [
             Match(wm_class=['Gnome-pomodoro'])
+        ],
+        'spawn': [
+            'gnome-pomodoro',
+            'alacritty -e calcurse'
         ]
         }
     ),
     ("internet", {
-        'label': "🌐 www",
+        'label': "🌐 WWW"
         'layout': 'monadtall',
         'matches': [
             Match(wm_class=['Brave-browser',
@@ -188,41 +201,92 @@ group_names = [
                             'Tor Browser',
                             ]
                   )
-        ]
+        ],
+        'spawn': 'brave-browser',
         }
     ),
     ("email", {
-        'label': "📫 mail",
+        'label': "📫 BOX",
         'layout': 'monadtall',
         'matches': [
             Match(wm_class=['Thunderbird', 'ProtonMail Bridge'])
-        ]
+        ],
+        'spawn': [
+            'protonmail-bridge',
+            f'{term} -e neomutt',
+        ],
         }
     ),
     ("filesystem", {
-        'label': "📁 file",
+        'label': "📁 DOC",
         'layout': 'monadtall',
         'matches': [
             Match(wm_class=['Org.gnome.Nautilus', 'Nextcloud'])
+        ],
+        'spawn': [
+            'alacritty -e ranger',
+            'nextcloud'
         ]
         }
     ),
     ("social", {
-        'label': "💬 chat",
+        'label': "💬 SOC",
         'layout': 'monadtall',
         'matches': [
             Match(wm_class=['Wire', 'Slack', 'discord'])
+        ],
+        'spawn': [
+            'wire-desktop',
+            'slack'
         ]
         }
     ),
     ("media", {
-        'label': "🎵 media",
+        'label': "🎵 ENT",
         'layout': 'monadtall',
         'matches': [
             Match(wm_class=['vlc', 'FreeTube'])
+        ],
+        'spawn': [
+            'freetube',
+            'vlc'
         ]
         }
     ),
+]
+
+group_names_fx= [
+    ("news", {
+        'label': "🔥 NEW",
+        'layout': 'monadtall',
+        'spawn': [
+            'alacritty -e newsboat',
+            'alacritty -e castero',
+        ]
+        }
+     ),
+    ("school", {
+        'label': "🎓 UNI",
+        'layout': 'monadtall',
+        'spawn': [
+            'firefox'
+        ]
+        }
+     ),
+    ("writing", {
+        'label': "📝 PEN",
+        'layout': 'monadtall',
+        'spawn': [
+        ]
+        }
+     ),
+    ("japanese", {
+        'label': "🇯🇵 JPN",
+        'layout': 'monadtall',
+        'spawn': [
+        ]
+        }
+     ),
 ]
 
 # playerctl media control functions
@@ -494,9 +558,18 @@ for i, (name, kwargs) in enumerate(group_names, 0):
     # Send current window to another group
     keys.append(Key([mod, "shift"], str(i), lazy.window.togroup(name)))
 
+function_keys = ["F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8"]
+for i, (name, kwargs) in enumerate(group_names_fx, 0):
+    key = function_keys[i]
+    # Switch to another group
+    keys.append(Key([mod], key, lazy.group[name].toscreen()))
+    # Send current window to another group
+    keys.append(Key([mod, "shift"], key, lazy.window.togroup(name)))
 
 def init_groups():
-    return [Group(name, **kwargs) for name, kwargs in group_names]
+    groups = [Group(name, **kwargs) for name, kwargs in group_names]
+    groups_fx = [Group(name, **kwargs) for name, kwargs in group_names_fx]
+    return groups + groups_fx
 
 
 def set_widgets():
