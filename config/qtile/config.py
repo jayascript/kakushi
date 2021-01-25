@@ -159,7 +159,7 @@ group_names = [
         'label': "🏠 FAM",
         'layout': 'monadtall',
         'spawn': [
-            'mmex',
+         #   'mmex',
         ]
         }
     ),
@@ -167,7 +167,7 @@ group_names = [
         'label': "💻 SYS",
         'layout': 'matrix',
         'spawn': [
-            'alacritty',
+            f'{term}',
         ]
         }
     ),
@@ -184,7 +184,7 @@ group_names = [
         ],
         'spawn': [
             'gnome-pomodoro',
-            'alacritty -e calcurse'
+            f'{term} -e calcurse'
         ]
         }
     ),
@@ -223,7 +223,7 @@ group_names = [
             Match(wm_class=['Org.gnome.Nautilus', 'Nextcloud'])
         ],
         'spawn': [
-            'alacritty -e ranger',
+            f'{term} -e ranger',
             'nextcloud'
         ]
         }
@@ -235,8 +235,8 @@ group_names = [
             Match(wm_class=['Wire', 'Slack', 'discord'])
         ],
         'spawn': [
-            'wire-desktop',
-            'slack'
+            #'wire-desktop',
+            #'slack'
         ]
         }
     ),
@@ -247,8 +247,8 @@ group_names = [
             Match(wm_class=['vlc', 'FreeTube'])
         ],
         'spawn': [
-            'freetube',
-            'vlc'
+            #'freetube',
+            #'vlc'
         ]
         }
     ),
@@ -259,8 +259,8 @@ group_names_fx= [
         'label': "🔥 NEW",
         'layout': 'monadtall',
         'spawn': [
-            'alacritty -e newsboat',
-            'alacritty -e castero',
+            f'{term} -e newsboat',
+            f'{term} -e castero',
         ]
         }
      ),
@@ -273,8 +273,8 @@ group_names_fx= [
                             ])
         ],
         'spawn': [
-            'firefox',
-            'anki',
+            #'firefox',
+            #'anki',
         ]
         }
      ),
