@@ -189,12 +189,11 @@ group_names = [
         }
     ),
     ("internet", {
-        'label': "🌐 WWW"
+        'label': "🌐 WWW",
         'layout': 'monadtall',
         'matches': [
             Match(wm_class=['Brave-browser',
                             'Chromium',
-                            'Firefox',
                             'LibreWolf',
                             'Pale moon',
                             'qutebrowser',
@@ -266,25 +265,22 @@ group_names_fx= [
         }
      ),
     ("school", {
-        'label': "🎓 UNI",
+        'label': "🎓 EDU",
         'layout': 'monadtall',
+        'matches': [
+            Match(wm_class=['Firefox',
+                            'Anki'
+                            ])
+        ],
         'spawn': [
-            'firefox'
+            'firefox',
+            'anki',
         ]
         }
      ),
     ("writing", {
         'label': "📝 PEN",
         'layout': 'monadtall',
-        'spawn': [
-        ]
-        }
-     ),
-    ("japanese", {
-        'label': "🇯🇵 JPN",
-        'layout': 'monadtall',
-        'spawn': [
-        ]
         }
      ),
 ]
@@ -567,10 +563,7 @@ for i, (name, kwargs) in enumerate(group_names_fx, 0):
     keys.append(Key([mod, "shift"], key, lazy.window.togroup(name)))
 
 def init_groups():
-    groups = [Group(name, **kwargs) for name, kwargs in group_names]
-    groups_fx = [Group(name, **kwargs) for name, kwargs in group_names_fx]
-    return groups + groups_fx
-
+    return [Group(name, **kwargs) for name, kwargs in group_names] + [Group(name, **kwargs) for name, kwargs in group_names_fx]
 
 def set_widgets():
     sep = widget.Sep(
