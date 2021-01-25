@@ -251,6 +251,19 @@ def mutevolume(qtile, sink=sink):
 def mutemic(qtile, sink=sink):
     qtile.cmd_spawn(f"pactl set-source-mute {sink} toggle")
 
+# light backlight control functions
+def backlightup(qtile):
+    qtile.cmd_spawn("sudo light -A 10")
+
+def backlightup_fine(qtile):
+    qtile.cmd_spawn("sudo light -A 5")
+
+def backlightdown(qtile):
+    qtile.cmd_spawn("sudo light -U 10")
+
+def backlightdown_fine(qtile):
+    qtile.cmd_spawn("sudo light -U 5")
+
 # Map keybindings
 keys = [
     # Logout and restart
@@ -454,6 +467,24 @@ keys = [
     Key(
         [], "XF86AudioMicMute",
         lazy.function(mutemic),
+    ),
+
+    # light controls
+    Key(
+        [], "XF86MonBrightnessUp",
+        lazy.function(backlightup),
+    ),
+    Key(
+        [], "XF86MonBrightnessDown",
+        lazy.function(backlightdown),
+    ),
+    Key(
+        [mod], "XF86MonBrightnessUp",
+        lazy.function(backlightup_fine),
+    ),
+    Key(
+        [mod], "XF86MonBrightnessDown",
+        lazy.function(backlightdown_fine),
     ),
 ]
 
