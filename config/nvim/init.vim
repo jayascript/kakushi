@@ -27,9 +27,11 @@ call plug#begin('~/.config/nvim/plugged')
 " Declare the list of plugins.
 Plug 'lervag/vimtex'
 Plug 'chrisbra/csv.vim'
+Plug 'junegunn/goyo.vim'
 Plug 'majutsushi/tagbar'
 Plug 'preservim/nerdtree'
 Plug 'tpope/vim-fugitive'
+Plug 'junegunn/limelight.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'jmcantrell/vim-virtualenv'
 Plug 'norcalli/nvim-colorizer.lua'
@@ -109,3 +111,51 @@ inoremap <silent><expr> <Tab>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<Tab>" :
       \ coc#refresh()
+
+" Casey Houser's config
+" https://www.maketecheasier.com/turn-vim-word-processor/
+func! WordProcessor()
+    " movement changes
+    map j gj
+    map k gk
+    " formatting text
+    setlocal formatoptions=1
+    setlocal noexpandtab
+    setlocal wrap
+    setlocal linebreak
+    " spelling and thesaurus
+    setlocal spelllang=en_us
+    set thesaurus+=/home/jayascript/.config/nvim/thesaurus/mthesaur.txt
+endfu
+com! WP call WordProcessor()
+
+" Goyo and Limelight config
+func! s:goyo_enter()
+    set noshowmode
+    set noshowcmd
+    set scrolloff=999
+    Limelight
+    let b:quitting=0
+    let b:quitting_bang=0
+    autocmd QuitPre <buffer> let b:quitting=1
+    cabbrev <buffer> q! let b:quitting_bang=1 <bar> q!
+    call WordProcessor()
+endfunction
+
+func! s:goyo_leave()
+    set showmode
+    set showcmd
+    set scrolloff=5
+    Limelight!
+    " Quit Vim if this is the only remaining buffer
+    if b:quitting && len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))==1
+        if b:quitting_bang
+            qa!
+        else
+            qa
+        endif
+    endif
+endfunction
+
+autocmd! User GoyoEnter call <SID>goyo_enter()
+autocmd! User GoyoLeave call <SID>goyo_leave()
