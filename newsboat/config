@@ -1,8 +1,7 @@
 # Format from moparx (http://moparx.com/configs)
 
 auto-reload yes
-browser palemoon
-download-path "~/Podcasts"
+browser qutebrowser
 cleanup-on-quit yes
 feed-sort-order firsttag
 feedlist-format "%4n %4U new %T from %t"
@@ -11,26 +10,34 @@ notify-format "newsboat: %n unread articles from %f unread feeds"
 notify-program notify-send
 notify-xterm yes
 notify-screen yes
-player mpv
 refresh-on-startup yes
+
+# ------- #
+# podboat #
+# ------- #
+
+player vlc # can also use mpv, kawaii-player
+download-path "/home/jayascript/Media/Podcasts"
+download-filename-format "%F-%t.%e"
+podlist-format "%4n [%6dMB/%6tMB] [%5p %%] [%12K] %S: %b"
 
 # ----- #
 # THEME #
 # ----- #
 
-color background white default
-color listnormal white default
-color listfocus white blue  standout
-color info blue default standout
-color listfocus_unread white blue bold    standout
-color listnormal_unread white default bold
+color background default default # application background
+color listnormal cyan default dim # a normal list item
+color listnormal_unread default default # an unread list item
+color listfocus color89 color211 dim # currently selected item
+color listfocus_unread color53 color211 bold # currently selected unread
+color info default default bold # info bars on top and bottom
 
 # ------ #
 # MACROS #
 # ------ #
 
 macro , open-in-browser
-macro y set browser "i3 exec 'mpv --ytdl-format=best %u'"; open-in-browser ; set browser "palemoon %u"
+macro y set browser "mpv --ytdl-format=best %u"; open-in-browser ; set browser "qutebrowser %u"
 
 # Config from https://forums.freebsd.org/threads/newsboat-rss-reader-enable-vim-key-bindings.69448/
 # unbind keys
