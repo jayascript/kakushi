@@ -27,10 +27,12 @@ call plug#begin('~/.config/nvim/plugged')
 " Declare the list of plugins.
 Plug 'lervag/vimtex'
 Plug 'chrisbra/csv.vim'
+Plug 'SirVer/ultisnips'
 Plug 'junegunn/goyo.vim'
 Plug 'majutsushi/tagbar'
 Plug 'preservim/nerdtree'
 Plug 'tpope/vim-fugitive'
+Plug 'honza/vim-snippets'
 Plug 'junegunn/limelight.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'jmcantrell/vim-virtualenv'

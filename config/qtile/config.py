@@ -89,8 +89,8 @@ fairyfloss = [
 
 # Set global widget vars
 widget_defaults = dict(
-    font = 'raleway',
-    fontsize = 15,
+    font = 'Monofur',
+    fontsize = 14,
     foreground = fairyfloss[0],
     padding = 3,
 )
@@ -265,7 +265,7 @@ group_names_fx= [
         }
      ),
     ("school", {
-        'label': "🎓 EDU",
+        'label': "🎓 LRN",
         'layout': 'monadtall',
         'matches': [
             Match(wm_class=['Firefox',
@@ -274,7 +274,7 @@ group_names_fx= [
         ],
         'spawn': [
             #'firefox',
-            #'anki',
+            'anki',
         ]
         }
      ),
