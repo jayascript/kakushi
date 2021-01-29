@@ -161,3 +161,10 @@ endfunction
 
 autocmd! User GoyoEnter call <SID>goyo_enter()
 autocmd! User GoyoLeave call <SID>goyo_leave()
+
+" Markdown snippets config
+let g:UltiSnipsExpandTrigger="<c-e>"
+let g:UltiSnipsJumpForwardTrigger="<c-f>"
+let g:UltiSnipsJumpBackwardTrigger="<c-b>"
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "my_snippets"]
+
