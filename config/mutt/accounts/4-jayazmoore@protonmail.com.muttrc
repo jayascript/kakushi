@@ -1,9 +1,9 @@
 # vim: filetype=neomuttrc
 # muttrc file for account jayazmoore@protonmail.com
-set realname = "jayazmoore"
+set realname = "Jaya Z. Moore"
 set from = "jayazmoore@protonmail.com"
 set sendmail = "msmtp -a jayazmoore@protonmail.com"
-alias me jayazmoore <jayazmoore@protonmail.com>
+alias me Jaya Z. Moore <jayazmoore@protonmail.com>
 set folder = "/home/jayascript/.local/share/mail/jayazmoore@protonmail.com"
 set header_cache = /home/jayascript/.cache/mutt-wizard/jayazmoore@protonmail.com/headers
 set message_cachedir = /home/jayascript/.cache/mutt-wizard/jayazmoore@protonmail.com/bodies
@@ -19,6 +19,156 @@ unmailboxes *
 unalternates *
 
 mailboxes "=Folders/Me_Finances" "=Labels/Bill" "=Labels/Income" "=Spam" "=Folders/Waiting" "=Folders/Biz_Archive" "=Folders/Client_GSK" "=Folders/Client_Prospects" "=Folders/Client_Archive" "=Folders/Act Today" "=Folders/Moore_Household" "=Folders/Moore_Wedding" "=Folders/Biz_Legal" "=Folders/Me_FLYing" "=Folders/Me_School" "=Folders/Biz_Office" "=Folders/Biz_Web" "=Trash" "=Drafts" "=Labels/Coworking Space" "=Labels/Expense" "=Folders/Biz_Admin" "=All Mail" "=Folders/Act This Week" "=Folders/Biz_Finances" "=Folders/Me_Legal" "=Folders/Client_MNG" "=Sent" "=Folders/Me_Tech" "=Folders/Me_Networking" "=Folders/Me_Work" "=Folders/Biz_Contractors" "=INBOX" "=Folders/Act This Month" "=Folders/Me_Archive" "=Folders/Me_Christ" "=Folders/Client_SIM" "=Folders/Client_UPW" "=Folders/Client_ORS" "=Folders/Me_Glow-Up" "=Archive" "=Folders/Coming Up" "=Folders/Me_ECE" "=Folders/Me_Hobbies" "=Labels" "=Folders"
+
+# Personal folder declarations: go-to, move-to, and copy-to
+macro index,pager gmefin "<change-folder>=Folders/Me_Finances<enter>"
+macro index,pager Cmefin ";<copy-message>=Folders/Me_Finances<enter>"
+macro index,pager Mmefin ";<save-message>=Folders/Me_Finances<enter>"
+
+macro index,pager gatm "<change-folder>=Folders/Act This Month<enter>"
+macro index,pager Catm ";<copy-message>=Folders/Act This Month<enter>"
+macro index,pager Matm ";<save-message>=Folders/Act This Month<enter>"
+
+macro index,pager gatw "<change-folder>=Folders/Act This Week<enter>"
+macro index,pager Catw ";<copy-message>=Folders/Act This Week<enter>"
+macro index,pager Matw ";<save-message>=Folders/Act This Week<enter>"
+
+macro index,pager gatd "<change-folder>=Folders/Act Today<enter>"
+macro index,pager Catd ";<copy-message>=Folders/Act Today<enter>"
+macro index,pager Matd ";<save-message>=Folders/Act Today<enter>"
+
+macro index,pager gbadm "<change-folder>=Folders/Biz_Admin<enter>"
+macro index,pager Cbadm ";<copy-message>=Folders/Biz_Admin<enter>"
+macro index,pager Mbadm ";<save-message>=Folders/Biz_Admin<enter>"
+
+macro index,pager gbarch "<change-folder>=Folders/Biz_Archive<enter>"
+macro index,pager Cbarch ";<copy-message>=Folders/Biz_Archive<enter>"
+macro index,pager Mbarch ";<save-message>=Folders/Biz_Archive<enter>"
+
+macro index,pager gbcontr "<change-folder>=Folders/Biz_Contractors<enter>"
+macro index,pager Cbcontr ";<copy-message>=Folders/Biz_Contractors<enter>"
+macro index,pager Mbcontr ";<save-message>=Folders/Biz_Contractors<enter>"
+
+macro index,pager gbfin "<change-folder>=Folders/Biz_Finances<enter>"
+macro index,pager Cbfin ";<copy-message>=Folders/Biz_Finances<enter>"
+macro index,pager Mbfin ";<save-message>=Folders/Biz_Finances<enter>"
+
+macro index,pager gblgl "<change-folder>=Folders/Biz_Legal<enter>"
+macro index,pager Cblgl ";<copy-message>=Folders/Biz_Legal<enter>"
+macro index,pager Mblgl ";<save-message>=Folders/Biz_Legal<enter>"
+
+macro index,pager gboff "<change-folder>=Folders/Biz_Office<enter>"
+macro index,pager Cboff ";<copy-message>=Folders/Biz_Office<enter>"
+macro index,pager Mboff ";<save-message>=Folders/Biz_Office<enter>"
+
+macro index,pager gbweb "<change-folder>=Folders/Biz_Web<enter>"
+macro index,pager Cbweb ";<copy-message>=Folders/Biz_Web<enter>"
+macro index,pager Mbweb ";<save-message>=Folders/Biz_Web<enter>"
+
+macro index,pager gcarch "<change-folder>=Folders/Client_Archive<enter>"
+macro index,pager Ccarch ";<copy-message>=Folders/Client_Archive<enter>"
+macro index,pager Mcarch ";<save-message>=Folders/Client_Archive<enter>"
+
+macro index,pager gcgsk "<change-folder>=Folders/Client_GSK<enter>"
+macro index,pager Ccgsk ";<copy-message>=Folders/Client_GSK<enter>"
+macro index,pager Mcgsk ";<save-message>=Folders/Client_GSK<enter>"
+
+macro index,pager gcmng "<change-folder>=Folders/Client_MNG<enter>"
+macro index,pager Ccmng ";<copy-message>=Folders/Client_MNG<enter>"
+macro index,pager Mcmng ";<save-message>=Folders/Client_MNG<enter>"
+
+macro index,pager gcors "<change-folder>=Folders/Client_ORS<enter>"
+macro index,pager Ccors ";<copy-message>=Folders/Client_ORS<enter>"
+macro index,pager Mcors ";<save-message>=Folders/Client_ORS<enter>"
+
+macro index,pager gcpros "<change-folder>=Folders/Client_Prospects<enter>"
+macro index,pager Ccpros ";<copy-message>=Folders/Client_Prospects<enter>"
+macro index,pager Mcpros ";<save-message>=Folders/Client_Prospects<enter>"
+
+macro index,pager gcsim "<change-folder>=Folders/Client_SIM<enter>"
+macro index,pager Ccsim ";<copy-message>=Folders/Client_SIM<enter>"
+macro index,pager Mcsim ";<save-message>=Folders/Client_SIM<enter>"
+
+macro index,pager gcupw "<change-folder>=Folders/Client_UPW<enter>"
+macro index,pager Ccupw ";<copy-message>=Folders/Client_UPW<enter>"
+macro index,pager Mcupw ";<save-message>=Folders/Client_UPW<enter>"
+
+macro index,pager gupnxt "<change-folder>=Folders/Coming Up<enter>"
+macro index,pager Cupnxt ";<copy-message>=Folders/Coming Up<enter>"
+macro index,pager Mupnxt ";<save-message>=Folders/Coming Up<enter>"
+
+macro index,pager gmearch "<change-folder>=Folders/Me_Archive<enter>"
+macro index,pager Cmearch ";<copy-message>=Folders/Me_Archive<enter>"
+macro index,pager Mmearch ";<save-message>=Folders/Me_Archive<enter>"
+
+macro index,pager gmex "<change-folder>=Folders/Me_Christ<enter>"
+macro index,pager Cmex ";<copy-message>=Folders/Me_Christ<enter>"
+macro index,pager Mmex ";<save-message>=Folders/Me_Christ<enter>"
+
+macro index,pager gmeece "<change-folder>=Folders/Me_ECE<enter>"
+macro index,pager Cmeece ";<copy-message>=Folders/Me_ECE<enter>"
+macro index,pager Mmeece ";<save-message>=Folders/Me_ECE<enter>"
+
+macro index,pager gmefly "<change-folder>=Folders/Me_FLYing<enter>"
+macro index,pager Cmefly ";<copy-message>=Folders/Me_FLYing<enter>"
+macro index,pager Mmefly ";<save-message>=Folders/Me_FLYing<enter>"
+
+macro index,pager gmeglow "<change-folder>=Folders/Me_Glow-Up<enter>"
+macro index,pager Cmeglow ";<copy-message>=Folders/Me_Glow-Up<enter>"
+macro index,pager Mmeglow ";<save-message>=Folders/Me_Glow-Up<enter>"
+
+macro index,pager gmehob "<change-folder>=Folders/Me_Hobbies<enter>"
+macro index,pager Cmehob ";<copy-message>=Folders/Me_Hobbies<enter>"
+macro index,pager Mmehob ";<save-message>=Folders/Me_Hobbies<enter>"
+
+macro index,pager gmelgl "<change-folder>=Folders/Me_Legal<enter>"
+macro index,pager Cmelgl ";<copy-message>=Folders/Me_Legal<enter>"
+macro index,pager Mmelgl ";<save-message>=Folders/Me_Legal<enter>"
+
+macro index,pager gmentw "<change-folder>=Folders/Me_Networking<enter>"
+macro index,pager Cmentw ";<copy-message>=Folders/Me_Networking<enter>"
+macro index,pager Mmentw ";<save-message>=Folders/Me_Networking<enter>"
+
+macro index,pager gmeedu "<change-folder>=Folders/Me_School<enter>"
+macro index,pager Cmeedu ";<copy-message>=Folders/Me_School<enter>"
+macro index,pager Mmeedu ";<save-message>=Folders/Me_School<enter>"
+
+macro index,pager gmetech "<change-folder>=Folders/Me_Tech<enter>"
+macro index,pager Cmetech ";<copy-message>=Folders/Me_Tech<enter>"
+macro index,pager Mmetech ";<save-message>=Folders/Me_Tech<enter>"
+
+macro index,pager gmework "<change-folder>=Folders/Me_Work<enter>"
+macro index,pager Cmework ";<copy-message>=Folders/Me_Work<enter>"
+macro index,pager Mmework ";<save-message>=Folders/Me_Work<enter>"
+
+macro index,pager gmmhouse "<change-folder>=Folders/Moore_Household<enter>"
+macro index,pager Cmmhouse ";<copy-message>=Folders/Moore_Household<enter>"
+macro index,pager Mmmhouse ";<save-message>=Folders/Moore_Household<enter>"
+
+macro index,pager gmmwed "<change-folder>=Folders/Moore_Wedding<enter>"
+macro index,pager Cmmwed ";<copy-message>=Folders/Moore_Wedding<enter>"
+macro index,pager Mmmwed ";<save-message>=Folders/Moore_Wedding<enter>"
+
+macro index,pager gwait "<change-folder>=Folders/Waiting<enter>"
+macro index,pager Cwait ";<copy-message>=Folders/Waiting<enter>"
+macro index,pager Mwait ";<save-message>=Folders/Waiting<enter>"
+
+macro index,pager glbill "<change-folder>=Labels/Bill<enter>"
+macro index,pager Clbill ";<copy-message>=Labels/Bill<enter>"
+macro index,pager Mlbill ";<save-message>=Labels/Bill<enter>"
+
+macro index,pager glcowork "<change-folder>=Labels/Coworking Space<enter>"
+macro index,pager Clcowork ";<copy-message>=Labels/Coworking Space<enter>"
+macro index,pager Mlcowork ";<save-message>=Labels/Coworking Space<enter>"
+
+macro index,pager glexp "<change-folder>=Labels/Expense<enter>"
+macro index,pager Clexp ";<copy-message>=Labels/Expense<enter>"
+macro index,pager Mlexp ";<save-message>=Labels/Expense<enter>"
+
+macro index,pager glinc "<change-folder>=Labels/Income<enter>"
+macro index,pager Clinc ";<copy-message>=Labels/Income<enter>"
+macro index,pager Mlinc ";<save-message>=Labels/Income<enter>"
+
 macro index,pager gS "<change-folder>=Spam<enter>" "go to spam" # mw-autogenerated
 macro index,pager MS ";<save-message>=Spam<enter>" "move mail to spam" # mw-autogenerated
 macro index,pager CS ";<copy-message>=Spam<enter>" "copy mail to spam" # mw-autogenerated
