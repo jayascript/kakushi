@@ -1,6 +1,24 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
+#---------------------------------------------------------------------------#
+#  _______      ____       .-'''-. .---.  .---. .-------.        _______    #
+# \  ____  \  .'  __ `.   / _     \|   |  |_ _| |  _ _   \      /   __  \   #
+# | |    \ | /   '  \  \ (`' )/`--'|   |  ( ' ) | ( ' )  |     | ,_/  \__)  #
+# | |____/ / |___|  /  |(_ o _).   |   '-(_{;}_)|(_ o _) /   ,-./  )        #
+# |   _ _ '.    _.-`   | (_,_). '. |      (_,_) | (_,_).' __ \  '_ '`)      #
+# |  ( ' )  \.'   _    |.---.  \  :| _ _--.   | |  |\ \  |  | > (_)  )  __  #
+# | (_{;}_) ||  _( )_  |\    `-'  ||( ' ) |   | |  | \ `'   /(  .  .-'_/  ) #
+# |  (_,_)  /\ (_ o _) / \       / (_{;}_)|   | |  |  \    /  `-'`-'     /  #
+# /_______.'  '.(_,_).'   `-...-'  '(_,_) '---' ''-'   `'-'     `._____.'   #
+#                                                                           #
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+#                                                                           #
+# ~/.bashrc: executed by bash(1) for non-login shells.                      #
+# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)  #
+# for examples                                                              #
+#                                                                           #
+# .bashrcとは(ログインした後に画面上から）bashを起動したときに読み込まれる  #
+# 設定ファイルです。(https://wa3.i-3-i.info/word13649.html)                 #
+#                                                                           #
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
 
 # If not running interactively, don't do anything
 case $- in
@@ -8,39 +26,70 @@ case $- in
       *) return;;
 esac
 
-# don't put duplicate lines or lines starting with space in the history.
-# See bash(1) for more options
-HISTCONTROL=ignoreboth
+# - - - EXPORTS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+set -o vi
+export EDITOR=vim
+export GEM_HOME="$HOME/gems"
+export LC_CTYPE="en_US.UTF-8"
+export PATH=/usr/local/bin:$PATH
+export PATH="$HOME/gems/bin:$PATH"
+source $(which virtualenvwrapper.sh)
+export WORKON_HOME="$HOME/.virtualenvs"
+export VIRTUALENVWRAPPER_PYTHON=$(which python3)
+export VIRTUALENVWRAPPER_VIRTUALENV=$(which virtualenv)
 
-# append to the history file, don't overwrite it
-shopt -s histappend
-
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+# - - - HISTORY - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
 HISTSIZE=1000
 HISTFILESIZE=2000
+HISTCONTROL=ignoreboth
 
-# check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
-shopt -s checkwinsize
+# - - - SHOPT - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+shopt -s expand_aliases # expand aliases
+shopt -s autocd # change to named directory
+shopt -s cdspell # autocorrect cd misspellings
+shopt -s checkwinsize # check window size after each command
+shopt -s histappend # append to the history file, don't overwrite it
+shopt -s cmdhist # save multi-line commands in history as a single line
 
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
 #shopt -s globstar
 
-# make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
-# set variable identifying the chroot you work in (used in the prompt below)
-if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
 fi
 
+# - - - CONDA - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/jayascript/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/jayascript/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/jayascript/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/jayascript/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+# - - - THEME - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
     xterm-color|*-256color) color_prompt=yes;;
 esac
 
-# uncomment for a colored prompt, if the terminal has the capability; turned# off by default to not distract the user: the focus in a terminal window
+# uncomment for a colored prompt, if the terminal has the capability; turned
+# off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
 #force_color_prompt=yes
 
@@ -59,6 +108,11 @@ fi
 git_branch() {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
+
+# set variable identifying the chroot you work in (used in the prompt below)
+if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
+    debian_chroot=$(cat /etc/debian_chroot)
+fi
 
 if [ "$color_prompt" = yes ]; then
     PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[01;31m\]$(git_branch)\[\033[00m\]\$ '
@@ -91,100 +145,6 @@ fi
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
-
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
-if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
-fi
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/jayascript/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/jayascript/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/jayascript/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/jayascript/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-# Install Ruby Gems to ~/gems
-export GEM_HOME="$HOME/gems"
-export PATH="$HOME/gems/bin:$PATH"
-
-# Own function to mkdir && cd
-mcdir ()
-{
-    mkdir -p -- "$1" &&
-    cd -P -- "$1"
-}
-
-export mcdir
-
-# Own function to touch and open new file
-atouch ()
-{
-    touch -- "$1" &&
-    atom "$1"
-}
-
-export atouch
-
-vtouch ()
-{
-    touch -- "$1" &&
-    vim "$1"
-}
-
-export vtouch
-
-# virtualenvwrapper Config
-# Set the location where the virtual environments should live
-export WORKON_HOME="$HOME/.virtualenvs"
-
-# Check that PATH is set properly
-export PATH=/usr/local/bin:$PATH
-
-# Set the full path of the Python interpreter to use
-export VIRTUALENVWRAPPER_PYTHON=$(which python3)
-
-# Set the full path of the virtualenv binary to use
-export VIRTUALENVWRAPPER_VIRTUALENV=$(which virtualenv)
-
-# Set the location of the script installed with this package
-source $(which virtualenvwrapper.sh)
-
-# Enable vim
-set -o vi
-export EDITOR=vim
-
 # Enable powerline
 if [ -f `which powerline-daemon` ]; then
   powerline-daemon -q
@@ -193,8 +153,108 @@ if [ -f `which powerline-daemon` ]; then
   . /usr/share/powerline/bindings/bash/powerline.sh
 fi
 
-# Set Unicode formatting
-export LC_CTYPE="en_US.UTF-8"
+# - - - ALIASES - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+# Alias definitions.
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
 
-# keychain
+# root privileges
+alias doas="doas --"
+
+# system
+alias update="sudo apt update && sudo apt upgrade"
+
+# navigation
+alias ..='cd ..'
+alias ...='cd ../..'
+alias .3='cd ../../..'
+alias .4='cd ../../../..'
+alias .5='cd ../../../../..'
+
+# changing ls to exa
+alias ls='exa -al --grid --group-directories-first' # preferred listing
+alias la='exa -a  --grid --group-directories-first'  # all files and dirs
+alias ll='exa -l  --grid --group-directories-first'  # long format
+alias lr='exa -laR --grid --group-directories-first' # recursive
+alias l.='exa -a | egrep "^\."' # dotfiles only
+
+# confirm before overwriting something
+alias cp="cp -i"
+alias mv="mv -i"
+alias rm="rm -i"
+
+# flags
+alias df="df -h"
+alias free="free -m"
+
+# git
+alias addnew='git add -u'
+alias addup='git add .'
+alias branch='git branch'
+alias checkout='git checkout'
+alias clone='git clone'
+alias cm='git commit -m'
+alias fetch='git fetch'
+alias pull='git pull'
+alias push='git push'
+alias st='git status'
+alias tag='git tag'
+alias newtag='git tag -a'
+
+# youtube-dl
+alias yta-aac="youtube-dl --extract-audio --audio-format aac "
+alias yta-best="youtube-dl --extract-audio --audio-format best "
+alias yta-flac="youtube-dl --extract-audio --audio-format flac "
+alias yta-m4a="youtube-dl --extract-audio --audio-format m4a "
+alias yta-mp3="youtube-dl --extract-audio --audio-format mp3 "
+alias yta-opus="youtube-dl --extract-audio --audio-format opus "
+alias yta-vorbis="youtube-dl --extract-audio --audio-format vorbis "
+alias yta-wav="youtube-dl --extract-audio --audio-format wav "
+alias ytv-best="youtube-dl -f bestvideo+bestaudio "
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+# - - - FUNCTIONS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+# Make and enter directory
+mcdir ()
+{
+    mkdir -p -- "$1" &&
+    cd -P -- "$1"
+}
+export mcdir
+
+# Archive extraction
+ex ()
+{
+  if [ -f $1 ] ; then
+    case $1 in
+      *.tar.bz2)   tar xjf $1   ;;
+      *.tar.gz)    tar xzf $1   ;;
+      *.bz2)       bunzip2 $1   ;;
+      *.rar)       unrar x $1   ;;
+      *.gz)        gunzip $1    ;;
+      *.tar)       tar xf $1    ;;
+      *.tbz2)      tar xjf $1   ;;
+      *.tgz)       tar xzf $1   ;;
+      *.zip)       unzip $1     ;;
+      *.Z)         uncompress $1;;
+      *.7z)        7z x $1      ;;
+      *.deb)       ar x $1      ;;
+      *.tar.xz)    tar xf $1    ;;
+      *.tar.zst)   unzstd $1    ;;
+      *)           echo "'$1' cannot be extracted via ex()" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
+}
+
+# - - - MISC. - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
+# Add SSH and GPG keys to keychain
 eval `keychain --eval --agents ssh,gpg id_rsa`
+
+# make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
