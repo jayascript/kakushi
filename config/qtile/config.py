@@ -470,9 +470,24 @@ keys = [
         desc="Launch calcurse"
     ),
     Key(
+        [mod, "mod1"], "m",
+        lazy.spawn(term + " -e neomutt"),
+        desc="Launch neomutt"
+    ),
+    Key(
         [mod, "mod1"], "n",
         lazy.spawn(term + " -e newsboat"),
         desc="Launch newsboat"
+    ),
+    Key(
+        [mod, "mod1"], "p",
+        lazy.spawn(term + " -e podboat"),
+        desc="Launch podboat"
+    ),
+    Key(
+        [mod, "mod1"], "r",
+        lazy.spawn(term + " -e ranger"),
+        desc="Launch ranger"
     ),
     Key(
         [mod, "mod1"], "v",
