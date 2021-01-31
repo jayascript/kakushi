@@ -15,6 +15,7 @@
 :imap ii <Esc>
 set tabstop=4
 set expandtab
+set nocompatible
 set shiftwidth=4
 set softtabstop=4
 set encoding=utf-8
@@ -26,6 +27,7 @@ call plug#begin('~/.config/nvim/plugged')
 
 " Declare the list of plugins.
 Plug 'lervag/vimtex'
+Plug 'vimwiki/vimwiki'
 Plug 'chrisbra/csv.vim'
 Plug 'SirVer/ultisnips'
 Plug 'junegunn/goyo.vim'
