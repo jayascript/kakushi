@@ -41,6 +41,7 @@ Plug 'majutsushi/tagbar'
 Plug 'preservim/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'honza/vim-snippets'
+Plug 'Yggdroot/indentLine'
 Plug 'junegunn/limelight.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'jmcantrell/vim-virtualenv'
@@ -68,7 +69,7 @@ lua require'colorizer'.setup()
 let g:python_highlight_all = 1
 let g:Hexokinase_highlighters = ['foregroundfull']
 
-" Dev settings
+" NERDTree and Tagbar
 map <Leader>n :NERDTreeToggle<CR>
 nmap <Leader>t :TagbarToggle<CR>
 let g:NERDTreeShowHidden = 1
@@ -218,3 +219,7 @@ function! ToggleCalendar()
   end
 endfunction
 :autocmd FileType vimwiki map c :call ToggleCalendar()
+
+" Dev settings
+let g:indentLine_color_gui = '#F8F8F2'
+let g:indentLine_char = '¦'
