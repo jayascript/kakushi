@@ -25,6 +25,7 @@ let mapleader=","
 set softtabstop=4
 set encoding=utf8
 set fileencoding=utf8
+set wildmode=longest,list,full
 set number relativenumber " Show scrolling line nums
 
 " Plugins will be downloaded under the specified directory.
@@ -77,16 +78,29 @@ let g:NERDTreeStatusLine = ''
 " Automatically close nvim if NERDTree is only thing left open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-" Luke Smith's configs.  "
-" https://lukesmith.xyz/ "
-set wildmode=longest,list,full
-set splitbelow splitright
-
+" Integrated terminal
+" https://medium.com/better-programming/setting-up-neovim-for-web-development-in-2020-d800de3efacd
+set splitbelow
+set splitright
+" turn terminal to normal mode with escape
+tnoremap ii <C-\><C-n>
+" start terminal in insert mode
+au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+" open terminal on ctrl+n
+function! OpenTerminal()
+  split term://bash
+  resize 10
+endfunction
+nnoremap <c-n> :call OpenTerminal()<CR>
 " Shortcutting split navigation, saving a keypress:
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
+tnoremap <C-h> <C-\><C-n><C-w>h
+tnoremap <C-j> <C-\><C-n><C-w>j
+tnoremap <C-k> <C-\><C-n><C-w>k
+tnoremap <C-l> <C-\><C-n><C-w>l
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
 
 " File type settings
 let g:tex_flavor='latex'
