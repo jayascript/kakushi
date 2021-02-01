@@ -12,15 +12,19 @@
 """""""""""""""""""""""""""""""""""""""""""""""""
 
 " basic
-:imap ii <Esc>
+set hidden
+set mouse=a
+set smartcase
 set tabstop=4
 set expandtab
+:imap ii <Esc>
+set ignorecase
 set nocompatible
 set shiftwidth=4
 let mapleader=","
 set softtabstop=4
-set encoding=utf-8
-set fileencoding=utf-8
+set encoding=utf8
+set fileencoding=utf8
 set number relativenumber " Show scrolling line nums
 
 " Plugins will be downloaded under the specified directory.
@@ -173,8 +177,8 @@ let g:UltiSnipsSnippetDirectories=["UltiSnips", "my_snippets"]
 
 " VimWiki
 let g:vimwiki_list = [
-                        \{'path': '~/vimwiki/personal.wiki'},
                         \{'path': '~/vimwiki/tech.wiki'},
+                        \{'path': '~/vimwiki/personal.wiki'},
                         \{'path': '~/vimwiki/food.wiki'},
                 \]
 au BufRead,BufNewFile *.wiki set filetype=vimwiki
