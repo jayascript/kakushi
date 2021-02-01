@@ -66,9 +66,15 @@ lua require'colorizer'.setup()
 let g:python_highlight_all = 1
 let g:Hexokinase_highlighters = ['foregroundfull']
 
-" toggle panes
+" Dev settings
 map <Leader>n :NERDTreeToggle<CR>
 nmap <Leader>t :TagbarToggle<CR>
+let g:NERDTreeShowHidden = 1
+let g:NERDTreeMinimalUI = 1
+let g:NERDTreeIgnore = []
+let g:NERDTreeStatusLine = ''
+" Automatically close nvim if NERDTree is only thing left open
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Luke Smith's configs.  "
 " https://lukesmith.xyz/ "
