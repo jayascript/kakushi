@@ -48,6 +48,7 @@ Plug 'hynek/vim-python-pep8-indent'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+Plug 'ryanoasis/vim-devicons' " Must be loaded after most others
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
