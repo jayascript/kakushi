@@ -163,7 +163,7 @@ fi
 alias doas="doas --"
 
 # system
-alias update="sudo apt update && sudo apt upgrade"
+alias update="doas apt update && doas apt upgrade"
 
 # navigation
 alias ..='cd ..'
@@ -190,7 +190,10 @@ alias free="free -m"
 
 # git
 alias addnew='git add -u'
-alias addup='git add .'
+alias addall='git add .'
+alias add='git add'
+alias diff='git diff'
+alias diffstaged='git diff --staged'
 alias branch='git branch'
 alias checkout='git checkout'
 alias clone='git clone'
@@ -201,6 +204,10 @@ alias push='git push'
 alias st='git status'
 alias tag='git tag'
 alias newtag='git tag -a'
+alias log='git log --oneline -10'
+alias logfull='git log -3'
+alias restore='git restore --staged'
+alias cam='git commit --amend'
 
 # youtube-dl
 alias yta-aac="youtube-dl --extract-audio --audio-format aac "
