@@ -17,6 +17,7 @@ set tabstop=4
 set expandtab
 set nocompatible
 set shiftwidth=4
+let mapleader=","
 set softtabstop=4
 set encoding=utf-8
 set fileencoding=utf-8
@@ -129,7 +130,7 @@ func! WordProcessor()
     setlocal linebreak
     " spelling and thesaurus
     setlocal spelllang=en_us
-    set thesaurus+=/home/jayascript/.config/nvim/thesaurus/mthesaur.txt
+    set thesaurus+=~/.config/nvim/thesaurus/mthesaur.txt
 endfu
 com! WP call WordProcessor()
 
@@ -170,3 +171,25 @@ let g:UltiSnipsJumpForwardTrigger="<c-f>"
 let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "my_snippets"]
 
+" VimWiki
+let g:vimwiki_list = [
+                        \{'path': '~/vimwiki/personal.wiki'},
+                        \{'path': '~/vimwiki/tech.wiki'},
+                        \{'path': '~/vimwiki/food.wiki'},
+                \]
+au BufRead,BufNewFile *.wiki set filetype=vimwiki
+:autocmd FileType vimwiki map d :VimwikiMakeDiaryNote
+function! ToggleCalendar()
+  execute ":Calendar"
+  if exists("g:calendar_open")
+    if g:calendar_open == 1
+      execute "q"
+      unlet g:calendar_open
+    else
+      g:calendar_open = 1
+    end
+  else
+    let g:calendar_open = 1
+  end
+endfunction
+:autocmd FileType vimwiki map c :call ToggleCalendar()
