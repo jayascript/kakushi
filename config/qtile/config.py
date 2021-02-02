@@ -211,8 +211,8 @@ group_names = [
             Match(wm_class=['Thunderbird', 'ProtonMail Bridge'])
         ],
         'spawn': [
-            'protonmail-bridge',
-            f'{term} -e neomutt',
+            #'protonmail-bridge',
+            #f'{term} -e neomutt',
         ],
         }
     ),
