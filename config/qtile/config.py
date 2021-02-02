@@ -470,6 +470,11 @@ keys = [
         desc="Launch calcurse"
     ),
     Key(
+        [mod, "mod1"], "g",
+        lazy.spawn(term + " -e gourmet"),
+        desc="Launch gourmet"
+    ),
+    Key(
         [mod, "mod1"], "m",
         lazy.spawn(term + " -e neomutt"),
         desc="Launch neomutt"
