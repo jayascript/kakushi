@@ -471,7 +471,7 @@ keys = [
     ),
     Key(
         [mod, "mod1"], "g",
-        lazy.spawn(term + " -e gourmet"),
+        lazy.spawn("devour gourmet"),
         desc="Launch gourmet"
     ),
     Key(
