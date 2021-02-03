@@ -1,6 +1,19 @@
-# remove ugly black boxes in sidebar
-color sidebar_new bold default default
+# status bars
+color status bold default default
 
-color index bold default default ~N
-color index_subject bold default default ~N
-color index_author bold default default ~N
+# sidebar
+color sidebar_new bold default default
+color sidebar_flagged bold default default
+
+# index: new messages
+color index bold blue default ~N # message tag + date
+color index_author bold color211 default ~N # message from
+color index_subject bold default default ~N # message subject
+
+# index: read messages
+color index blue default ~R # message tag + date
+color index_author color211 default ~R # message from
+color index_subject default default ~R # message subject
+
+# indicators
+color indicator bold color53 color211
