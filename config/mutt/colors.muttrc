@@ -1,0 +1,6 @@
+# remove ugly black boxes in sidebar
+color sidebar_new bold default default
+
+color index bold default default ~N
+color index_subject bold default default ~N
+color index_author bold default default ~N
