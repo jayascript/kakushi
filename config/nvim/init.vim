@@ -219,7 +219,7 @@ function! ToggleCalendar()
     let g:calendar_open = 1
   end
 endfunction
-:autocmd FileType vimwiki map c :call ToggleCalendar()
+:autocmd FileType vimwiki map <leader>c :call ToggleCalendar()<CR>
 
 " Dev settings
 let g:indentLine_color_gui = '#F8F8F2'
