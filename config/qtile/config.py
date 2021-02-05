@@ -284,6 +284,11 @@ group_names_fx= [
         'layout': 'monadtall',
         }
      ),
+    ("design", {
+        'label': "🖼️  IMG",
+        'layout': 'monadtall',
+        }
+     ),
 ]
 
 # playerctl media control functions
