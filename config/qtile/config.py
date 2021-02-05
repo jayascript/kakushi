@@ -196,7 +196,6 @@ group_names = [
                             'Chromium',
                             'LibreWolf',
                             'Pale moon',
-                            'qutebrowser',
                             'Tor Browser',
                             ]
                   )
@@ -244,7 +243,9 @@ group_names = [
         'label': "🎵 ENT",
         'layout': 'monadtall',
         'matches': [
-            Match(wm_class=['vlc', 'FreeTube'])
+            Match(wm_class=['vlc',
+                            'qutebrowser',
+                            'FreeTube'])
         ],
         'spawn': [
             #'freetube',
@@ -476,6 +477,11 @@ keys = [
     ),
     Key(
         [mod, "mod1"], "m",
+        lazy.spawn(term + " -e neomutt"),
+        desc="Launch neomutt"
+    ),
+    Key(
+        [mod, "mod1"], "n",
         lazy.spawn(term + " -e neomutt"),
         desc="Launch neomutt"
     ),
