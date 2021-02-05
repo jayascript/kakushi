@@ -205,7 +205,7 @@ let g:vimwiki_list = [
                         \{'path': '~/vimwiki/food.wiki'},
                 \]
 au BufRead,BufNewFile *.wiki set filetype=vimwiki
-:autocmd FileType vimwiki map d :VimwikiMakeDiaryNote
+:autocmd FileType vimwiki map <leader>d :VimwikiMakeDiaryNote<CR>
 function! ToggleCalendar()
   execute ":Calendar"
   if exists("g:calendar_open")
