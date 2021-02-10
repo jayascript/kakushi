@@ -28,7 +28,7 @@ esac
 
 # - - - EXPORTS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - #
 set -o vi
-export EDITOR=vim
+export EDITOR=nvim
 export GEM_HOME="$HOME/gems"
 export LC_CTYPE="en_US.UTF-8"
 export PATH=/usr/local/bin:$PATH
@@ -172,12 +172,15 @@ alias .3='cd ../../..'
 alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
 
-# changing ls to exa
+# change ls to exa
 alias ls='exa -al --grid --group-directories-first' # preferred listing
 alias la='exa -a  --grid --group-directories-first'  # all files and dirs
 alias ll='exa -l  --grid --group-directories-first'  # long format
 alias lr='exa -laR --grid --group-directories-first' # recursive
 alias l.='exa -a | egrep "^\."' # dotfiles only
+
+# change cat to bat
+alias cat='bat'
 
 # confirm before overwriting something
 alias cp="cp -i"
