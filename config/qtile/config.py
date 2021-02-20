@@ -285,7 +285,7 @@ group_names_fx= [
         }
      ),
     ("design", {
-        'label': "🖼️  IMG",
+        'label': "🖼️ IMG",
         'layout': 'monadtall',
         }
      ),
