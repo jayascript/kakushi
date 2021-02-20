@@ -266,5 +266,13 @@ ex ()
 # Add SSH and GPG keys to keychain
 eval `keychain --eval --agents ssh,gpg id_rsa`
 
-# make less more friendly for non-text input files, see lesspipe(1)
+# Hook direnv into bash
+eval "$(direnv hook bash)"
+
+# Make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+# Environment variables
+if [ -f ~/.env_vars ]; then
+    . ~/.env_vars
+fi
