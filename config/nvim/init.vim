@@ -51,6 +51,8 @@ Plug 'hynek/vim-python-pep8-indent'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+" If you have nodejs and yarn
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'ryanoasis/vim-devicons' " Must be loaded after most others
 
 " List ends here. Plugins become visible to Vim after this call.
@@ -191,6 +193,12 @@ endfunction
 
 autocmd! User GoyoEnter call <SID>goyo_enter()
 autocmd! User GoyoLeave call <SID>goyo_leave()
+
+" Markdown preview
+nmap <C-s> <Plug>MarkdownPreview
+" M is meta key; Alt-R
+nmap <M-s> <Plug>MarkdownPreviewStop
+nmap <Leader>m <Plug>MarkdownPreviewToggle
 
 " Markdown snippets config
 let g:UltiSnipsExpandTrigger="<c-e>"
