@@ -212,6 +212,10 @@ alias logfull='git log -3'
 alias restore='git restore --staged'
 alias cam='git commit --amend'
 
+# go libraries
+alias pomodoro="~/go/bin/pomodoro"
+alias noti="~/go/bin/noti"
+
 # youtube-dl
 alias yta-aac="youtube-dl --extract-audio --audio-format aac "
 alias yta-best="youtube-dl --extract-audio --audio-format best "
