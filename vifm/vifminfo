@@ -30,9 +30,6 @@ l2
 r2
 
 # Left window history (oldest to newest):
-d/home
-	jayascript
-1
 d/home/jayascript
 	Tresors
 22
@@ -330,6 +327,9 @@ d/home/jayascript/Office/Clients/Prospects
 d/home/jayascript/Office/Clients/Prospects/2020-01_PMP_combocompare-automation
 	Analysis_Creating-an-Algorithm-to-Bypass-ComboCompare.pdf
 2
+d/home/jayascript/Office
+	..
+0
 d
 
 # Right window history (oldest to newest):
