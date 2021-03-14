@@ -62,7 +62,7 @@ call plug#end()
 syntax on
 set t_co=256
 set encoding=utf-8
-colorscheme fairyfloss
+colorscheme nugget
 filetype plugin indent on
 let g:airline_theme='fairyfloss'
 

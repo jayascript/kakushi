@@ -175,12 +175,12 @@ font:
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
 
-# Colors (Tomorrow Night)
+# Colors (FairyFloss)
 colors:
   # Default colors
   primary:
-    background: '#5A5475' #'#1d1f21'
-    foreground: '#C2FFDF' #'#c5c8c6'
+    background: '#75507b' #'#1d1f21'
+    foreground: '#ffffff' #'#c5c8c6'
 
     # Bright and dim foreground colors
     #
@@ -239,28 +239,28 @@ colors:
     #  foreground: '#1d1f21'
 
   # Normal colors
-  #normal:
-  #  black:   '#1d1f21'
-  #  red:     '#cc6666'
-  #  green:   '#b5bd68'
-  #  yellow:  '#f0c674'
-  #  blue:    '#81a2be'
-  #  magenta: '#b294bb'
-  #  cyan:    '#8abeb7'
-  #  white:   '#c5c8c6'
+  normal:
+    black:   '#42395d'
+    red:     '#ff857f'
+    green:   '#f1568e'
+    yellow:  '#e6c000'
+    blue:    '#ae81ff'
+    magenta: '#42395d'
+    cyan:    '#c2ffdf'
+    white:   '#f8f8f2'
 
   # Bright colors
   # Note: color names do not correspond to hex values; these were
   # changed so that alacritty would mimic the fairyfloss theme
   bright:
-  #  black:   '#666666'
-  #  red:     '#d54e53'
-    green:   '#FF857F' #'#b9ca4a'
-  #  yellow:  '#e7c547'
-    blue:    '#AE81FF' #'#7aa6da'
-  #  magenta: '#c397d8'
-  #  cyan:    '#70c0b1'
-  #  white:   '#eaeaea'
+    black:   '#5a5475' #'#666666'
+    red:     '#ffb8d1' #'#d54e53'
+    green:   '#f1568e' #'#b9ca4a'
+    yellow:  '#d5a425'
+    blue:    '#c5a3ff' #'#7aa6da'
+    magenta: '#c5a3ff'
+    cyan:    '#c2ffff'
+    white:   '#f8f8f0'
 
   # Dim colors
   #
