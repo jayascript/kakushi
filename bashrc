@@ -172,15 +172,6 @@ alias .3='cd ../../..'
 alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
 
-# change ls to exa
-alias ls='exa -al --grid --group-directories-first' # preferred listing
-alias la='exa -a  --grid --group-directories-first'  # all files and dirs
-alias ll='exa -l  --grid --group-directories-first'  # long format
-alias lr='exa -laR --grid --group-directories-first' # recursive
-alias l.='exa -a | egrep "^\."' # dotfiles only
-
-# change cat to bat
-alias cat='bat'
 
 # confirm before overwriting something
 alias cp="cp -i"
@@ -215,6 +206,15 @@ alias cam='git commit --amend'
 # go libraries
 alias pomodoro="~/go/bin/pomodoro"
 alias noti="~/go/bin/noti"
+
+# rust programs
+alias cat='bat'
+alias ls='exa -al --grid --group-directories-first' # preferred listing
+alias la='exa -a  --grid --group-directories-first'  # all files and dirs
+alias ll='exa -l  --grid --group-directories-first'  # long format
+alias lr='exa -laR --grid --group-directories-first' # recursive
+alias l.='exa -a | egrep "^\."' # dotfiles only
+alias tt='taskwarrior-tui'
 
 # youtube-dl
 alias yta-aac="youtube-dl --extract-audio --audio-format aac "
