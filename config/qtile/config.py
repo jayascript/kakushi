@@ -43,19 +43,22 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-import os, subprocess
+import os, time, subprocess
 
 from typing import List  # noqa: F401
 
-from libqtile import bar, layout, widget
+from libqtile import qtile
+from libqtile import bar, layout, widget, hook
 from libqtile.config import Click, Drag, Group, Key, KeyChord, Screen, Match
 from libqtile.lazy import lazy
+from libqtile.log_utils import logger
 
 from screeninfo import get_monitors
 
 # Set global vars
 mod = "mod4"
 term = "alacritty"
+term_exec = f"{term} -e sh -c"
 home = os.path.expanduser('~')
 num_screens = len(get_monitors())
 sink = int(subprocess.check_output(
@@ -63,8 +66,22 @@ sink = int(subprocess.check_output(
             shell = True).decode().strip())
 
 # Run on login
-lazy.spawn(home + "/.scripts/rate.sh")
-lazy.spawn(home + "/.scripts/monitor_setup.sh")
+@hook.subscribe.startup
+def autostart():
+    try:
+        # Use subprocess.Popen() instead of subprocess.call().
+        # Couldn't get subprocess.call() to ever run anything; I
+        # think you need to set the param `shell=True` which could
+        # be dangerous, so this is recommended instead.
+        subprocess.Popen([home + "/.scripts/monitor_setup.sh"])
+        subprocess.Popen([home + "/.scripts/autostart.sh"])
+        subprocess.Popen([home + "/.scripts.rate.sh"])
+    except:
+        f = open('.debug/qtile', 'w')
+        f.write(
+            time.strftime('%Y-%m-%d %H:%M:%S', time.localtime()) +
+            'There was an error\n')
+        f.close()
 
 # Set global colorscheme
 fairyfloss = [
@@ -111,25 +128,39 @@ layouts = [
     #layout.RatioTile(**layout_theme),
     #layout.VerticalTile(**layout_theme),
     #layout.Zoomy(**layout_theme),
-    layout.Matrix(**layout_theme),
+    #layout.Matrix(**layout_theme),
     layout.MonadTall(**layout_theme),
     layout.Max(**layout_theme),
     layout.Tile(shift_windows=True, **layout_theme),
     #layout.Stack(num_stacks=2),
-    layout.TreeTab(
-         font = "Raleway",
-         fontsize = 12,
-         sections = ["1", "2", "3", "4", "5"],
-         section_fontsize = 14,
-         bg_color = "42395D",
-         active_bg = "FFB8D1",
-         active_fg = "42395D",
-         inactive_bg = "8077A8",
-         inactive_fg = "C2FFDF",
-         padding_y = 5,
-         section_top = 10,
-         panel_width = 320
-         ),
+    layout.TreeTab( font = "Monofur",
+        fontsize = 12,
+        name = "system",
+        sections = ["SYSTEM", "SERVERS"],
+        section_fontsize = 14,
+        bg_color = "42395D",
+        active_bg = "FFB8D1",
+        active_fg = "42395D",
+        inactive_bg = "8077A8",
+        inactive_fg = "C2FFDF",
+        padding_y = 5,
+        section_top = 10,
+        panel_width = 240
+    ),
+    layout.TreeTab( font = "Monofur",
+        fontsize = 12,
+        name = "social",
+        sections = ["CHAT NOW:"],
+        section_fontsize = 14,
+        bg_color = "42395D",
+        active_bg = "FFB8D1",
+        active_fg = "42395D",
+        inactive_bg = "8077A8",
+        inactive_fg = "C2FFDF",
+        padding_y = 5,
+        section_top = 10,
+        panel_width = 240
+    ),
     #layout.Floating(**layout_theme)
 ]
 
@@ -142,32 +173,43 @@ mouse = [
     Click([mod], "Button2", lazy.window.bring_to_front())
 ]
 
-# Set global group vars
+# Set global group vars and spawn programs to workspace
+# Here are the sleep times and spawns:
+# |sleep (s)|spawn              |
+# |0        |nextcloud          |
+# |2        |pavucontrol        |
+# |4        |bpytop             |
+# |6        |calcurse           |
+# |8        |taskwarrior-tui    |
+# |10       |ranger             |
+# |15       |brave-browser      |
+# |30       |protonmail-bridge  |
+# |40       |newsboat           |
+# |80       |anki               |
+# |120      |neomutt            |
+# |320      |wire-desktop       |
+# |640      |slack              |
+
 group_names = [
     ("main", {
         'label': "🧁 TOP",
         'layout': 'monadtall',
         'matches': [
-            Match(wm_class=['keepassxc'])
+            Match(wm_class='keepassxc'),
+            Match(wm_class='pavucontrol')
         ],
-        'spawn': [
-            'pavucontrol'
-        ]
         }
      ),
     ("household", {
         'label': "🏠 FAM",
         'layout': 'monadtall',
-        'spawn': [
-         #   'mmex',
-        ]
         }
     ),
     ("system", {
         'label': "💻 SYS",
-        'layout': 'matrix',
+        'layout': 'system',
         'spawn': [
-            f'{term}',
+            f"{term_exec} 'sleep 4 && bpytop'",
         ]
         }
     ),
@@ -180,11 +222,11 @@ group_names = [
         'label': "⏲️ CAL",
         'layout': 'monadtall',
         'matches': [
-            Match(wm_class=['Gnome-pomodoro'])
+            Match(wm_class='Gnome-pomodoro')
         ],
         'spawn': [
-            'gnome-pomodoro',
-            f'{term} -e calcurse'
+            f"{term_exec} 'sleep 6 && calcurse'",
+            f"{term_exec} 'sleep 8 && taskwarrior-tui'"
         ]
         }
     ),
@@ -192,26 +234,25 @@ group_names = [
         'label': "🌐 WWW",
         'layout': 'monadtall',
         'matches': [
-            Match(wm_class=['Brave-browser',
-                            'Chromium',
-                            'LibreWolf',
-                            'Pale moon',
-                            'Tor Browser',
-                            ]
-                  )
+            Match(wm_class='Brave-browser'),
+            Match(wm_class='Chromium'),
+            Match(wm_class='LibreWolf'),
+            Match(wm_class='Pale moon'),
+            Match(wm_class='Tor Browser'),
         ],
-        'spawn': 'brave-browser',
+        #'spawn': 'brave-browser',
         }
     ),
     ("email", {
         'label': "📫 BOX",
         'layout': 'monadtall',
         'matches': [
-            Match(wm_class=['Thunderbird', 'ProtonMail Bridge'])
+            Match(wm_class='Thunderbird'),
+            Match(wm_class='ProtonMail Bridge')
         ],
         'spawn': [
-            #'protonmail-bridge',
-            #f'{term} -e neomutt',
+        #    'protonmail-bridge',
+            f"{term_exec} 'sleep 120 && neomutt'",
         ],
         }
     ),
@@ -219,38 +260,38 @@ group_names = [
         'label': "📁 DOC",
         'layout': 'monadtall',
         'matches': [
-            Match(wm_class=['Org.gnome.Nautilus', 'Nextcloud'])
+            Match(wm_class='Org.gnome.Nautilus'),
+            Match(wm_class='Nextcloud')
         ],
         'spawn': [
-            f'{term} -e ranger',
-            'nextcloud'
+            f"{term_exec} 'sleep 10 && ranger'",
+        #    'nextcloud'
         ]
         }
     ),
     ("social", {
         'label': "💬 SOC",
-        'layout': 'monadtall',
+        'layout': 'social',
         'matches': [
-            Match(wm_class=['Wire', 'Slack', 'discord'])
+            Match(wm_class='Wire'),
+            Match(wm_class='Slack'),
+            Match(wm_class='discord')
         ],
-        'spawn': [
-            #'wire-desktop',
-            #'slack'
-        ]
+        #'spawn': [
+        #    f"{term_exec} 'sleep 320 && devour slack'",
+        #    f"{term_exec} 'sleep 640 && devour wire-desktop'",
+        #]
         }
     ),
     ("media", {
         'label': "🎵 ENT",
         'layout': 'monadtall',
         'matches': [
-            Match(wm_class=['vlc',
-                            'qutebrowser',
-                            'FreeTube'])
+            Match(wm_class='vlc'),
+            Match(wm_class='qutebrowser'),
+            Match(wm_class='FreeTube'),
+            Match(wm_class='lbry'),
         ],
-        'spawn': [
-            #'freetube',
-            #'vlc'
-        ]
         }
     ),
 ]
@@ -260,8 +301,7 @@ group_names_fx= [
         'label': "🔥 NEW",
         'layout': 'monadtall',
         'spawn': [
-            f'{term} -e newsboat',
-            f'{term} -e castero',
+           f"{term_exec} 'sleep 40 && newsboat'",
         ]
         }
      ),
@@ -269,14 +309,12 @@ group_names_fx= [
         'label': "🎓 LRN",
         'layout': 'monadtall',
         'matches': [
-            Match(wm_class=['Firefox',
-                            'Anki'
-                            ])
+            Match(wm_class='Firefox'),
+            Match(wm_class='Anki'),
         ],
-        'spawn': [
-            #'firefox',
-            'anki',
-        ]
+        #'spawn': [
+        #    f"{term_exec} 'sleep 80 && devour anki'",
+       # ]
         }
      ),
     ("writing", {
@@ -420,14 +458,14 @@ keys = [
 
     # Move windows
     Key(
-        [mod, "shift"], "k",
+        [mod, "shift"], "j",
         lazy.layout.shuffle_down(),
         lazy.layout.section_down(), # treetab
         desc="""Move window down in current stack;
                 move window down a section in treetab"""
     ),
     Key(
-        [mod, "shift"], "j",
+        [mod, "shift"], "k",
         lazy.layout.shuffle_up(),
         lazy.layout.section_up(), # treetab
         desc="""Move window up in current stack;
@@ -441,14 +479,14 @@ keys = [
         desc="Toggle fullscreen"
     ),
     Key(
-        [mod], "l",
+        [mod], "h",
         lazy.layout.grow(),
         lazy.layout.increase_nmaster(),
         desc="""Expand window (monadtall);
                 increase number in master pane (tile)"""
     ),
     Key(
-        [mod], "h",
+        [mod], "l",
         lazy.layout.shrink(),
         lazy.layout.decrease_nmaster(),
         desc="""Shrink window (monadtall);
@@ -465,51 +503,17 @@ keys = [
     ),
 
     # Launch terminal apps (SUPER + ALT + KEY)
-    Key(
-        [mod, "mod1"], "b",
-        lazy.spawn(term + " -e bpytop"),
-        desc="Launch bpytop"
-    ),
-    Key(
-        [mod, "mod1"], "c",
-        lazy.spawn(term + " -e calcurse"),
-        desc="Launch calcurse"
-    ),
-    Key(
-        [mod, "mod1"], "g",
-        lazy.spawn("devour gourmet"),
-        desc="Launch gourmet"
-    ),
-    Key(
-        [mod, "mod1"], "m",
-        lazy.spawn(term + " -e neomutt"),
-        desc="Launch neomutt"
-    ),
-    Key(
-        [mod, "mod1"], "n",
-        lazy.spawn(term + " -e neomutt"),
-        desc="Launch neomutt"
-    ),
-    Key(
-        [mod, "mod1"], "n",
-        lazy.spawn(term + " -e newsboat"),
-        desc="Launch newsboat"
-    ),
-    Key(
-        [mod, "mod1"], "p",
-        lazy.spawn(term + " -e podboat"),
-        desc="Launch podboat"
-    ),
-    Key(
-        [mod, "mod1"], "r",
-        lazy.spawn(term + " -e ranger"),
-        desc="Launch ranger"
-    ),
-    Key(
-        [mod, "mod1"], "v",
-        lazy.spawn(term + " -e vifm"),
-        desc="Launch Vi[m] File Manager"
-    ),
+    KeyChord([mod], "t", [
+        Key([], "b", lazy.spawn(term + " -e bpytop")),
+        Key([], "c", lazy.spawn(term + " -e calcurse")),
+        Key([], "g", lazy.spawn("devour gourmet")),
+        Key([], "m", lazy.spawn(term + " -e neomutt")),
+        Key([], "n", lazy.spawn(term + " -e newsboat")),
+        Key([], "p", lazy.spawn(term + " -e podboat")),
+        Key([], "r", lazy.spawn(term + " -e ranger")),
+        Key([], "t", lazy.spawn(term + " -e taskwarrior-tui")),
+    ], mode="Terminal: (b) bpytop; (c) calcurse; (g) gourmet; (m) neomutt; " \
+            "(n) newsboat; (p) podboat; (r) ranger; (t) task"),
 
     # Launch browser mode
     KeyChord([mod], "b", [
@@ -629,7 +633,6 @@ def set_widgets():
         widget.Spacer(length=bar.STRETCH),
         widget.Clock(format='%Y-%m-%d %a %H:%M:%S'),
         widget.Systray(),
-        widget.BatteryIcon(),
         widget.Battery(
             format = "{percent:2.0%}",
             low_percentage = 0.1,
@@ -669,21 +672,15 @@ follow_mouse_focus = True
 bring_front_click = False
 cursor_warp = False
 floating_layout = layout.Floating(float_rules=[
+    *layout.Floating.default_float_rules,
     # Run the utility of `xprop` to see the wm class and name of an X client.
-    {'wmclass': 'confirm'},
-    {'wmclass': 'dialog'},
-    {'wmclass': 'download'},
-    {'wmclass': 'error'},
-    {'wmclass': 'file_progress'},
-    {'wmclass': 'notification'},
-    {'wmclass': 'splash'},
-    {'wmclass': 'toolbar'},
-    {'wmclass': 'confirmreset'},  # gitk
-    {'wmclass': 'makebranch'},  # gitk
-    {'wmclass': 'maketag'},  # gitk
-    {'wname': 'branchdialog'},  # gitk
-    {'wname': 'pinentry'},  # GPG key password entry
-    {'wmclass': 'ssh-askpass'},  # ssh-askpass
+    Match(wm_class='confirmreset'), # gitk
+    Match(wm_class='makebranch'), # gitk
+    Match(wm_class='maketag'), # gitk
+    Match(title='branchdialog'), # gitk
+    Match(title='pinentry'), # GPG key password entry
+    Match(wm_class='gcr-prompter'), # GPG key password entry
+    Match(wm_class='ssh-askpass'), # ssh-askpass
 ])
 auto_fullscreen = True
 focus_on_window_activation = "smart"
